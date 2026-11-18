@@ -1,105 +1,140 @@
-'use client';
-
-import React from 'react';
 import Link from 'next/link';
-import {
-  Compass,
-  Phone,
-  Mail,
-  MapPin,
-  Shield,
-  Star,
-  CheckCircle2,
-  Clock,
-  ArrowRight,
-  Sparkles
-} from 'lucide-react';
-import { SERVICES } from '@/data/services';
+import { Home, Phone, MessageCircle, Send, Mail } from 'lucide-react';
+
+const SERVICES = [
+  { label: 'Lawn & Landscaping', href: '/services' },
+  { label: 'House Cleaning', href: '/services' },
+  { label: 'Plumbing & Repairs', href: '/services' },
+  { label: 'HVAC Maintenance', href: '/services' },
+  { label: 'Painting & Touch-Ups', href: '/services' },
+  { label: 'Gutter Cleaning', href: '/services' },
+];
+
+const QUICK_LINKS = [
+  { label: 'About', href: '/about' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms-of-service' },
+];
 
 export default function Footer() {
   return (
-    <footer className="w-full relative z-10 bg-gradient-to-b from-white via-amber-50/30 to-amber-100/20 border-t border-amber-200/50 text-stone-700 py-12 transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Strip: Brand & Fast Hotline */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-amber-200/50">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 via-orange-400 to-yellow-400 p-[1.5px] shadow-md shadow-amber-500/20">
-              <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
-                <Compass className="w-5 h-5 text-amber-600" />
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-xl text-stone-900 tracking-tight">
-                  North<span className="text-amber-500">Star</span>
-                </span>
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-full">
-                  US Maintenance
-                </span>
-              </div>
-              <p className="text-xs text-stone-500">
-                Luminous residential & commercial property care • $2M Insured
-              </p>
-            </div>
+    <footer className="bg-[#FFFDF9] border-t border-stone-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+
+          {/* Column 1 — Brand */}
+          <div className="space-y-5">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-2.5 group w-fit">
+              <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-amber-500 group-hover:bg-amber-600 transition-colors shadow-sm">
+                <Home className="w-5 h-5 text-white" strokeWidth={2.2} />
+              </span>
+              <span className="text-xl font-bold tracking-tight leading-none">
+                <span className="text-stone-900">House</span>
+                <span className="text-amber-600">Hero</span>
+              </span>
+            </Link>
+
+            <p className="text-sm text-stone-500 leading-relaxed max-w-xs">
+              Professional Property Care you can count on — upfront pricing, background-checked technicians, and a 100% satisfaction guarantee.
+            </p>
+
+            {/* Contact */}
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="tel:18005556782"
+                  className="flex items-center gap-2.5 text-sm text-stone-700 hover:text-amber-600 transition-colors font-medium"
+                >
+                  <Phone className="w-4 h-4 text-stone-500 shrink-0" />
+                  (800) 555-6782
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:dispatch@househero.com"
+                  className="flex items-center gap-2.5 text-sm text-stone-700 hover:text-amber-600 transition-colors font-medium"
+                >
+                  <Mail className="w-4 h-4 text-stone-500 shrink-0" />
+                  dispatch@househero.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/18005556782"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-sm text-stone-700 hover:text-emerald-600 transition-colors font-medium"
+                >
+                  <MessageCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                  WhatsApp Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://t.me/househerocare"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-sm text-stone-700 hover:text-amber-600 transition-colors font-medium"
+                >
+                  <Send className="w-4 h-4 text-amber-600 shrink-0" />
+                  @househerocare on Telegram
+                </a>
+              </li>
+            </ul>
           </div>
 
-          {/* Quick Hotline Pill */}
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href="tel:18005556787"
-              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/80 border border-amber-300 shadow-sm text-stone-800 text-sm font-bold hover:bg-amber-500 hover:text-white hover:border-amber-500 transition-all duration-300"
-            >
-              <Phone className="w-4 h-4 text-amber-600 group-hover:text-white" />
-              <span>(800) 555-NSTAR</span>
-            </a>
-            <a
-              href="#book"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold shadow-md shadow-amber-500/25 hover:from-amber-600 hover:to-orange-600 hover:-translate-y-0.5 transition-all"
-            >
-              <span>Instant Book</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+          {/* Column 2 — Services */}
+          <div>
+            <h3 className="text-sm font-semibold text-stone-900 uppercase tracking-widest mb-5">
+              Services
+            </h3>
+            <ul className="space-y-3">
+              {SERVICES.map(({ label, href }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="text-sm text-stone-500 hover:text-amber-600 transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3 — Quick Links */}
+          <div>
+            <h3 className="text-sm font-semibold text-stone-900 uppercase tracking-widest mb-5">
+              Quick Links
+            </h3>
+            <ul className="space-y-3">
+              {QUICK_LINKS.map(({ label, href }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="text-sm text-stone-500 hover:text-amber-600 transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
+      </div>
 
-        {/* Middle: Simplified Clean Service Tags */}
-        <div className="py-8">
-          <p className="text-xs font-bold uppercase tracking-wider text-amber-800 mb-3">
-            Core Maintenance Services (All Priced in USD $)
+      {/* Bottom bar */}
+      <div className="border-t border-stone-200 bg-stone-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-xs text-stone-400">
+            © 2026 House Hero LLC. All rights reserved.
           </p>
-          <div className="flex flex-wrap gap-2">
-            {SERVICES.map((s) => (
-              <a
-                key={s.id}
-                href={`#service-${s.id}`}
-                className="px-3 py-1.5 rounded-xl bg-white/70 border border-amber-200/60 hover:border-amber-400 hover:bg-amber-50/80 text-stone-700 hover:text-amber-700 text-xs font-medium transition-all shadow-xs flex items-center gap-1.5"
-              >
-                <span>{s.title}</span>
-                <span className="text-amber-600 font-bold">from ${s.startingPrice}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Bar: Badges & Copyright */}
-        <div className="pt-6 border-t border-amber-200/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
-          <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
-            <span className="flex items-center gap-1 text-amber-700 font-medium">
-              <Shield className="w-3.5 h-3.5 text-amber-600" /> $2,000,000 General Liability
-            </span>
-            <span>•</span>
-            <span className="flex items-center gap-1 text-stone-700 font-medium">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> 100% Satisfaction Guarantee
-            </span>
-            <span>•</span>
-            <span className="font-semibold text-amber-800">
-              USD ($) Transparent Pricing
-            </span>
-          </div>
-
-          <div className="text-center sm:text-right">
-            © 2026 NorthStar Property Care Inc. All rights reserved.
-          </div>
+          <p className="text-xs text-stone-400 text-center">
+            Licensed, Bonded &amp; $2M Insured&nbsp;·&nbsp;All prices in USD
+          </p>
         </div>
       </div>
     </footer>

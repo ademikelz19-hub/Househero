@@ -55,11 +55,11 @@ export const SERVICES: ServiceData[] = [
     title: 'House & Deep Cleaning',
     category: 'interior',
     shortDesc: 'Hospital-grade residential sanitization, detailed deep scrub, and recurring housekeeping.',
-    fullDesc: 'NorthStar’s professional house cleaning crews follow a rigorous 64-point touchpoint protocol. From baseboards and chandelier detailing to sanitizing high-touch surfaces, we use non-toxic, Green Seal-certified formulas safe for children and pets.',
+    fullDesc: 'House Hero’s professional house cleaning crews follow a rigorous 64-point touchpoint protocol. From baseboards and chandelier detailing to sanitizing high-touch surfaces, we use non-toxic, Green Seal-certified formulas safe for children and pets.',
     startingPrice: 120,
     priceUnit: 'per home',
     avgDuration: '2.5 – 5.0 hrs',
-    iconName: 'Sparkles',
+    iconName: 'Home',
     badge: 'Most Popular Interior',
     includedFeatures: [
       '64-Point High-Touch Disinfection Protocol',
@@ -84,10 +84,10 @@ export const SERVICES: ServiceData[] = [
     faqs: [
       { question: 'What is the difference between Standard and Deep Clean?', answer: 'A Standard clean maintains cleanliness (countertops, vacuuming, mopping, bathroom sanitizing). A Deep Clean includes hand-scrubbing baseboards, door frames, vent covers, heavy grease removal, and detailed tile grout scrub.' },
       { question: 'Do I need to be home during the cleaning?', answer: 'No. Over 65% of our clients provide a digital lockbox code or garage PIN. Our bonded team arrives in uniform with GPS check-in.' },
-      { question: 'Do you bring your own supplies and equipment?', answer: 'Yes, our NorthStar mobile vans arrive fully equipped with all commercial HEPA vacuums, microfiber materials, and Green Seal products.' }
+      { question: 'Do you bring your own supplies and equipment?', answer: 'Yes, our House Hero mobile vans arrive fully equipped with all commercial HEPA vacuums, microfiber materials, and Green Seal products.' }
     ],
     reviews: [
-      { author: 'Sarah M.', rating: 5, date: '2 days ago', location: 'Denver, CO', comment: 'NorthStar did our move-out cleaning and our landlord refunded 100% of our deposit within 24 hours. The oven and tile grout looked brand new!' },
+      { author: 'Sarah M.', rating: 5, date: '2 days ago', location: 'Denver, CO', comment: 'House Hero did our move-out cleaning and our landlord refunded 100% of our deposit within 24 hours. The oven and tile grout looked brand new!' },
       { author: 'David K.', rating: 5, date: '1 week ago', location: 'Minneapolis, MN', comment: 'We have recurring bi-weekly cleaning now. Reliable crew, prompt 8 AM arrival, and always leaves the house smelling fresh without harsh bleach fumes.' }
     ],
     beforeImage: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80',
@@ -133,7 +133,7 @@ export const SERVICES: ServiceData[] = [
       { question: 'Is Scotchgard carpet protector worth it?', answer: 'Yes! It creates an invisible fluorochemical shield around each fiber, preventing liquids and spills from penetrating before you can wipe them up.' }
     ],
     reviews: [
-      { author: 'Marcus T.', rating: 5, date: '3 days ago', location: 'Chicago, IL', comment: 'Two golden retrievers had destroyed our living room rug. NorthStar extracted stains I thought were permanent. No chemical smell at all.' },
+      { author: 'Marcus T.', rating: 5, date: '3 days ago', location: 'Chicago, IL', comment: 'Two golden retrievers had destroyed our living room rug. House Hero extracted stains I thought were permanent. No chemical smell at all.' },
       { author: 'Elena R.', rating: 5, date: '2 weeks ago', location: 'Cleveland, OH', comment: 'Fair USD pricing, no bait-and-switch when they arrived. Exactly the $169 quoted online for our 3 rooms and hallway.' }
     ],
     beforeImage: 'https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80',
@@ -179,7 +179,7 @@ export const SERVICES: ServiceData[] = [
       { question: 'Will ladder contact scratch my painted aluminum gutters?', answer: 'Never. We strictly use rubber-padded ladder standoff mounts that bridge directly onto roof decking, completely avoiding contact with gutter lips.' }
     ],
     reviews: [
-      { author: 'Bradley C.', rating: 5, date: '5 days ago', location: 'Seattle, WA', comment: 'Our two-story gutters were overflowing during heavy rain. NorthStar cleared out massive oak clogs and re-sealed a leaking corner seam in 90 minutes.' },
+      { author: 'Bradley C.', rating: 5, date: '5 days ago', location: 'Seattle, WA', comment: 'Our two-story gutters were overflowing during heavy rain. House Hero cleared out massive oak clogs and re-sealed a leaking corner seam in 90 minutes.' },
       { author: 'Jennifer W.', rating: 5, date: '1 month ago', location: 'Boston, MA', comment: 'The digital photo report sent right to my phone showed every clean downspout before and after. Outstanding service!' }
     ],
     beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
@@ -377,7 +377,7 @@ export const SERVICES: ServiceData[] = [
     title: 'Lawn & Garden Cleanup',
     category: 'exterior',
     shortDesc: 'Seasonal leaf removal, perennial bed edging, hedge pruning, and mulch application.',
-    fullDesc: 'Get your property manicured to perfection. From raking fallen leaves and deadheading perennials to laser-straight bed edging and dense hardwood mulch installation, NorthStar makes your grounds look pristine year-round.',
+    fullDesc: 'Get your property manicured to perfection. From raking fallen leaves and deadheading perennials to laser-straight bed edging and dense hardwood mulch installation, House Hero makes your grounds look pristine year-round.',
     startingPrice: 130,
     priceUnit: 'small lot',
     avgDuration: '2.5 – 6.0 hrs',
@@ -409,7 +409,7 @@ export const SERVICES: ServiceData[] = [
       { question: 'What do you do with the bags of leaves and branches?', answer: 'All yard waste is hauled away in our trailers and brought to licensed municipal compost facilities where it is recycled into organic compost.' }
     ],
     reviews: [
-      { author: 'Brandon P.', rating: 5, date: '1 week ago', location: 'Portland, OR', comment: 'Our half-acre yard was drowning in maple leaves and overgrown boxwoods. NorthStar spent 4 hours and left it looking like an English garden. Superb.' },
+      { author: 'Brandon P.', rating: 5, date: '1 week ago', location: 'Portland, OR', comment: 'Our half-acre yard was drowning in maple leaves and overgrown boxwoods. House Hero spent 4 hours and left it looking like an English garden. Superb.' },
       { author: 'Emily N.', rating: 5, date: '1 month ago', location: 'Boise, ID', comment: 'Honest upfront estimate, showed up on time with a crew of three, and even blew off our back deck and front walkway.' }
     ],
     beforeImage: 'https://images.unsplash.com/photo-1558904541-efa8c4a52d31?auto=format&fit=crop&w=800&q=80',
@@ -501,7 +501,7 @@ export const SERVICES: ServiceData[] = [
       { question: 'Can I set up automatic dispatch when ice freezes?', answer: 'Yes! Select the Auto-Dispatch Trigger in the booking wizard, and our crews will automatically service your driveway and walkways whenever temperatures dip below 32°F with precipitation.' }
     ],
     reviews: [
-      { author: 'Nathaniel F.', rating: 5, date: '4 days ago', location: 'Pittsburgh, PA', comment: 'Our steep driveway is a sheet of ice every January. NorthStar came out before the ice storm and our driveway stayed completely bare all weekend.' },
+      { author: 'Nathaniel F.', rating: 5, date: '4 days ago', location: 'Pittsburgh, PA', comment: 'Our steep driveway is a sheet of ice every January. House Hero came out before the ice storm and our driveway stayed completely bare all weekend.' },
       { author: 'Melissa E.', rating: 5, date: '3 weeks ago', location: 'Detroit, MI', comment: 'We have two senior dogs. Their pet-safe de-icer didn’t irritate their paws at all, and it cleared our sidewalk completely.' }
     ],
     beforeImage: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
@@ -574,7 +574,7 @@ export const SEASONAL_BUNDLES = [
     originalPrice: 1980,
     bundlePrice: 1499,
     savings: 481,
-    servicesIncluded: ['All 10 NorthStar Property Care Services'],
+    servicesIncluded: ['All 10 House Hero Property Care Services'],
     popular: false,
     features: [
       '2 Seasonal HVAC tune-ups (Spring AC + Fall Furnace)',
@@ -633,6 +633,6 @@ export const SERVICE_AREAS = [
     zips: ['*'],
     dispatchTime: 'Standard scheduled bookings nationwide',
     fleetCount: '110+ Partner Mobile Units',
-    address: 'NorthStar Operations HQ, Wilmington, DE'
+    address: 'House Hero Operations HQ, Wilmington, DE'
   }
 ];

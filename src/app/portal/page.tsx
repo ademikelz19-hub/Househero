@@ -3,395 +3,240 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import {
+  Search,
   Calendar,
   Clock,
-  MapPin,
-  CheckCircle,
-  AlertCircle,
   Printer,
-  CalendarCheck,
   XCircle,
-  Sparkles,
+  CheckCircle2,
+  Phone,
   ArrowRight,
   ShieldCheck,
-  RefreshCw,
-  FileText
+  RefreshCw
 } from 'lucide-react';
-import { useApp, Booking } from '@/context/AppContext';
+import { useApp } from '@/context/AppContext';
 
-export default function CustomerPortalPage() {
-  const { bookings, rescheduleBooking, cancelBooking } = useApp();
+export default function PortalPage() {
+  const { bookings, cancelBooking, rescheduleBooking } = useApp();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterStatus, setFilterStatus] = useState<string>('all');
 
-  const [activeTab, setActiveTab] = useState<'all' | 'active' | 'completed'>('all');
-  const [reschedulingId, setReschedulingId] = useState<string | null>(null);
-  const [newDate, setNewDate] = useState('');
-  const [newWindow, setNewWindow] = useState('Morning 8:00 AM – 11:00 AM');
-  const [selectedInvoice, setSelectedInvoice] = useState<Booking | null>(null);
+  const filtered = bookings.filter((b) => {
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch =
+      !q ||
+      b.id.toLowerCase().includes(q) ||
+      b.customer.fullName.toLowerCase().includes(q) ||
+      b.customer.phone.includes(q) ||
+      b.customer.email.toLowerCase().includes(q) ||
+      b.customer.address.toLowerCase().includes(q);
 
-  const filteredBookings = bookings.filter((b) => {
-    if (activeTab === 'active') return b.status === 'Confirmed' || b.status === 'Crew Dispatched';
-    if (activeTab === 'completed') return b.status === 'Completed';
-    return true;
+    const matchesStatus = filterStatus === 'all' || b.status.toLowerCase() === filterStatus.toLowerCase();
+
+    return matchesSearch && matchesStatus;
   });
 
-  const handleSaveReschedule = (id: string) => {
-    if (newDate) {
-      rescheduleBooking(id, newDate, newWindow);
-      setReschedulingId(null);
-    }
-  };
-
-  const getStatusBadge = (status: Booking['status']) => {
-    switch (status) {
-      case 'Confirmed':
-        return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
-      case 'Crew Dispatched':
-        return 'bg-amber-400/10 text-amber-400 border-amber-400/20 animate-pulse';
-      case 'Completed':
-        return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
-      case 'Cancelled':
-        return 'bg-red-500/10 text-red-400 border-red-500/20';
-    }
-  };
-
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-amber-200/70">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-            Self-Service Account Center
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mt-2">
-            Customer Care Portal
-          </h1>
-          <p className="text-xs sm:text-sm text-stone-500 mt-1">
-            Manage your scheduled dispatches, download itemized USD receipts, and coordinate service dates.
-          </p>
-        </div>
+    <div className="w-full">
+      {/* =========================================================================
+          HERO SECTION WITH FUNCTIONAL LOOKUP & CLIENT DASHBOARD PHOTOGRAPHY
+      ========================================================================= */}
+      <section className="relative pt-6 pb-12 lg:pt-12 lg:pb-20 overflow-hidden border-b border-amber-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-semibold tracking-wide uppercase">
+                <span>Self-Service Portal</span>
+              </div>
 
-        <Link
-          href="/book"
-          className="py-3 px-6 rounded-2xl font-bold text-xs text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-lg shadow-amber-500/20 flex items-center gap-2 self-start sm:self-auto"
-        >
-          <Sparkles className="w-4 h-4" />
-          <span>Book New Service</span>
-        </Link>
-      </div>
+              <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-stone-900 leading-tight">
+                Manage, Reschedule &amp;{' '}
+                <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent">
+                  Track Your Booking.
+                </span>
+              </h1>
 
-      {/* KPI Overview row */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-5 rounded-2xl">
-          <div className="text-xs text-stone-500 font-semibold">Total Bookings on File</div>
-          <div className="text-3xl font-black text-white mt-1">{bookings.length}</div>
-        </div>
-        <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-5 rounded-2xl">
-          <div className="text-xs text-stone-500 font-semibold">Active & Upcoming Dispatches</div>
-          <div className="text-3xl font-black text-amber-400 mt-1">
-            {bookings.filter((b) => b.status === 'Confirmed' || b.status === 'Crew Dispatched').length}
+              <p className="text-base text-stone-600 max-w-xl font-normal leading-relaxed">
+                Look up your appointment by Reference ID (e.g. #NSPC-8491) or phone number. Reschedule arrival dates, download itemized USD receipts, or update notes.
+              </p>
+
+              {/* Functional Hero Interactive Lookup Form */}
+              <div className="p-5 rounded-2xl bg-white/90 backdrop-blur-xl border border-amber-200/80 shadow-lg shadow-amber-500/5 max-w-xl space-y-4">
+                <div className="text-xs font-bold text-stone-900 uppercase tracking-wider">
+                  Live Reservation Search
+                </div>
+
+                <div className="relative">
+                  <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    placeholder="Search by Reference Code (NSPC-XXXX), Phone, or Email..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 text-xs sm:text-sm font-semibold text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                  />
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {['all', 'confirmed', 'dispatched', 'completed'].map((status) => (
+                    <button
+                      key={status}
+                      onClick={() => setFilterStatus(status)}
+                      className={`px-3 py-1 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all ${
+                        filterStatus === status
+                          ? 'bg-stone-900 text-white'
+                          : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                      }`}
+                    >
+                      {status}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="pt-2 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-500">
+                  <span>Found {filtered.length} appointment record(s)</span>
+                  {searchQuery && (
+                    <button onClick={() => setSearchQuery('')} className="text-amber-700 hover:underline font-bold">
+                      Clear Filter
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Architectural Image Column */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-amber-500/10 border border-white/80 aspect-4/3 sm:aspect-5/4">
+                <img
+                  src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=85"
+                  alt="Modern homeowner dashboard"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-transparent pointer-events-none" />
+
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/90 shadow-lg text-stone-800">
+                  <div className="flex items-center justify-between text-xs">
+                    <div>
+                      <span className="font-bold text-stone-900 block text-sm">Paperless Invoicing</span>
+                      <span className="text-stone-500 text-[11px]">Instant printable receipts in exact USD</span>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 font-bold text-[10px] border border-emerald-200">
+                      Synchronized
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-        <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-5 rounded-2xl">
-          <div className="text-xs text-stone-500 font-semibold">Lifetime Investment (USD)</div>
-          <div className="text-3xl font-black text-emerald-400 font-mono mt-1">
-            ${bookings.filter((b) => b.status !== 'Cancelled').reduce((sum, b) => sum + b.totalUSD, 0)}.00
-          </div>
-        </div>
-      </div>
+      </section>
 
-      {/* Filter Tabs */}
-      <div className="flex items-center gap-2 border-b border-amber-200/70 pb-2">
-        {[
-          { id: 'all', label: `All Bookings (${bookings.length})` },
-          { id: 'active', label: 'Active & Dispatched' },
-          { id: 'completed', label: 'Completed History' }
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id as any)}
-            className={`py-2 px-4 rounded-xl text-xs font-bold transition-all ${
-              activeTab === tab.id
-                ? 'bg-amber-400 text-slate-950 shadow-md'
-                : 'text-stone-500 hover:text-white hover:bg-amber-50/70'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Bookings List */}
-      <div className="space-y-4">
-        {filteredBookings.length === 0 ? (
-          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-12 text-center space-y-3">
-            <CalendarCheck className="w-12 h-12 text-slate-600 mx-auto" />
-            <h3 className="text-lg font-bold text-white">No dispatches found in this tab</h3>
-            <p className="text-xs text-stone-500">Schedule your next property care appointment in 60 seconds.</p>
+      {/* =========================================================================
+          RESERVATIONS LIST & ACTIONS
+      ========================================================================= */}
+      <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        {filtered.length === 0 ? (
+          <div className="bg-white border border-stone-200/80 rounded-2xl p-12 text-center space-y-4 max-w-xl mx-auto shadow-xs">
+            <h3 className="font-bold text-lg text-stone-900">No Reservations Found</h3>
+            <p className="text-xs text-stone-500">
+              No booking matches your search criteria. Check your spelling or book a new appointment.
+            </p>
             <Link
               href="/book"
-              className="inline-block py-2.5 px-5 rounded-xl font-bold text-xs text-slate-950 bg-amber-400 hover:bg-amber-300 mt-2"
+              className="inline-block px-5 py-2.5 rounded-xl bg-stone-900 text-white text-xs font-bold hover:bg-amber-600 transition-colors"
             >
-              Book Service Now
+              Book a Service Now
             </Link>
           </div>
         ) : (
-          filteredBookings.map((b) => (
-            <div
-              key={b.id}
-              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 shadow-xl space-y-5"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-200/70 gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="text-xl font-black text-amber-400 font-mono">
-                    #{b.id}
+          <div className="space-y-4">
+            {filtered.map((b) => (
+              <div
+                key={b.id}
+                className="bg-white border border-stone-200/80 rounded-2xl p-6 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-6"
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono font-bold text-xs text-amber-800 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">
+                      #{b.id}
+                    </span>
+                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      ● {b.status}
+                    </span>
                   </div>
-                  <span
-                    className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${getStatusBadge(
-                      b.status
-                    )}`}
-                  >
-                    {b.status}
-                  </span>
-                </div>
 
-                <div className="text-xs text-stone-500">
-                  Booked on: {new Date(b.createdAt).toLocaleDateString()}
-                </div>
-              </div>
+                  <h3 className="font-bold text-base text-stone-900">
+                    {b.services.map((s) => s.serviceTitle).join(' + ')}
+                  </h3>
 
-              {/* Service Details & Price */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-                <div>
-                  <div className="font-bold text-stone-500 uppercase tracking-wider text-[10px] mb-1">
-                    Services Configured:
-                  </div>
-                  <div className="space-y-1">
-                    {b.services.map((s, idx) => (
-                      <div key={idx} className="font-semibold text-white flex justify-between">
-                        <span>{s.serviceTitle}</span>
-                        <span className="font-mono text-emerald-400">${s.subtotal}</span>
-                      </div>
-                    ))}
-                  </div>
-                  {b.discountUSD > 0 && (
-                    <div className="text-[11px] text-emerald-400 font-semibold mt-1">
-                      Bundle Savings: -${b.discountUSD}.00 USD
-                    </div>
-                  )}
-                  <div className="text-sm font-black text-white pt-2 border-t border-amber-200/70 mt-2 flex justify-between">
-                    <span>Total USD:</span>
-                    <span className="font-mono text-emerald-400">${b.totalUSD}.00</span>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="font-bold text-stone-500 uppercase tracking-wider text-[10px] mb-1">
-                    Scheduled Dispatch:
-                  </div>
-                  <div className="space-y-1">
-                    <div className="font-bold text-white flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-amber-400" />
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-stone-600">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-stone-400" />
                       <span>{b.scheduledDate}</span>
                     </div>
-                    <div className="text-stone-700 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-blue-400" />
+                    <div className="flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-stone-400" />
                       <span>{b.timeWindow}</span>
                     </div>
-                    <div className="text-[11px] text-stone-500 pt-1">
-                      Payment: <span className="capitalize text-stone-800">{b.paymentMethod.replace('-', ' ')}</span>
-                    </div>
+                    <span className="text-stone-400">•</span>
+                    <span>{b.customer.address}</span>
                   </div>
                 </div>
 
-                <div>
-                  <div className="font-bold text-stone-500 uppercase tracking-wider text-[10px] mb-1">
-                    Location & Client:
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 border-t md:border-t-0 pt-4 md:pt-0 border-stone-100">
+                  <div className="text-left md:text-right">
+                    <span className="text-[10px] text-stone-400 uppercase font-semibold block">
+                      Total Guaranteed
+                    </span>
+                    <span className="text-lg font-black text-stone-900">
+                      ${b.totalUSD}.00 USD
+                    </span>
                   </div>
-                  <div className="space-y-0.5 text-stone-700">
-                    <div className="font-bold text-white">{b.customer.fullName}</div>
-                    <div className="flex items-start gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5" />
-                      <span>
-                        {b.customer.address}, {b.customer.city}, {b.customer.state} {b.customer.zipCode}
-                      </span>
-                    </div>
-                    {b.customer.notes && (
-                      <div className="text-[11px] text-stone-500 italic pt-1">
-                        Note: "{b.customer.notes}"
-                      </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => window.print()}
+                      className="p-2 rounded-xl border border-stone-200 text-stone-600 hover:bg-stone-50"
+                      title="Print Invoice"
+                    >
+                      <Printer className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        const newDate = prompt('Enter new service date (YYYY-MM-DD):', '2026-11-25');
+                        if (newDate) {
+                          rescheduleBooking(b.id, newDate);
+                          alert('Appointment rescheduled to ' + newDate);
+                        }
+                      }}
+                      className="px-3.5 py-2 rounded-xl border border-stone-200 text-xs font-semibold text-stone-700 hover:bg-stone-50 transition-colors"
+                    >
+                      Reschedule
+                    </button>
+
+                    {b.status !== 'Cancelled' && (
+                      <button
+                        onClick={() => {
+                          if (confirm(`Cancel reservation #${b.id}?`)) {
+                            cancelBooking(b.id);
+                          }
+                        }}
+                        className="px-3.5 py-2 rounded-xl text-stone-400 hover:text-red-600 text-xs font-semibold transition-colors"
+                      >
+                        Cancel
+                      </button>
                     )}
                   </div>
                 </div>
               </div>
-
-              {/* Reschedule Drawer */}
-              {reschedulingId === b.id && (
-                <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200/70 space-y-3 text-xs animate-in fade-in duration-150">
-                  <div className="font-bold text-amber-400">Select New Service Date & Window:</div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input
-                      type="date"
-                      value={newDate}
-                      min="2026-11-18"
-                      onChange={(e) => setNewDate(e.target.value)}
-                      className="bg-white/90 backdrop-blur-xl border border-amber-200/60 rounded-xl px-3 py-2 text-white"
-                    />
-                    <select
-                      value={newWindow}
-                      onChange={(e) => setNewWindow(e.target.value)}
-                      className="bg-white/90 backdrop-blur-xl border border-amber-200/60 rounded-xl px-3 py-2 text-white"
-                    >
-                      <option value="Morning 8:00 AM – 11:00 AM">Morning 8:00 AM – 11:00 AM</option>
-                      <option value="Midday 11:00 AM – 2:00 PM">Midday 11:00 AM – 2:00 PM</option>
-                      <option value="Afternoon 2:00 PM – 5:00 PM">Afternoon 2:00 PM – 5:00 PM</option>
-                      <option value="Priority Weather Dispatch (Sub-Zero)">Priority Weather Dispatch</option>
-                    </select>
-                  </div>
-                  <div className="flex justify-end gap-2 pt-1">
-                    <button
-                      type="button"
-                      onClick={() => setReschedulingId(null)}
-                      className="px-3 py-1.5 text-stone-500 hover:text-white"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleSaveReschedule(b.id)}
-                      className="px-4 py-1.5 rounded-lg bg-amber-400 text-slate-950 font-bold hover:bg-amber-300"
-                    >
-                      Confirm Reschedule
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* Action Buttons */}
-              <div className="pt-4 border-t border-amber-200/70 flex flex-wrap items-center justify-between gap-3 text-xs">
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedInvoice(b)}
-                    className="py-1.5 px-3 rounded-lg bg-amber-50/70 hover:bg-slate-700 text-white font-semibold flex items-center gap-1.5 border border-amber-200/60"
-                  >
-                    <FileText className="w-3.5 h-3.5 text-amber-400" />
-                    <span>View / Print Invoice</span>
-                  </button>
-
-                  {b.status !== 'Cancelled' && b.status !== 'Completed' && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setReschedulingId(b.id);
-                        setNewDate(b.scheduledDate);
-                      }}
-                      className="py-1.5 px-3 rounded-lg bg-amber-50/70 hover:bg-slate-700 text-stone-700 hover:text-white font-semibold flex items-center gap-1.5 border border-amber-200/60"
-                    >
-                      <RefreshCw className="w-3.5 h-3.5 text-blue-400" />
-                      <span>Reschedule</span>
-                    </button>
-                  )}
-                </div>
-
-                {b.status !== 'Cancelled' && b.status !== 'Completed' && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (confirm(`Are you sure you want to cancel booking #${b.id}?`)) {
-                        cancelBooking(b.id);
-                      }
-                    }}
-                    className="py-1.5 px-3 rounded-lg text-red-400 hover:bg-red-950/40 font-semibold"
-                  >
-                    Cancel Booking
-                  </button>
-                )}
-              </div>
-            </div>
-          ))
-        )}
-      </div>
-
-      {/* Invoice Modal */}
-      {selectedInvoice && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/30 backdrop-blur-md backdrop-blur-sm">
-          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 text-stone-900">
-            <div className="flex justify-between items-start pb-4 border-b border-amber-200/70">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400">
-                  Official NorthStar Invoice
-                </span>
-                <h3 className="text-2xl font-black text-white font-mono">
-                  #{selectedInvoice.id}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelectedInvoice(null)}
-                className="text-stone-500 hover:text-white p-1"
-              >
-                ✕
-              </button>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 text-xs">
-              <div>
-                <div className="text-slate-500">Billed To:</div>
-                <div className="font-bold text-white">{selectedInvoice.customer.fullName}</div>
-                <div className="text-stone-500">{selectedInvoice.customer.email}</div>
-                <div className="text-stone-500">{selectedInvoice.customer.address}</div>
-                <div className="text-stone-500">
-                  {selectedInvoice.customer.city}, {selectedInvoice.customer.state} {selectedInvoice.customer.zipCode}
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-slate-500">Service Date:</div>
-                <div className="font-bold text-white">{selectedInvoice.scheduledDate}</div>
-                <div className="text-stone-500">{selectedInvoice.timeWindow}</div>
-                <div className="text-emerald-400 font-bold mt-1">Status: {selectedInvoice.status}</div>
-              </div>
-            </div>
-
-            <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200/70 space-y-2 text-xs">
-              {selectedInvoice.services.map((s, idx) => (
-                <div key={idx} className="flex justify-between text-stone-700">
-                  <span>{s.serviceTitle}</span>
-                  <span className="font-mono text-white">${s.subtotal}.00</span>
-                </div>
-              ))}
-              {selectedInvoice.discountUSD > 0 && (
-                <div className="flex justify-between text-emerald-400 font-semibold pt-1 border-t border-amber-200/70">
-                  <span>Multi-Service Bundle Discount</span>
-                  <span className="font-mono">-${selectedInvoice.discountUSD}.00</span>
-                </div>
-              )}
-              <div className="flex justify-between text-sm font-black text-white pt-2 border-t border-amber-200/70">
-                <span>Total Due / Paid (USD)</span>
-                <span className="text-emerald-400 font-mono text-base">
-                  ${selectedInvoice.totalUSD}.00
-                </span>
-              </div>
-            </div>
-
-            <div className="flex justify-end gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => window.print()}
-                className="py-2.5 px-4 rounded-xl font-bold text-xs text-white bg-amber-50/70 hover:bg-slate-700 border border-amber-200/60 flex items-center gap-1.5"
-              >
-                <Printer className="w-4 h-4 text-stone-700" />
-                <span>Print Invoice</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setSelectedInvoice(null)}
-                className="py-2.5 px-5 rounded-xl font-bold text-xs text-slate-950 bg-amber-400 hover:bg-amber-300"
-              >
-                Close
-              </button>
-            </div>
+            ))}
           </div>
-        </div>
-      )}
+        )}
+      </section>
     </div>
   );
 }

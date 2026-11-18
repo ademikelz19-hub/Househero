@@ -1,8 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Search, ChevronDown, HelpCircle, Phone, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import {
+  Search,
+  ChevronDown,
+  Phone,
+  ArrowRight,
+  HelpCircle,
+  CheckCircle2
+} from 'lucide-react';
 
 interface FAQItem {
   category: 'billing' | 'weather' | 'prep' | 'guarantee';
@@ -11,11 +18,10 @@ interface FAQItem {
 }
 
 const FAQS: FAQItem[] = [
-  // Pricing & Billing
   {
     category: 'billing',
     question: 'Are your prices guaranteed in USD with no surprise fees?',
-    answer: 'Yes! Every quote generated on NorthStar Property Care is 100% upfront in US Dollars ($). The price you see in your itemized breakdown includes technician labor, commercial equipment, fuel, and supplies. If on-site property conditions vary substantially, our crew verifies any change before touching a tool.'
+    answer: 'Yes. Every quote generated on NorthStar Property Care is 100% upfront in US Dollars ($). The price you see in your itemized breakdown includes technician labor, commercial equipment, fuel, and supplies. If on-site property conditions vary substantially, our crew verifies any change before touching a tool.'
   },
   {
     category: 'billing',
@@ -27,8 +33,6 @@ const FAQS: FAQItem[] = [
     question: 'How do multi-service bundle discounts work?',
     answer: 'Whenever you combine 2 services in your booking or master calculator, an automatic 10% discount applies across the entire order. Combine 3 or more services for an automatic 15% discount.'
   },
-
-  // Scheduling & Weather
   {
     category: 'weather',
     question: 'How do snow removal and de-icing weather triggers work?',
@@ -44,8 +48,6 @@ const FAQS: FAQItem[] = [
     question: 'Can I book a specific 3-hour arrival window?',
     answer: 'Yes. You choose between Morning (8–11 AM), Midday (11 AM–2 PM), or Afternoon (2–5 PM). Our crew sends an automated GPS text alert 30 minutes before pulling into your driveway.'
   },
-
-  // Prep Checklists
   {
     category: 'prep',
     question: 'Do I need to be home during the service?',
@@ -61,8 +63,6 @@ const FAQS: FAQItem[] = [
     question: 'Do I need to move heavy furniture before carpet cleaning?',
     answer: 'Our technicians will gladly slide light furniture (chairs, coffee tables, end tables) and place protective foil pads underneath. We request that heavy electronics, beds, and china cabinets remain stationary.'
   },
-
-  // Guarantee
   {
     category: 'guarantee',
     question: 'What is your 24-Hour Re-Service Guarantee?',
@@ -71,7 +71,7 @@ const FAQS: FAQItem[] = [
   {
     category: 'guarantee',
     question: 'Are your technicians insured and bonded?',
-    answer: 'Every NorthStar technician is an employee (not an independent day laborer) covered by our $2,000,000 general liability policy and statutory workers’ compensation.'
+    answer: 'Every NorthStar technician is a direct employee covered by our $2,000,000 general liability policy and statutory workers’ compensation.'
   }
 ];
 
@@ -89,108 +89,136 @@ export default function FAQPage() {
   });
 
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-12">
-      <div className="text-center max-w-3xl mx-auto space-y-4">
-        <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-          Help Center & Knowledge Base
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-          Frequently Asked Questions
-        </h1>
-        <p className="text-sm text-stone-700">
-          Everything you need to know about our USD pricing, weather dispatch policies, technician standards, and guarantees.
-        </p>
+    <div className="w-full">
+      {/* =========================================================================
+          HERO SECTION WITH FUNCTIONAL SEARCH & CONCIERGE PHOTOGRAPHY
+      ========================================================================= */}
+      <section className="relative pt-6 pb-12 lg:pt-12 lg:pb-20 overflow-hidden border-b border-amber-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-900 text-xs font-semibold tracking-wide uppercase">
+                <span>Knowledge Base</span>
+              </div>
 
-        {/* Search */}
-        <div className="pt-4 max-w-lg mx-auto relative">
-          <Search className="w-4 h-4 text-stone-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            placeholder="Search FAQs by keyword (e.g. payment, pets, snow)..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-white/90 backdrop-blur-xl border border-amber-200/60 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 shadow-inner"
-          />
-        </div>
+              <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-stone-900 leading-tight">
+                Frequently Asked{' '}
+                <span className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 bg-clip-text text-transparent">
+                  Questions.
+                </span>
+              </h1>
 
-        {/* Category Filter Tabs */}
-        <div className="flex items-center justify-center gap-2 overflow-x-auto pt-2">
-          {[
-            { id: 'all', label: 'All FAQs' },
-            { id: 'billing', label: 'Pricing & USD Billing' },
-            { id: 'weather', label: 'Scheduling & Weather' },
-            { id: 'prep', label: 'Prep Checklists' },
-            { id: 'guarantee', label: 'Satisfaction Guarantee' }
-          ].map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all ${
-                activeCategory === cat.id
-                  ? 'bg-amber-400 text-slate-950 shadow-md'
-                  : 'bg-white/90 backdrop-blur-xl text-stone-500 hover:text-white border border-amber-200/70'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-      </div>
+              <p className="text-base text-stone-600 max-w-xl font-normal leading-relaxed">
+                Everything you need to know about our USD pricing, weather dispatch policies, technician standards, and guarantees.
+              </p>
 
-      {/* Accordion FAQ List */}
-      <div className="space-y-3">
-        {filtered.map((item, idx) => {
-          const isOpen = openIdx === idx;
-          return (
-            <div
-              key={idx}
-              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-2xl overflow-hidden transition-all"
-            >
-              <button
-                type="button"
-                onClick={() => setOpenIdx(isOpen ? null : idx)}
-                className="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-slate-850"
-              >
-                <span className="font-bold text-sm text-white">{item.question}</span>
-                <ChevronDown
-                  className={`w-4 h-4 text-amber-400 transition-transform duration-200 flex-shrink-0 ${
-                    isOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-              {isOpen && (
-                <div className="px-5 pb-5 pt-1 text-xs text-stone-700 leading-relaxed border-t border-amber-200/70/60">
-                  {item.answer}
+              {/* Functional Hero Search & Category Switcher */}
+              <div className="p-5 rounded-2xl bg-white/90 backdrop-blur-xl border border-amber-200/80 shadow-lg shadow-amber-500/5 max-w-xl space-y-3">
+                <div className="relative">
+                  <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    placeholder="Search questions by keyword (e.g. payment, pets, snow)..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-stone-50 border border-stone-200 text-xs sm:text-sm font-medium text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-amber-500"
+                  />
                 </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
 
-      {/* Still Have Questions CTA */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-amber-200/70 rounded-3xl p-8 text-center space-y-4">
-        <h3 className="text-xl font-bold text-white">Still have questions about your property?</h3>
-        <p className="text-xs text-stone-500 max-w-md mx-auto">
-          Our friendly American dispatch supervisors are available 7 days a week by phone or live chat.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
-          <a
-            href="tel:18005822273"
-            className="py-2.5 px-5 rounded-xl font-bold text-xs text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors inline-flex items-center justify-center gap-2"
-          >
-            <Phone className="w-4 h-4" />
-            <span>Call (800) 582-CARE</span>
-          </a>
-          <Link
-            href="/contact"
-            className="py-2.5 px-5 rounded-xl font-semibold text-xs text-white bg-amber-50/70 hover:bg-slate-700 border border-amber-200/60 inline-flex items-center justify-center gap-2"
-          >
-            <span>Contact Dispatch Office</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {[
+                    { id: 'all', label: 'All FAQs' },
+                    { id: 'billing', label: 'Pricing & Billing' },
+                    { id: 'weather', label: 'Weather Dispatch' },
+                    { id: 'prep', label: 'Client Prep' },
+                    { id: 'guarantee', label: 'Guarantees' }
+                  ].map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => setActiveCategory(cat.id)}
+                      className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
+                        activeCategory === cat.id
+                          ? 'bg-stone-900 text-white'
+                          : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="pt-2 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-500">
+                  <span>Displaying {filtered.length} answered questions</span>
+                  {searchTerm && (
+                    <button onClick={() => setSearchTerm('')} className="text-amber-700 hover:underline font-bold">
+                      Clear Search
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Architectural Image Column */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-amber-500/10 border border-white/80 aspect-4/3 sm:aspect-5/4">
+                <img
+                  src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=85"
+                  alt="Customer knowledge concierge"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-transparent pointer-events-none" />
+
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/90 backdrop-blur-xl border border-white/90 shadow-lg text-stone-800">
+                  <div className="flex items-center justify-between text-xs">
+                    <div>
+                      <span className="font-bold text-stone-900 block text-sm">24/7 Concierge Hotline</span>
+                      <span className="text-stone-500 text-[11px]">Direct answers from dispatch supervisors</span>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 font-bold text-[10px] border border-emerald-200">
+                      Live
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* =========================================================================
+          ACCORDION QUESTIONS LIST
+      ========================================================================= */}
+      <section className="py-16 max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="bg-white border border-stone-200/80 rounded-2xl p-6 sm:p-8 shadow-xs divide-y divide-stone-100">
+          {filtered.map((faq, idx) => {
+            const isOpen = openIdx === idx;
+            return (
+              <div key={idx} className="py-4">
+                <button
+                  onClick={() => setOpenIdx(isOpen ? null : idx)}
+                  className="w-full flex items-center justify-between text-left gap-4 font-bold text-sm sm:text-base text-stone-900 hover:text-amber-600 transition-colors cursor-pointer"
+                >
+                  <span>{faq.question}</span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-stone-400 shrink-0 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180 text-amber-600' : ''
+                    }`}
+                  />
+                </button>
+
+                {isOpen && (
+                  <p className="mt-2.5 text-xs sm:text-sm text-stone-600 leading-relaxed animate-in fade-in duration-150">
+                    {faq.answer}
+                  </p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
