@@ -18,7 +18,7 @@ export default function AboutPage() {
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Built on Reliability, Integrity & Craftsmanship
         </h1>
-        <p className="text-sm text-slate-300 leading-relaxed">
+        <p className="text-sm text-stone-700 leading-relaxed">
           Founded with a clear mission: eliminate the frustration of unreliable contractors, hidden fees, and inconsistent work. NorthStar Property Care delivers standardized, hospital-grade property maintenance backed by transparent USD pricing.
         </p>
       </div>
@@ -51,20 +51,20 @@ export default function AboutPage() {
           return (
             <div
               key={idx}
-              className="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-xl space-y-3"
+              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-6 rounded-3xl shadow-xl space-y-3"
             >
               <div className="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center border border-amber-400/20">
                 <Icon className="w-6 h-6" />
               </div>
               <h3 className="text-base font-bold text-white">{pillar.title}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">{pillar.desc}</p>
+              <p className="text-xs text-stone-500 leading-relaxed">{pillar.desc}</p>
             </div>
           );
         })}
       </div>
 
       {/* Detailed Standards Section */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+      <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-8 sm:p-12 shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div className="space-y-5">
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
             Safety & Environmental Stewardship
@@ -72,11 +72,11 @@ export default function AboutPage() {
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
             Pet-Safe & Eco-Friendly by Default
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
             We believe that maintaining a clean, storm-ready home should never come at the expense of your children’s health, your pets’ paws, or the groundwater table.
           </p>
 
-          <ul className="text-xs text-slate-300 space-y-2.5">
+          <ul className="text-xs text-stone-700 space-y-2.5">
             <li className="flex items-center gap-2">
               <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
               <span><strong>Pure Magnesium Chloride:</strong> De-icers that do not burn pet paws or crack concrete.</span>
@@ -96,24 +96,24 @@ export default function AboutPage() {
           </ul>
         </div>
 
-        <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 space-y-4 text-xs">
+        <div className="bg-amber-50/70 p-6 rounded-3xl border border-amber-200/70 space-y-4 text-xs">
           <div className="text-amber-400 font-bold uppercase tracking-wider text-[10px]">
             Company Verification Badges
           </div>
           <div className="space-y-3">
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800">
+            <div className="flex items-center justify-between p-3 rounded-xl bg-white/90 backdrop-blur-xl border border-amber-200/70">
               <span className="font-semibold text-white">General Liability Policy:</span>
               <span className="text-emerald-400 font-mono">#US-GL-99420-2M ($2,000,000)</span>
             </div>
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800">
+            <div className="flex items-center justify-between p-3 rounded-xl bg-white/90 backdrop-blur-xl border border-amber-200/70">
               <span className="font-semibold text-white">Bonding & Licensing:</span>
               <span className="text-emerald-400 font-mono">Verified Active • All 50 States</span>
             </div>
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800">
+            <div className="flex items-center justify-between p-3 rounded-xl bg-white/90 backdrop-blur-xl border border-amber-200/70">
               <span className="font-semibold text-white">Better Business Bureau:</span>
               <span className="text-emerald-400 font-mono">A+ Accredited Member</span>
             </div>
-            <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800">
+            <div className="flex items-center justify-between p-3 rounded-xl bg-white/90 backdrop-blur-xl border border-amber-200/70">
               <span className="font-semibold text-white">Verified Customer Reviews:</span>
               <span className="text-amber-400 font-mono">4.9 / 5.0 (2,800+ Ratings)</span>
             </div>

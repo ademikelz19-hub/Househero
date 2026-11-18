@@ -17,7 +17,6 @@ import {
   Flame,
   Leaf,
   ShieldCheck,
-  Calculator,
   Gift,
   Image as ImageIcon,
   MapPin,
@@ -36,7 +35,7 @@ import { SERVICES } from '@/data/services';
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { bookings, basePrices } = useApp();
+  const { bookings } = useApp();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -69,404 +68,285 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full">
-      {/* Top Pre-Header Bar: Trust & Emergency Call */}
-      <div className="bg-slate-900 text-slate-300 text-[11px] py-1.5 px-4 border-b border-slate-800">
+    <header className="sticky top-0 z-50 w-full transition-all duration-300">
+      {/* Top Pre-Header Bar: Luminous Warm Gold Aura (No Dark Blue) */}
+      <div className="bg-gradient-to-r from-amber-50 via-yellow-50/80 to-orange-50 text-stone-700 text-[11px] sm:text-xs py-1.5 px-4 border-b border-amber-200/50">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
           <div className="flex items-center gap-3 overflow-hidden text-ellipsis whitespace-nowrap">
-            <span className="flex items-center gap-1 text-emerald-400 font-semibold">
-              <Shield className="w-3 h-3 text-emerald-400" /> $2M Insured & Bonded
+            <span className="flex items-center gap-1.5 text-amber-700 font-semibold">
+              <Shield className="w-3.5 h-3.5 text-amber-600" /> $2M Insured & Bonded
             </span>
-            <span className="text-slate-600 hidden sm:inline">•</span>
-            <span className="flex items-center gap-1 text-amber-400 font-semibold">
-              <Star className="w-3 h-3 fill-amber-400" /> 4.9★ Rated (2,800+ Verified)
+            <span className="text-amber-300 hidden sm:inline">•</span>
+            <span className="flex items-center gap-1 text-stone-600 hidden sm:inline-flex">
+              <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" /> 4.9★ Rated (2,400+ Homes)
             </span>
-            <span className="text-slate-600 hidden md:inline">•</span>
-            <span className="text-slate-400 hidden md:inline">100% Satisfaction Guarantee</span>
+            <span className="text-amber-300 hidden md:inline">•</span>
+            <span className="text-amber-800 font-medium hidden md:inline">
+              100% Satisfaction Guarantee
+            </span>
           </div>
 
-          <div className="flex items-center gap-3 font-semibold text-slate-200">
-            <a
-              href="tel:18005822273"
-              className="flex items-center gap-1 text-amber-400 hover:text-amber-300 transition-colors"
-            >
-              <Phone className="w-3 h-3 animate-pulse" />
-              <span>(800) 582-CARE</span>
-            </a>
-            <span className="text-slate-700">|</span>
-            <span className="text-emerald-400 font-mono text-[10px] uppercase tracking-wider bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
-              USD ($)
+          <div className="flex items-center gap-4 text-xs font-medium">
+            <span className="hidden lg:flex items-center gap-1.5 text-amber-700 bg-amber-100/70 px-2 py-0.5 rounded-full border border-amber-300/40">
+              <Clock className="w-3 h-3 text-amber-600" /> Rapid Dispatch 24/7
             </span>
+            <a
+              href="tel:18005556787"
+              className="flex items-center gap-1 text-amber-700 hover:text-orange-600 font-bold transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-amber-600 animate-pulse" />
+              <span>(800) 555-NSTAR</span>
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Main Sleek Frosted Glass Header */}
-      <nav
-        className={`w-full transition-all duration-200 ${
+      {/* Main Glassy Liquid Navigation Bar */}
+      <div
+        className={`w-full transition-all duration-300 border-b ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-200/80'
-            : 'bg-white/90 backdrop-blur-sm py-3.5 border-b border-slate-100 shadow-sm'
+            ? 'bg-white/85 backdrop-blur-xl border-amber-200/60 shadow-[0_8px_30px_rgb(245,158,11,0.08)] py-2.5'
+            : 'bg-white/70 backdrop-blur-lg border-amber-100/60 py-3.5'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 text-amber-400 flex items-center justify-center shadow-md group-hover:scale-105 transition-all border border-slate-800">
-              <Compass className="w-5 h-5 text-amber-400" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
+          {/* Logo with Golden Brand Compass */}
+          <Link href="/" className="flex items-center gap-3 group focus:outline-none">
+            <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-500 via-orange-400 to-yellow-400 p-[1.5px] shadow-md shadow-amber-500/25 group-hover:scale-105 transition-transform">
+              <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center">
+                <Compass className="w-5 h-5 text-amber-600 group-hover:rotate-45 transition-transform duration-500" />
+              </div>
             </div>
-            <div>
-              <div className="flex items-center gap-1.5 leading-none">
-                <span className="text-xl font-black tracking-tight text-slate-900 group-hover:text-amber-600 transition-colors">
-                  NORTHSTAR
+            <div className="flex flex-col">
+              <div className="flex items-center gap-1.5">
+                <span className="font-extrabold text-lg sm:text-xl tracking-tight text-stone-900">
+                  North<span className="text-amber-500">Star</span>
                 </span>
-                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-amber-500/10 text-amber-700 px-1.5 py-0.5 rounded border border-amber-500/30">
-                  CARE
+                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-full">
+                  USA
                 </span>
               </div>
-              <p className="text-[10px] tracking-wider text-slate-500 uppercase font-semibold mt-0.5">
-                Property Care & Storm Dispatch
-              </p>
+              <span className="text-[10px] text-stone-500 font-medium tracking-wide">
+                Property Care & Maintenance
+              </span>
             </div>
           </Link>
 
-          {/* Center Navigation Shortcuts (Clean, minimal) */}
-          <div className="hidden md:flex items-center gap-6 text-xs font-bold text-slate-600">
-            <Link
-              href="/services"
-              className={`hover:text-slate-950 transition-colors ${
-                pathname.startsWith('/services') ? 'text-amber-600' : ''
-              }`}
+          {/* Center Smooth Anchor Links (Desktop) */}
+          <nav className="hidden lg:flex items-center gap-1">
+            <a
+              href="#services"
+              className="px-3.5 py-1.5 text-sm font-semibold text-stone-700 hover:text-amber-600 hover:bg-amber-50/80 rounded-xl transition-all"
             >
-              Services Directory
-            </Link>
-            <Link
-              href="/pricing"
-              className={`flex items-center gap-1 hover:text-slate-950 transition-colors ${
-                pathname === '/pricing' ? 'text-amber-600' : ''
-              }`}
+              Services
+            </a>
+            <a
+              href="#bundles"
+              className="px-3.5 py-1.5 text-sm font-semibold text-stone-700 hover:text-amber-600 hover:bg-amber-50/80 rounded-xl transition-all"
             >
-              <Calculator className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Pricing Calculator</span>
-            </Link>
-            <Link
-              href="/bundles"
-              className={`flex items-center gap-1 hover:text-slate-950 transition-colors ${
-                pathname === '/bundles' ? 'text-amber-600' : ''
-              }`}
+              Bundles
+            </a>
+            <a
+              href="#gallery"
+              className="px-3.5 py-1.5 text-sm font-semibold text-stone-700 hover:text-amber-600 hover:bg-amber-50/80 rounded-xl transition-all"
             >
-              <Gift className="w-3.5 h-3.5 text-amber-500" />
-              <span>Seasonal Bundles</span>
-            </Link>
-          </div>
+              Transformations
+            </a>
+            <a
+              href="#reviews"
+              className="px-3.5 py-1.5 text-sm font-semibold text-stone-700 hover:text-amber-600 hover:bg-amber-50/80 rounded-xl transition-all"
+            >
+              Reviews
+            </a>
+            <a
+              href="#coverage"
+              className="px-3.5 py-1.5 text-sm font-semibold text-stone-700 hover:text-amber-600 hover:bg-amber-50/80 rounded-xl transition-all"
+            >
+              Areas
+            </a>
+            <a
+              href="#portal"
+              className="px-3.5 py-1.5 text-sm font-semibold text-stone-700 hover:text-amber-600 hover:bg-amber-50/80 rounded-xl transition-all"
+            >
+              Track Booking
+            </a>
+          </nav>
 
-          {/* Right Action Cluster: Portal, Book CTA, and Sleek Hamburger Menu */}
+          {/* Right Action Elements */}
           <div className="flex items-center gap-3">
-            <Link
-              href="/portal"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-200/80"
-              title="Customer Self-Service Portal"
+            {/* Quick Hotline Pill */}
+            <a
+              href="tel:18005556787"
+              className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50/90 border border-amber-200 text-stone-700 text-xs font-semibold hover:border-amber-400 hover:bg-amber-100/60 transition-all shadow-sm"
             >
-              <User className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Portal</span>
-              {bookings.length > 0 && (
-                <span className="bg-emerald-600 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">
-                  {bookings.length}
-                </span>
-              )}
-            </Link>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              <span>(800) 555-NSTAR</span>
+            </a>
 
-            <Link
-              href="/book"
-              className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-black text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 shadow-md shadow-amber-500/20 hover:shadow-lg transition-all hover:-translate-y-0.5"
+            {/* Glowing Golden Liquid CTA Button */}
+            <a
+              href="#book"
+              className="shimmer-mask relative inline-flex items-center gap-2 px-4 sm:px-5 py-2 text-xs sm:text-sm font-bold text-white rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:via-orange-600 hover:to-amber-700 shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all duration-300"
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Book Service</span>
-            </Link>
+              <span>Instant Book</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
 
-            {/* Sleek Hamburger Menu Button */}
+            {/* Sleek Hamburger Toggle Button */}
             <button
-              type="button"
               onClick={() => setDrawerOpen(!drawerOpen)}
-              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-md transition-all border border-slate-800 focus:outline-none"
-              aria-label="Open full site menu"
+              aria-label="Toggle Navigation Menu"
+              className="p-2 sm:px-3 sm:py-2 rounded-xl bg-amber-50/80 border border-amber-200 text-stone-700 hover:text-amber-600 hover:bg-amber-100/80 transition-all flex items-center gap-1.5 text-xs font-semibold shadow-sm"
             >
-              <Menu className="w-4 h-4 text-amber-400" />
-              <span className="hidden sm:inline">Menu</span>
+              {drawerOpen ? <X className="w-5 h-5 text-amber-700" /> : <Menu className="w-5 h-5 text-amber-700" />}
+              <span className="hidden sm:inline font-medium">Menu</span>
             </button>
           </div>
         </div>
-      </nav>
+      </div>
 
-      {/* FULL-SCALE SLEEK HAMBURGER DRAWER (ALL PAGES) */}
+      {/* Sleek Slide-Over Liquid Glass Drawer */}
       {drawerOpen && (
-        <div className="fixed inset-0 z-50 flex justify-end bg-slate-950/60 backdrop-blur-md animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50">
+          {/* Backdrop */}
           <div
-            className="w-full max-w-2xl bg-white h-full shadow-2xl flex flex-col justify-between overflow-y-auto border-l border-slate-200 animate-in slide-in-from-right duration-250"
-            onClick={(e) => e.stopPropagation()}
-          >
+            className="absolute inset-0 bg-stone-900/20 backdrop-blur-sm transition-opacity"
+            onClick={() => setDrawerOpen(false)}
+          />
+
+          {/* Drawer Panel */}
+          <div className="absolute top-0 right-0 h-full w-full max-w-md bg-white/95 backdrop-blur-2xl border-l border-amber-200/80 shadow-2xl flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300">
             {/* Drawer Header */}
-            <div className="p-6 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-black">
-                  <Compass className="w-5 h-5" />
+            <div>
+              <div className="p-5 border-b border-amber-100 flex items-center justify-between bg-gradient-to-r from-amber-50/80 via-yellow-50/50 to-orange-50/60">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-400 p-[1px]">
+                    <div className="w-full h-full bg-white rounded-[11px] flex items-center justify-center">
+                      <Compass className="w-4 h-4 text-amber-600" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-stone-900">NorthStar Menu</h3>
+                    <p className="text-[11px] text-stone-500">Liquid Property Care Services</p>
+                  </div>
                 </div>
+                <button
+                  onClick={() => setDrawerOpen(false)}
+                  className="p-2 rounded-lg bg-white/80 border border-amber-200/60 text-stone-600 hover:text-stone-900 hover:bg-amber-100/50"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Drawer Links */}
+              <div className="p-5 space-y-6">
+                {/* Core Sections */}
                 <div>
-                  <div className="text-base font-black tracking-tight text-white">
-                    NorthStar Navigation
-                  </div>
-                  <div className="text-[10px] text-emerald-400 font-semibold flex items-center gap-1">
-                    <ShieldCheck className="w-3 h-3" /> All 10 Services • 100% Interactive
-                  </div>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setDrawerOpen(false)}
-                className="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center hover:bg-slate-700 transition-colors"
-                aria-label="Close menu"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Drawer Body: Categorized Links for All Pages */}
-            <div className="p-6 sm:p-8 space-y-8 flex-1">
-              {/* Category 1: The 10 Core Services */}
-              <div>
-                <div className="flex items-center justify-between pb-2 border-b border-slate-200 mb-3">
-                  <span className="text-xs font-black uppercase tracking-wider text-slate-900">
-                    The 10 Core Property Care Services
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-md">
+                    Quick Navigation
                   </span>
-                  <Link
-                    href="/services"
-                    onClick={() => setDrawerOpen(false)}
-                    className="text-[11px] font-bold text-amber-600 hover:underline flex items-center gap-0.5"
-                  >
-                    Directory <ChevronRight className="w-3 h-3" />
-                  </Link>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {SERVICES.map((s) => {
-                    const Icon = getServiceIcon(s.iconName);
-                    const price = basePrices[s.id] || s.startingPrice;
-                    return (
-                      <Link
-                        key={s.id}
-                        href={`/services/${s.slug}`}
-                        onClick={() => setDrawerOpen(false)}
-                        className="group flex items-center justify-between p-2.5 rounded-xl border border-slate-100 hover:border-amber-300 bg-slate-50 hover:bg-amber-50/50 transition-all"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-7 h-7 rounded-lg bg-white text-slate-700 group-hover:bg-amber-400 group-hover:text-slate-950 flex items-center justify-center shadow-xs transition-colors">
-                            <Icon className="w-4 h-4" />
-                          </div>
-                          <div>
-                            <div className="text-xs font-bold text-slate-900 group-hover:text-amber-800 line-clamp-1 leading-tight">
-                              {s.title}
-                            </div>
-                            <div className="text-[10px] text-slate-500">{s.avgDuration}</div>
-                          </div>
-                        </div>
-
-                        <span className="text-xs font-black text-emerald-600 font-mono">
-                          ${price}
-                        </span>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Category 2: Calculators, Bundles & Checkout */}
-              <div>
-                <span className="text-xs font-black uppercase tracking-wider text-slate-900 block pb-2 border-b border-slate-200 mb-3">
-                  Pricing, Bundles & Booking
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  <Link
-                    href="/pricing"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-300 transition-colors group"
-                  >
-                    <div className="flex items-center gap-2 font-bold text-xs text-slate-900 group-hover:text-emerald-800">
-                      <Calculator className="w-4 h-4 text-emerald-600" />
-                      <span>Pricing Calculator</span>
-                    </div>
-                    <p className="text-[10px] text-slate-500 mt-1">Multi-service bundle estimator</p>
-                  </Link>
-
-                  <Link
-                    href="/bundles"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50 hover:border-amber-300 transition-colors group"
-                  >
-                    <div className="flex items-center gap-2 font-bold text-xs text-slate-900 group-hover:text-amber-800">
-                      <Gift className="w-4 h-4 text-amber-500" />
-                      <span>Seasonal Bundles</span>
-                    </div>
-                    <p className="text-[10px] text-slate-500 mt-1">Save up to $481 USD</p>
-                  </Link>
-
-                  <Link
-                    href="/book"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-3 rounded-xl border border-amber-300 bg-amber-50/70 hover:bg-amber-100 transition-colors group"
-                  >
-                    <div className="flex items-center gap-2 font-bold text-xs text-amber-900">
+                  <div className="grid grid-cols-2 gap-2 mt-3">
+                    <a
+                      href="#services"
+                      onClick={() => setDrawerOpen(false)}
+                      className="p-3 rounded-xl bg-amber-50/60 hover:bg-amber-100/80 border border-amber-200/50 text-xs font-semibold text-stone-800 flex items-center gap-2 transition-all"
+                    >
                       <Sparkles className="w-4 h-4 text-amber-600" />
-                      <span>Online Checkout</span>
-                    </div>
-                    <p className="text-[10px] text-amber-700/80 mt-1">5-Step instant booking wizard</p>
-                  </Link>
+                      <span>10 Services</span>
+                    </a>
+                    <a
+                      href="#book"
+                      onClick={() => setDrawerOpen(false)}
+                      className="p-3 rounded-xl bg-amber-50/60 hover:bg-amber-100/80 border border-amber-200/50 text-xs font-semibold text-stone-800 flex items-center gap-2 transition-all"
+                    >
+                      <Clock className="w-4 h-4 text-amber-600" />
+                      <span>Instant Book</span>
+                    </a>
+                    <a
+                      href="#bundles"
+                      onClick={() => setDrawerOpen(false)}
+                      className="p-3 rounded-xl bg-amber-50/60 hover:bg-amber-100/80 border border-amber-200/50 text-xs font-semibold text-stone-800 flex items-center gap-2 transition-all"
+                    >
+                      <Gift className="w-4 h-4 text-amber-600" />
+                      <span>Bundles</span>
+                    </a>
+                    <a
+                      href="#gallery"
+                      onClick={() => setDrawerOpen(false)}
+                      className="p-3 rounded-xl bg-amber-50/60 hover:bg-amber-100/80 border border-amber-200/50 text-xs font-semibold text-stone-800 flex items-center gap-2 transition-all"
+                    >
+                      <ImageIcon className="w-4 h-4 text-amber-600" />
+                      <span>Transformations</span>
+                    </a>
+                    <a
+                      href="#reviews"
+                      onClick={() => setDrawerOpen(false)}
+                      className="p-3 rounded-xl bg-amber-50/60 hover:bg-amber-100/80 border border-amber-200/50 text-xs font-semibold text-stone-800 flex items-center gap-2 transition-all"
+                    >
+                      <Star className="w-4 h-4 text-amber-600" />
+                      <span>Reviews (4.9★)</span>
+                    </a>
+                    <a
+                      href="#coverage"
+                      onClick={() => setDrawerOpen(false)}
+                      className="p-3 rounded-xl bg-amber-50/60 hover:bg-amber-100/80 border border-amber-200/50 text-xs font-semibold text-stone-800 flex items-center gap-2 transition-all"
+                    >
+                      <MapPin className="w-4 h-4 text-amber-600" />
+                      <span>ZIP Coverage</span>
+                    </a>
+                    <a
+                      href="#portal"
+                      onClick={() => setDrawerOpen(false)}
+                      className="p-3 rounded-xl bg-amber-50/60 hover:bg-amber-100/80 border border-amber-200/50 text-xs font-semibold text-stone-800 flex items-center gap-2 transition-all col-span-2"
+                    >
+                      <User className="w-4 h-4 text-amber-600" />
+                      <span>Track Existing Booking (Portal)</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
 
-              {/* Category 3: Customer Portal, Gallery & Service Areas */}
-              <div>
-                <span className="text-xs font-black uppercase tracking-wider text-slate-900 block pb-2 border-b border-slate-200 mb-3">
-                  Client Hub & Portfolios
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  <Link
-                    href="/portal"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors flex items-center justify-between"
-                  >
-                    <div>
-                      <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                        <User className="w-3.5 h-3.5 text-blue-600" />
-                        <span>Customer Portal</span>
-                      </div>
-                      <div className="text-[10px] text-slate-500 mt-0.5">Manage bookings & invoices</div>
-                    </div>
-                    {bookings.length > 0 && (
-                      <span className="bg-emerald-600 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">
-                        {bookings.length}
-                      </span>
-                    )}
-                  </Link>
-
-                  <Link
-                    href="/gallery"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors"
-                  >
-                    <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                      <ImageIcon className="w-3.5 h-3.5 text-amber-600" />
-                      <span>Before / After Gallery</span>
-                    </div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">Interactive drag comparisons</div>
-                  </Link>
-
-                  <Link
-                    href="/service-areas"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors"
-                  >
-                    <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-red-600" />
-                      <span>Service Areas</span>
-                    </div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">ZIP search & response hubs</div>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Category 4: Trust, Safety & Support */}
-              <div>
-                <span className="text-xs font-black uppercase tracking-wider text-slate-900 block pb-2 border-b border-slate-200 mb-3">
-                  Company, Trust & Help
-                </span>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold text-slate-700">
-                  <Link
-                    href="/reviews"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
-                  >
-                    <Star className="w-3.5 h-3.5 text-amber-500" />
-                    <span>Reviews (4.9★)</span>
-                  </Link>
-
-                  <Link
-                    href="/about"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
-                  >
-                    <Shield className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>About Us</span>
-                  </Link>
-
-                  <Link
-                    href="/satisfaction-guarantee"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
-                  >
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>24h Guarantee</span>
-                  </Link>
-
-                  <Link
-                    href="/faq"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
-                  >
-                    <HelpCircle className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Help & FAQs</span>
-                  </Link>
-
-                  <Link
-                    href="/contact"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
-                  >
-                    <Phone className="w-3.5 h-3.5 text-amber-600" />
-                    <span>Emergency Contact</span>
-                  </Link>
-
-                  <Link
-                    href="/admin"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5 text-amber-800"
-                  >
-                    <Settings className="w-3.5 h-3.5" />
-                    <span>Admin Console</span>
-                  </Link>
-
-                  <Link
-                    href="/privacy-policy"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors"
-                  >
-                    Privacy Policy
-                  </Link>
-
-                  <Link
-                    href="/terms-of-service"
-                    onClick={() => setDrawerOpen(false)}
-                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors"
-                  >
-                    Terms of Service
-                  </Link>
+                {/* 10 Services Quick List */}
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded-md">
+                    All 10 Services (USD)
+                  </span>
+                  <div className="mt-2.5 divide-y divide-amber-100/60 max-h-56 overflow-y-auto pr-1">
+                    {SERVICES.map((s) => {
+                      const Icon = getServiceIcon(s.iconName);
+                      return (
+                        <a
+                          key={s.id}
+                          href={`#service-${s.id}`}
+                          onClick={() => setDrawerOpen(false)}
+                          className="py-2.5 flex items-center justify-between group hover:text-amber-600 text-stone-700 text-xs font-medium"
+                        >
+                          <div className="flex items-center gap-2.5">
+                            <Icon className="w-3.5 h-3.5 text-amber-500 group-hover:scale-110 transition-transform" />
+                            <span>{s.title}</span>
+                          </div>
+                          <span className="font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md text-[11px] border border-amber-200/40">
+                            From ${s.startingPrice}
+                          </span>
+                        </a>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Drawer Footer CTA */}
-            <div className="p-6 bg-slate-900 border-t border-slate-800 flex items-center justify-between text-xs text-slate-300">
-              <div>
-                <div className="text-white font-bold">Need Immediate Storm Dispatch?</div>
-                <div className="text-slate-400">Call (800) 582-CARE • 24/7 Crew Standby</div>
-              </div>
-              <Link
-                href="/book"
-                onClick={() => setDrawerOpen(false)}
-                className="py-2.5 px-4 rounded-xl font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md transition-colors"
+            {/* Drawer Footer Hotline */}
+            <div className="p-5 border-t border-amber-100 bg-gradient-to-r from-amber-50/80 to-orange-50/80">
+              <a
+                href="tel:18005556787"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm shadow-md shadow-amber-500/25 hover:from-amber-600 hover:to-orange-600 transition-all"
               >
-                Book Now
-              </Link>
+                <Phone className="w-4 h-4 animate-bounce" />
+                <span>Call 24/7 Dispatch (800) 555-NSTAR</span>
+              </a>
+              <p className="text-center text-[11px] text-stone-500 mt-2">
+                Licensed, Bonded & $2M Insured Nationwide
+              </p>
             </div>
           </div>
         </div>

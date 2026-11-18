@@ -10,7 +10,7 @@ export default function BookPage() {
   return (
     <Suspense
       fallback={
-        <div className="py-24 text-center text-slate-400 text-xs">
+        <div className="py-24 text-center text-stone-500 text-xs">
           Loading interactive booking wizard...
         </div>
       }

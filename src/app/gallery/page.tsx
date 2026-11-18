@@ -22,7 +22,7 @@ export default function GalleryPage() {
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Before & After Project Showcase
         </h1>
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-700">
           Explore real property transformations across the United States. Slide each divider to see the power of our commercial equipment and certified technicians.
         </p>
 
@@ -41,7 +41,7 @@ export default function GalleryPage() {
               className={`py-2 px-4 rounded-xl text-xs font-bold transition-all ${
                 selectedFilter === tab.id
                   ? 'bg-amber-400 text-slate-950 shadow-md'
-                  : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                  : 'bg-white/90 backdrop-blur-xl text-stone-500 hover:text-white border border-amber-200/70'
               }`}
             >
               {tab.label}
@@ -55,7 +55,7 @@ export default function GalleryPage() {
         {filtered.map((s) => (
           <div
             key={s.id}
-            className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-5"
+            className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 shadow-xl space-y-5"
           >
             <div className="flex items-center justify-between">
               <div>
@@ -77,12 +77,12 @@ export default function GalleryPage() {
             />
 
             <div>
-              <div className="text-xs font-bold text-slate-200">{s.caseStudyTitle}</div>
-              <p className="text-xs text-slate-400 mt-1 leading-relaxed">{s.shortDesc}</p>
+              <div className="text-xs font-bold text-stone-800">{s.caseStudyTitle}</div>
+              <p className="text-xs text-stone-500 mt-1 leading-relaxed">{s.shortDesc}</p>
             </div>
 
-            <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
-              <span className="text-slate-400">Duration: <strong>{s.avgDuration}</strong></span>
+            <div className="pt-3 border-t border-amber-200/70 flex items-center justify-between text-xs">
+              <span className="text-stone-500">Duration: <strong>{s.avgDuration}</strong></span>
               <Link
                 href={`/book?service=${s.id}`}
                 className="py-2 px-4 rounded-xl font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors flex items-center gap-1.5"

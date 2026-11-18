@@ -46,7 +46,7 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className={`relative select-none overflow-hidden rounded-2xl shadow-xl cursor-ew-resize aspect-video ${className}`}
+      className={`relative select-none overflow-hidden rounded-3xl shadow-xl shadow-amber-500/10 cursor-ew-resize aspect-video border border-amber-200/60 ${className}`}
       onMouseMove={handleMouseMove}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
@@ -59,7 +59,7 @@ export default function BeforeAfterSlider({
         alt="After project completion"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
-      <div className="absolute top-4 right-4 bg-emerald-600/90 text-white font-black text-[11px] tracking-wider px-3 py-1 rounded-full shadow-md z-10">
+      <div className="absolute top-4 right-4 bg-emerald-600/90 backdrop-blur-md text-white font-extrabold text-[11px] tracking-wider px-3.5 py-1 rounded-full shadow-md z-10 border border-emerald-400/50">
         {afterLabel}
       </div>
 
@@ -77,7 +77,7 @@ export default function BeforeAfterSlider({
             height: '100%'
           }}
         />
-        <div className="absolute top-4 left-4 bg-slate-900/90 text-amber-400 font-black text-[11px] tracking-wider px-3 py-1 rounded-full shadow-md z-10">
+        <div className="absolute top-4 left-4 bg-stone-900/90 backdrop-blur-md text-amber-400 font-extrabold text-[11px] tracking-wider px-3.5 py-1 rounded-full shadow-md z-10 border border-amber-400/50">
           {beforeLabel}
         </div>
       </div>
@@ -87,8 +87,8 @@ export default function BeforeAfterSlider({
         className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl pointer-events-none"
         style={{ left: `calc(${sliderPosition}% - 2px)` }}
       >
-        {/* Handle pill */}
-        <div className="absolute top-1/2 -translate-y-1/2 -left-4 w-9 h-9 rounded-full bg-white text-slate-900 shadow-2xl flex items-center justify-center font-bold text-xs border-2 border-amber-400">
+        {/* Handle pill in golden white */}
+        <div className="absolute top-1/2 -translate-y-1/2 -left-4 w-9 h-9 rounded-full bg-white text-amber-600 shadow-xl shadow-amber-500/30 flex items-center justify-center font-bold text-xs border-2 border-amber-400">
           ↔
         </div>
       </div>

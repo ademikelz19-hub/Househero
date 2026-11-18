@@ -62,7 +62,7 @@ export default async function ServiceDetailPage({
   return (
     <div className="space-y-16 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* 1. HERO SECTION */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-12 shadow-2xl relative overflow-hidden">
+      <section className="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-amber-200/70 rounded-3xl p-6 sm:p-12 shadow-2xl relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
           <div className="lg:col-span-8 space-y-4">
             <div className="flex items-center gap-2 flex-wrap">
@@ -78,11 +78,11 @@ export default async function ServiceDetailPage({
               {service.title}
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+            <p className="text-sm sm:text-base text-stone-700 leading-relaxed max-w-2xl">
               {service.fullDesc}
             </p>
 
-            <div className="flex flex-wrap items-center gap-6 pt-2 text-xs text-slate-300 font-semibold">
+            <div className="flex flex-wrap items-center gap-6 pt-2 text-xs text-stone-700 font-semibold">
               <div className="flex items-center gap-1.5 text-amber-400">
                 <Star className="w-4 h-4 fill-amber-400" />
                 <span>4.9★ Verified Quality</span>
@@ -99,22 +99,22 @@ export default async function ServiceDetailPage({
           </div>
 
           {/* Hero Sticky Pricing Card */}
-          <div className="lg:col-span-4 bg-slate-950/90 border border-slate-800 p-6 rounded-3xl shadow-xl text-center space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-slate-800 text-amber-400 flex items-center justify-center mx-auto shadow-inner">
+          <div className="lg:col-span-4 bg-amber-50/70/90 border border-amber-200/70 p-6 rounded-3xl shadow-xl text-center space-y-4">
+            <div className="w-14 h-14 rounded-2xl bg-amber-50/70 text-amber-400 flex items-center justify-center mx-auto shadow-inner">
               <IconComp className="w-7 h-7" />
             </div>
 
             <div>
-              <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
+              <span className="text-xs text-stone-500 font-semibold uppercase tracking-wider">
                 Upfront Pricing Starts At:
               </span>
               <div className="text-4xl font-black text-emerald-400 font-mono mt-1">
-                ${service.startingPrice} <span className="text-xs text-slate-400 font-normal">USD</span>
+                ${service.startingPrice} <span className="text-xs text-stone-500 font-normal">USD</span>
               </div>
               <div className="text-xs text-slate-500">{service.priceUnit}</div>
             </div>
 
-            <div className="pt-2 border-t border-slate-800 space-y-2">
+            <div className="pt-2 border-t border-amber-200/70 space-y-2">
               <Link
                 href={`/book?service=${service.id}`}
                 className="w-full py-3.5 px-6 rounded-xl font-black text-xs text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 shadow-xl shadow-amber-500/25 block transition-all text-center"
@@ -123,7 +123,7 @@ export default async function ServiceDetailPage({
               </Link>
               <a
                 href="tel:18005822273"
-                className="w-full py-2.5 px-4 rounded-xl font-bold text-xs text-slate-300 hover:text-white bg-slate-900 border border-slate-800 flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl font-bold text-xs text-stone-700 hover:text-white bg-white/90 backdrop-blur-xl border border-amber-200/70 flex items-center justify-center gap-1.5 transition-colors"
               >
                 <Phone className="w-3.5 h-3.5 text-amber-400" />
                 <span>Call Hotline: (800) 582-CARE</span>
@@ -134,7 +134,7 @@ export default async function ServiceDetailPage({
       </section>
 
       {/* 2. WHAT'S INCLUDED CHECKLIST */}
-      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
+      <section className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
             Standard Protocol
@@ -142,7 +142,7 @@ export default async function ServiceDetailPage({
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
             What’s Included in Every Service
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-stone-500 mt-0.5">
             Our crews follow strict standard operating procedures with no corners cut.
           </p>
         </div>
@@ -151,12 +151,12 @@ export default async function ServiceDetailPage({
           {service.includedFeatures.map((feat, idx) => (
             <div
               key={idx}
-              className="bg-slate-800/60 border border-slate-700/60 p-4 rounded-2xl flex items-start gap-3"
+              className="bg-amber-50/70/60 border border-amber-200/60/60 p-4 rounded-2xl flex items-start gap-3"
             >
               <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <CheckCircle className="w-4 h-4" />
               </div>
-              <span className="text-xs font-semibold text-slate-200 leading-relaxed">
+              <span className="text-xs font-semibold text-stone-800 leading-relaxed">
                 {feat}
               </span>
             </div>
@@ -173,7 +173,7 @@ export default async function ServiceDetailPage({
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
             Interactive USD ($) Pricing Engine
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-stone-500 mt-0.5">
             Adjust property dimensions, treatment tiers, and add-ons below for real-time itemized pricing.
           </p>
         </div>
@@ -182,7 +182,7 @@ export default async function ServiceDetailPage({
       </section>
 
       {/* 4. BEFORE & AFTER PROOF SLIDER */}
-      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
+      <section className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
             Transformation Gallery
@@ -190,7 +190,7 @@ export default async function ServiceDetailPage({
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
             Real Before & After Case Study
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-stone-500 mt-0.5">
             {service.caseStudyTitle} • Total Investment: <strong>${service.caseStudyCost} USD</strong>
           </p>
         </div>
@@ -220,20 +220,20 @@ export default async function ServiceDetailPage({
           {service.processSteps.map((s) => (
             <div
               key={s.step}
-              className="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-2 relative"
+              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-6 rounded-3xl space-y-2 relative"
             >
               <div className="text-2xl font-black text-amber-400 font-mono">
                 0{s.step}
               </div>
               <h3 className="text-sm font-bold text-white">{s.title}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">{s.desc}</p>
+              <p className="text-xs text-stone-500 leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* 6. EQUIPMENT & SAFETY STANDARDS */}
-      <section className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
+      <section className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
             Commercial Standards
@@ -241,7 +241,7 @@ export default async function ServiceDetailPage({
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
             Equipment & Safety Protocols
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-stone-500 mt-0.5">
             We invest in enterprise-grade machinery and continuous OSHA training so your property is always protected.
           </p>
         </div>
@@ -250,7 +250,7 @@ export default async function ServiceDetailPage({
           {service.equipmentSafety.map((item, idx) => (
             <div
               key={idx}
-              className="bg-slate-800/50 border border-slate-700/60 p-4 rounded-2xl flex items-center gap-3 text-xs font-semibold text-slate-200"
+              className="bg-amber-50/50 border border-amber-200/60/60 p-4 rounded-2xl flex items-center gap-3 text-xs font-semibold text-stone-800"
             >
               <ShieldCheck className="w-5 h-5 text-emerald-400 flex-shrink-0" />
               <span>{item}</span>
@@ -274,13 +274,13 @@ export default async function ServiceDetailPage({
           {service.faqs.map((faq, idx) => (
             <div
               key={idx}
-              className="bg-slate-900 border border-slate-800 p-5 rounded-2xl space-y-2"
+              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-5 rounded-2xl space-y-2"
             >
               <h3 className="text-sm font-bold text-white flex items-center gap-2">
                 <span className="text-amber-400">Q:</span>
                 {faq.question}
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed pl-6">
+              <p className="text-xs text-stone-700 leading-relaxed pl-6">
                 {faq.answer}
               </p>
             </div>
@@ -311,7 +311,7 @@ export default async function ServiceDetailPage({
           {service.reviews.map((rev, idx) => (
             <div
               key={idx}
-              className="bg-slate-900 border border-slate-800 p-6 rounded-3xl space-y-3"
+              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-6 rounded-3xl space-y-3"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1">
@@ -321,11 +321,11 @@ export default async function ServiceDetailPage({
                 </div>
                 <span className="text-[11px] text-slate-500">{rev.date}</span>
               </div>
-              <p className="text-xs text-slate-300 italic leading-relaxed">
+              <p className="text-xs text-stone-700 italic leading-relaxed">
                 "{rev.comment}"
               </p>
-              <div className="pt-2 border-t border-slate-800 text-xs font-bold text-white">
-                {rev.author} • <span className="text-slate-400 font-normal">{rev.location}</span>
+              <div className="pt-2 border-t border-amber-200/70 text-xs font-bold text-white">
+                {rev.author} • <span className="text-stone-500 font-normal">{rev.location}</span>
               </div>
             </div>
           ))}

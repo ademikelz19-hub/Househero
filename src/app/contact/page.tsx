@@ -27,7 +27,7 @@ export default function ContactPage() {
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           24/7 Emergency Dispatch & Inquiries
         </h1>
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-700">
           Whether you need immediate storm plowing, emergency heating assistance, or a commercial quote, our team is ready to respond.
         </p>
       </div>
@@ -45,7 +45,7 @@ export default function ContactPage() {
             <h3 className="text-xl font-black text-white">
               Immediate Winter Storm & Heating Dispatch
             </h3>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-stone-700">
               For active water pipe freezes, sudden furnace breakdowns, or blocked emergency driveways, call direct.
             </p>
           </div>
@@ -62,10 +62,10 @@ export default function ContactPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Contact Form */}
-        <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+        <div className="lg:col-span-7 bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
           <div>
             <h3 className="text-xl font-bold text-white">Send Dispatch an Inquiry</h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               We respond to all digital inquiries within 15 minutes during standard office hours.
             </p>
           </div>
@@ -76,56 +76,56 @@ export default function ContactPage() {
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <h4 className="text-lg font-bold text-white">Inquiry Received!</h4>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-stone-700">
                 Thank you, <strong>{formData.name}</strong>. A NorthStar dispatch supervisor has received your request and will call or email you shortly.
               </p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold text-slate-300 mb-1">Full Name</label>
+                <label className="block font-semibold text-stone-700 mb-1">Full Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Rachel Adams"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                  className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-semibold text-slate-300 mb-1">Email Address</label>
+                  <label className="block font-semibold text-stone-700 mb-1">Email Address</label>
                   <input
                     type="email"
                     required
                     placeholder="e.g. rachel@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                    className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-300 mb-1">Phone Number</label>
+                  <label className="block font-semibold text-stone-700 mb-1">Phone Number</label>
                   <input
                     type="tel"
                     required
                     placeholder="e.g. (303) 555-0182"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                    className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-300 mb-1">Service of Interest</label>
+                <label className="block font-semibold text-stone-700 mb-1">Service of Interest</label>
                 <select
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-amber-400"
+                  className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-amber-400"
                 >
                   <option value="General Inquiry">General Property Inquiry</option>
                   <option value="House Deep Cleaning">House & Deep Cleaning</option>
@@ -142,14 +142,14 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block font-semibold text-slate-300 mb-1">How Can We Help?</label>
+                <label className="block font-semibold text-stone-700 mb-1">How Can We Help?</label>
                 <textarea
                   rows={4}
                   required
                   placeholder="Tell us about your property specs, desired timeline, or special requirements..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                  className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl p-3 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                 />
               </div>
 
@@ -166,7 +166,7 @@ export default function ContactPage() {
 
         {/* Department Info & Offices */}
         <div className="lg:col-span-5 space-y-6 text-xs">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 space-y-4">
             <h4 className="font-bold text-amber-400 uppercase tracking-wider text-[11px]">
               Direct Contact Channels
             </h4>
@@ -176,7 +176,7 @@ export default function ContactPage() {
                 <Phone className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="font-bold text-white">Central Operations Hotline</div>
-                  <a href="tel:18005822273" className="text-slate-300 hover:underline">
+                  <a href="tel:18005822273" className="text-stone-700 hover:underline">
                     (800) 582-CARE • (800) 582-2273
                   </a>
                 </div>
@@ -186,7 +186,7 @@ export default function ContactPage() {
                 <Mail className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="font-bold text-white">General Dispatch Email</div>
-                  <div className="text-slate-300">dispatch@northstarpropertycare.com</div>
+                  <div className="text-stone-700">dispatch@northstarpropertycare.com</div>
                 </div>
               </div>
 
@@ -194,7 +194,7 @@ export default function ContactPage() {
                 <Clock className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="font-bold text-white">Customer Support Hours</div>
-                  <div className="text-slate-300">Monday – Sunday: 7:00 AM – 8:00 PM EST</div>
+                  <div className="text-stone-700">Monday – Sunday: 7:00 AM – 8:00 PM EST</div>
                   <div className="text-[11px] text-amber-400 font-semibold mt-0.5">
                     (24/7 On-Call Emergency Crew for Active Freezes & Storms)
                   </div>
@@ -203,14 +203,14 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-3 text-xs">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 space-y-3 text-xs">
             <h4 className="font-bold text-white">Corporate Headquarters</h4>
-            <p className="text-slate-400 leading-relaxed">
+            <p className="text-stone-500 leading-relaxed">
               NorthStar Property Care LLC<br />
               1201 N Orange St, Suite 700<br />
               Wilmington, DE 19801
             </p>
-            <div className="text-[11px] text-slate-500 pt-2 border-t border-slate-800">
+            <div className="text-[11px] text-slate-500 pt-2 border-t border-amber-200/70">
               National Dispatch Control • Regional Hubs in Denver, Minneapolis, Chicago, Milwaukee & Kansas City.
             </div>
           </div>

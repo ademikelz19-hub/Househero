@@ -41,7 +41,7 @@ export default function ServiceAreasPage() {
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Service Areas & Rapid Response Hubs
         </h1>
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-700">
           We operate centralized equipment depots and mobile response fleets across the United States.
         </p>
 
@@ -54,7 +54,7 @@ export default function ServiceAreasPage() {
               placeholder="Enter your 5-digit ZIP (e.g. 80202)"
               value={zipInput}
               onChange={(e) => setZipInput(e.target.value)}
-              className="bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 flex-1 font-mono"
+              className="bg-white/90 backdrop-blur-xl border border-amber-200/60 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 flex-1 font-mono"
             />
             <button
               type="submit"
@@ -82,7 +82,7 @@ export default function ServiceAreasPage() {
         {SERVICE_AREAS.map((hub, idx) => (
           <div
             key={idx}
-            className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4 flex flex-col justify-between"
+            className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 shadow-xl space-y-4 flex flex-col justify-between"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -94,16 +94,16 @@ export default function ServiceAreasPage() {
                 </span>
               </div>
               <h3 className="text-lg font-bold text-white">{hub.hub}</h3>
-              <p className="text-xs text-slate-400 flex items-start gap-1.5">
+              <p className="text-xs text-stone-500 flex items-start gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-slate-500 flex-shrink-0 mt-0.5" />
                 <span>{hub.address}</span>
               </p>
-              <div className="text-xs text-slate-300 font-medium">
+              <div className="text-xs text-stone-700 font-medium">
                 Fleet: <strong>{hub.fleetCount}</strong>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-800 flex justify-between items-center text-xs">
+            <div className="pt-4 border-t border-amber-200/70 flex justify-between items-center text-xs">
               <span className="text-slate-500">Residential & Commercial</span>
               <Link
                 href="/book"
@@ -118,13 +118,13 @@ export default function ServiceAreasPage() {
       </div>
 
       {/* Residential vs Commercial Guarantee */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-8 shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-3">
           <h3 className="text-xl font-bold text-white">Residential Property Care</h3>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className="text-xs text-stone-700 leading-relaxed">
             Single-family homes, townhomes, HOAs, and suburban estates. Zero contract commitments required. Transparent upfront USD pricing with automatic bundle discounts.
           </p>
-          <ul className="text-xs text-slate-400 space-y-1">
+          <ul className="text-xs text-stone-500 space-y-1">
             <li>✓ Same-day and next-day availability</li>
             <li>✓ Pet-safe and eco-certified chemicals</li>
             <li>✓ Keyless entry coordination & photo audit verification</li>
@@ -133,10 +133,10 @@ export default function ServiceAreasPage() {
 
         <div className="space-y-3">
           <h3 className="text-xl font-bold text-white">Commercial & Facilities Care</h3>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className="text-xs text-stone-700 leading-relaxed">
             Office parks, retail strips, apartment complexes, and warehouse facilities. We provide automated blizzard snow clearing, commercial de-icing, and large-scale pressure cleaning.
           </p>
-          <ul className="text-xs text-slate-400 space-y-1">
+          <ul className="text-xs text-stone-500 space-y-1">
             <li>✓ Net-30 invoicing & digital W-9 forms provided</li>
             <li>✓ $2,000,000 general liability certificate of insurance (COI)</li>
             <li>✓ OSHA 30-certified crew leaders on site</li>

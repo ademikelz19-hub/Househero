@@ -97,7 +97,7 @@ export default function MasterPricingPage() {
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Configure Multi-Service Bundle Pricing (USD)
         </h1>
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-700">
           Combine any residential or commercial services together. Enjoy <strong>10% off 2 services</strong>, or <strong>15% off 3 or more services</strong> automatically!
         </p>
       </div>
@@ -106,9 +106,9 @@ export default function MasterPricingPage() {
         {/* Left Column: Multi-Service Tabs & Interactive Configurator */}
         <div className="lg:col-span-8 space-y-6">
           {/* Active Bundle Service Chips */}
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 shadow-xl space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-700">
                 Services in Your Working Estimate ({selectedItems.length}):
               </span>
               <span className="text-xs font-semibold text-emerald-400">
@@ -126,7 +126,7 @@ export default function MasterPricingPage() {
                     className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                       isActive
                         ? 'bg-amber-400 text-slate-950 shadow-md ring-2 ring-amber-400/50'
-                        : 'bg-slate-800 text-slate-300 hover:text-white'
+                        : 'bg-amber-50/70 text-stone-700 hover:text-white'
                     }`}
                   >
                     <button
@@ -140,7 +140,7 @@ export default function MasterPricingPage() {
                       <button
                         type="button"
                         onClick={() => handleRemoveService(item.serviceId)}
-                        className={`p-0.5 rounded hover:bg-slate-900/40 ${
+                        className={`p-0.5 rounded hover:bg-white/90 backdrop-blur-xl/40 ${
                           isActive ? 'text-slate-950' : 'text-slate-500 hover:text-red-400'
                         }`}
                         title="Remove service"
@@ -154,8 +154,8 @@ export default function MasterPricingPage() {
             </div>
 
             {/* Quick Add Buttons for remaining services */}
-            <div className="pt-3 border-t border-slate-800/80">
-              <span className="text-[11px] font-semibold text-slate-400 block mb-2">
+            <div className="pt-3 border-t border-amber-200/70/80">
+              <span className="text-[11px] font-semibold text-stone-500 block mb-2">
                 Click to add another service to your bundle:
               </span>
               <div className="flex flex-wrap gap-1.5">
@@ -164,7 +164,7 @@ export default function MasterPricingPage() {
                     key={s.id}
                     type="button"
                     onClick={() => handleAddService(s.id)}
-                    className="py-1 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-[11px] font-semibold border border-slate-700 flex items-center gap-1 transition-colors"
+                    className="py-1 px-2.5 rounded-lg bg-amber-50/70 hover:bg-slate-700 text-stone-700 hover:text-white text-[11px] font-semibold border border-amber-200/60 flex items-center gap-1 transition-colors"
                   >
                     <Plus className="w-3 h-3 text-amber-400" />
                     <span>{s.title}</span>
@@ -193,13 +193,13 @@ export default function MasterPricingPage() {
         </div>
 
         {/* Right Column: Live Master Quote Summary Card */}
-        <div className="lg:col-span-4 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl sticky top-24 space-y-6 text-slate-100">
-          <div className="border-b border-slate-800 pb-4">
+        <div className="lg:col-span-4 bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-8 shadow-2xl sticky top-24 space-y-6 text-stone-900">
+          <div className="border-b border-amber-200/70 pb-4">
             <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
               Itemized USD Receipt
             </span>
             <h3 className="text-xl font-black text-white mt-2">Master Estimate Summary</h3>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-stone-500 mt-0.5">
               Reflects all selected services and bundle discount tiers.
             </p>
           </div>
@@ -209,7 +209,7 @@ export default function MasterPricingPage() {
             {calculation.itemizedServices.map((svc) => {
               const info = SERVICES.find((s) => s.id === svc.serviceId);
               return (
-                <div key={svc.serviceId} className="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80 space-y-1">
+                <div key={svc.serviceId} className="bg-amber-50/70/60 p-3 rounded-xl border border-amber-200/70/80 space-y-1">
                   <div className="flex justify-between font-bold text-white">
                     <span>{info?.title}</span>
                     <span className="font-mono text-emerald-400">${svc.subtotal}.00</span>
@@ -223,8 +223,8 @@ export default function MasterPricingPage() {
           </div>
 
           {/* Totals & Discounts */}
-          <div className="pt-4 border-t border-slate-800 space-y-2 text-xs">
-            <div className="flex justify-between text-slate-400">
+          <div className="pt-4 border-t border-amber-200/70 space-y-2 text-xs">
+            <div className="flex justify-between text-stone-500">
               <span>Combined Subtotal:</span>
               <span className="font-mono text-white">${calculation.combinedSubtotal}.00 USD</span>
             </div>
@@ -239,10 +239,10 @@ export default function MasterPricingPage() {
               </div>
             )}
 
-            <div className="flex justify-between items-center text-lg font-black text-white pt-2 border-t border-slate-800">
+            <div className="flex justify-between items-center text-lg font-black text-white pt-2 border-t border-amber-200/70">
               <span>Grand Total:</span>
               <span className="text-emerald-400 font-mono text-2xl">
-                ${calculation.finalTotal}.00 <span className="text-xs text-slate-400 font-normal">USD</span>
+                ${calculation.finalTotal}.00 <span className="text-xs text-stone-500 font-normal">USD</span>
               </span>
             </div>
           </div>
@@ -267,7 +267,7 @@ export default function MasterPricingPage() {
             <button
               type="button"
               onClick={handleSaveQuote}
-              className="w-full py-2.5 rounded-xl font-semibold text-xs text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-2.5 rounded-xl font-semibold text-xs text-stone-700 hover:text-white bg-amber-50/70 hover:bg-slate-700 border border-amber-200/60 transition-colors flex items-center justify-center gap-2"
             >
               <FileText className="w-3.5 h-3.5 text-amber-400" />
               <span>Save & Download Quote Summary</span>
@@ -276,14 +276,14 @@ export default function MasterPricingPage() {
             <button
               type="button"
               onClick={() => window.print()}
-              className="w-full py-2 rounded-xl text-[11px] text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5"
+              className="w-full py-2 rounded-xl text-[11px] text-stone-500 hover:text-stone-800 flex items-center justify-center gap-1.5"
             >
               <Printer className="w-3 h-3" />
               <span>Print Itemized USD Quote</span>
             </button>
           </div>
 
-          <div className="pt-2 border-t border-slate-800 text-[10px] text-slate-500 space-y-1">
+          <div className="pt-2 border-t border-amber-200/70 text-[10px] text-slate-500 space-y-1">
             <div>✓ Prices guaranteed for 30 calendar days from calculation.</div>
             <div>✓ No credit card required to save and print quotes.</div>
           </div>

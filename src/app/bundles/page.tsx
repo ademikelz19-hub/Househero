@@ -37,7 +37,7 @@ export default function BundlesPage() {
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Curated Multi-Service Bundles
         </h1>
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-700">
           Maximize your property protection while locking in guaranteed USD savings of up to <strong>$481 USD</strong> per home.
         </p>
       </div>
@@ -52,7 +52,7 @@ export default function BundlesPage() {
               className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between border transition-all relative overflow-hidden shadow-2xl ${
                 b.popular
                   ? 'bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border-amber-400/60 ring-2 ring-amber-400/20'
-                  : 'bg-slate-900 border-slate-800 hover:border-slate-700'
+                  : 'bg-white/90 backdrop-blur-xl border-amber-200/70 hover:border-amber-200/60'
               }`}
             >
               {b.popular && (
@@ -63,7 +63,7 @@ export default function BundlesPage() {
 
               <div className="space-y-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-800 text-amber-400 flex items-center justify-center shadow-inner">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-50/70 text-amber-400 flex items-center justify-center shadow-inner">
                     <Icon className="w-6 h-6" />
                   </div>
                   <div>
@@ -74,20 +74,20 @@ export default function BundlesPage() {
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-300 leading-relaxed">
+                <p className="text-xs text-stone-700 leading-relaxed">
                   {b.description}
                 </p>
 
                 {/* Included Services Tags */}
                 <div className="space-y-1.5">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                  <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider">
                     Core Services Included:
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {b.servicesIncluded.map((s, idx) => (
                       <span
                         key={idx}
-                        className="bg-slate-800 text-slate-200 text-xs px-2.5 py-1 rounded-lg border border-slate-700 font-medium"
+                        className="bg-amber-50/70 text-stone-800 text-xs px-2.5 py-1 rounded-lg border border-amber-200/60 font-medium"
                       >
                         {s}
                       </span>
@@ -96,11 +96,11 @@ export default function BundlesPage() {
                 </div>
 
                 {/* Feature Checklist */}
-                <div className="pt-2 border-t border-slate-800/80 space-y-2">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <div className="pt-2 border-t border-amber-200/70/80 space-y-2">
+                  <div className="text-[11px] font-bold text-stone-500 uppercase tracking-wider">
                     Package Guarantees:
                   </div>
-                  <ul className="text-xs text-slate-300 space-y-1.5">
+                  <ul className="text-xs text-stone-700 space-y-1.5">
                     {b.features.map((f, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <CheckCircle className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0 mt-0.5" />
@@ -112,7 +112,7 @@ export default function BundlesPage() {
               </div>
 
               {/* Pricing & CTA footer */}
-              <div className="pt-6 border-t border-slate-800 mt-8 space-y-4">
+              <div className="pt-6 border-t border-amber-200/70 mt-8 space-y-4">
                 <div className="flex items-end justify-between">
                   <div>
                     <div className="text-[10px] text-slate-500 uppercase">Original Rate:</div>
@@ -125,7 +125,7 @@ export default function BundlesPage() {
                       Guaranteed Package Price:
                     </div>
                     <div className="text-3xl font-black text-emerald-400 font-mono">
-                      ${b.bundlePrice}.00 <span className="text-xs text-slate-400 font-normal">USD</span>
+                      ${b.bundlePrice}.00 <span className="text-xs text-stone-500 font-normal">USD</span>
                     </div>
                   </div>
                 </div>

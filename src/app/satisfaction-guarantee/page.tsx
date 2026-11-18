@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function SatisfactionGuaranteePage() {
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-10 text-xs leading-relaxed text-slate-300">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-10 text-xs leading-relaxed text-stone-700">
       <div className="text-center space-y-3">
         <div className="w-16 h-16 rounded-3xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
           <ShieldCheck className="w-9 h-9" />
@@ -20,12 +20,12 @@ export default function SatisfactionGuaranteePage() {
         <h1 className="text-3xl sm:text-4xl font-black text-white">
           100% Satisfaction Guarantee & 24-Hour Re-Service Policy
         </h1>
-        <p className="text-sm text-slate-400 max-w-xl mx-auto">
+        <p className="text-sm text-stone-500 max-w-xl mx-auto">
           We don’t stop until you are thrilled with your property. No excuses, no hidden re-visit fees.
         </p>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl">
+      <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl">
         <div className="space-y-3">
           <h2 className="text-base font-bold text-white flex items-center gap-2">
             <span className="text-emerald-400">1.</span> The 24-Hour Re-Service Window
@@ -42,7 +42,7 @@ export default function SatisfactionGuaranteePage() {
           <p>
             Triggering a re-service is simple:
           </p>
-          <ul className="space-y-1.5 pl-4 list-disc text-slate-300">
+          <ul className="space-y-1.5 pl-4 list-disc text-stone-700">
             <li>Call our dispatch hotline directly at <strong>(800) 582-CARE</strong></li>
             <li>Or log into your <strong>Customer Portal</strong>, open your completed booking, and click "Request Guarantee Re-Check"</li>
             <li>You may attach photos to help our team arrive with targeted specialty equipment</li>
@@ -58,8 +58,8 @@ export default function SatisfactionGuaranteePage() {
           </p>
         </div>
 
-        <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-slate-400 text-[11px]">
+        <div className="pt-4 border-t border-amber-200/70 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-stone-500 text-[11px]">
             Have a question about a completed booking?
           </div>
           <Link

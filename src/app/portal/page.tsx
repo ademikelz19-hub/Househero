@@ -57,7 +57,7 @@ export default function CustomerPortalPage() {
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-amber-200/70">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
             Self-Service Account Center
@@ -65,7 +65,7 @@ export default function CustomerPortalPage() {
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mt-2">
             Customer Care Portal
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-stone-500 mt-1">
             Manage your scheduled dispatches, download itemized USD receipts, and coordinate service dates.
           </p>
         </div>
@@ -81,18 +81,18 @@ export default function CustomerPortalPage() {
 
       {/* KPI Overview row */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
-          <div className="text-xs text-slate-400 font-semibold">Total Bookings on File</div>
+        <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-5 rounded-2xl">
+          <div className="text-xs text-stone-500 font-semibold">Total Bookings on File</div>
           <div className="text-3xl font-black text-white mt-1">{bookings.length}</div>
         </div>
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
-          <div className="text-xs text-slate-400 font-semibold">Active & Upcoming Dispatches</div>
+        <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-5 rounded-2xl">
+          <div className="text-xs text-stone-500 font-semibold">Active & Upcoming Dispatches</div>
           <div className="text-3xl font-black text-amber-400 mt-1">
             {bookings.filter((b) => b.status === 'Confirmed' || b.status === 'Crew Dispatched').length}
           </div>
         </div>
-        <div className="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
-          <div className="text-xs text-slate-400 font-semibold">Lifetime Investment (USD)</div>
+        <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 p-5 rounded-2xl">
+          <div className="text-xs text-stone-500 font-semibold">Lifetime Investment (USD)</div>
           <div className="text-3xl font-black text-emerald-400 font-mono mt-1">
             ${bookings.filter((b) => b.status !== 'Cancelled').reduce((sum, b) => sum + b.totalUSD, 0)}.00
           </div>
@@ -100,7 +100,7 @@ export default function CustomerPortalPage() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
+      <div className="flex items-center gap-2 border-b border-amber-200/70 pb-2">
         {[
           { id: 'all', label: `All Bookings (${bookings.length})` },
           { id: 'active', label: 'Active & Dispatched' },
@@ -112,7 +112,7 @@ export default function CustomerPortalPage() {
             className={`py-2 px-4 rounded-xl text-xs font-bold transition-all ${
               activeTab === tab.id
                 ? 'bg-amber-400 text-slate-950 shadow-md'
-                : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                : 'text-stone-500 hover:text-white hover:bg-amber-50/70'
             }`}
           >
             {tab.label}
@@ -123,10 +123,10 @@ export default function CustomerPortalPage() {
       {/* Bookings List */}
       <div className="space-y-4">
         {filteredBookings.length === 0 ? (
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-12 text-center space-y-3">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-12 text-center space-y-3">
             <CalendarCheck className="w-12 h-12 text-slate-600 mx-auto" />
             <h3 className="text-lg font-bold text-white">No dispatches found in this tab</h3>
-            <p className="text-xs text-slate-400">Schedule your next property care appointment in 60 seconds.</p>
+            <p className="text-xs text-stone-500">Schedule your next property care appointment in 60 seconds.</p>
             <Link
               href="/book"
               className="inline-block py-2.5 px-5 rounded-xl font-bold text-xs text-slate-950 bg-amber-400 hover:bg-amber-300 mt-2"
@@ -138,9 +138,9 @@ export default function CustomerPortalPage() {
           filteredBookings.map((b) => (
             <div
               key={b.id}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-5"
+              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 shadow-xl space-y-5"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-200/70 gap-3">
                 <div className="flex items-center gap-3">
                   <div className="text-xl font-black text-amber-400 font-mono">
                     #{b.id}
@@ -154,7 +154,7 @@ export default function CustomerPortalPage() {
                   </span>
                 </div>
 
-                <div className="text-xs text-slate-400">
+                <div className="text-xs text-stone-500">
                   Booked on: {new Date(b.createdAt).toLocaleDateString()}
                 </div>
               </div>
@@ -162,7 +162,7 @@ export default function CustomerPortalPage() {
               {/* Service Details & Price */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
                 <div>
-                  <div className="font-bold text-slate-400 uppercase tracking-wider text-[10px] mb-1">
+                  <div className="font-bold text-stone-500 uppercase tracking-wider text-[10px] mb-1">
                     Services Configured:
                   </div>
                   <div className="space-y-1">
@@ -178,14 +178,14 @@ export default function CustomerPortalPage() {
                       Bundle Savings: -${b.discountUSD}.00 USD
                     </div>
                   )}
-                  <div className="text-sm font-black text-white pt-2 border-t border-slate-800 mt-2 flex justify-between">
+                  <div className="text-sm font-black text-white pt-2 border-t border-amber-200/70 mt-2 flex justify-between">
                     <span>Total USD:</span>
                     <span className="font-mono text-emerald-400">${b.totalUSD}.00</span>
                   </div>
                 </div>
 
                 <div>
-                  <div className="font-bold text-slate-400 uppercase tracking-wider text-[10px] mb-1">
+                  <div className="font-bold text-stone-500 uppercase tracking-wider text-[10px] mb-1">
                     Scheduled Dispatch:
                   </div>
                   <div className="space-y-1">
@@ -193,21 +193,21 @@ export default function CustomerPortalPage() {
                       <Calendar className="w-3.5 h-3.5 text-amber-400" />
                       <span>{b.scheduledDate}</span>
                     </div>
-                    <div className="text-slate-300 flex items-center gap-1.5">
+                    <div className="text-stone-700 flex items-center gap-1.5">
                       <Clock className="w-3.5 h-3.5 text-blue-400" />
                       <span>{b.timeWindow}</span>
                     </div>
-                    <div className="text-[11px] text-slate-400 pt-1">
-                      Payment: <span className="capitalize text-slate-200">{b.paymentMethod.replace('-', ' ')}</span>
+                    <div className="text-[11px] text-stone-500 pt-1">
+                      Payment: <span className="capitalize text-stone-800">{b.paymentMethod.replace('-', ' ')}</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <div className="font-bold text-slate-400 uppercase tracking-wider text-[10px] mb-1">
+                  <div className="font-bold text-stone-500 uppercase tracking-wider text-[10px] mb-1">
                     Location & Client:
                   </div>
-                  <div className="space-y-0.5 text-slate-300">
+                  <div className="space-y-0.5 text-stone-700">
                     <div className="font-bold text-white">{b.customer.fullName}</div>
                     <div className="flex items-start gap-1">
                       <MapPin className="w-3.5 h-3.5 text-red-400 flex-shrink-0 mt-0.5" />
@@ -216,7 +216,7 @@ export default function CustomerPortalPage() {
                       </span>
                     </div>
                     {b.customer.notes && (
-                      <div className="text-[11px] text-slate-400 italic pt-1">
+                      <div className="text-[11px] text-stone-500 italic pt-1">
                         Note: "{b.customer.notes}"
                       </div>
                     )}
@@ -226,7 +226,7 @@ export default function CustomerPortalPage() {
 
               {/* Reschedule Drawer */}
               {reschedulingId === b.id && (
-                <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3 text-xs animate-in fade-in duration-150">
+                <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200/70 space-y-3 text-xs animate-in fade-in duration-150">
                   <div className="font-bold text-amber-400">Select New Service Date & Window:</div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input
@@ -234,12 +234,12 @@ export default function CustomerPortalPage() {
                       value={newDate}
                       min="2026-11-18"
                       onChange={(e) => setNewDate(e.target.value)}
-                      className="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white"
+                      className="bg-white/90 backdrop-blur-xl border border-amber-200/60 rounded-xl px-3 py-2 text-white"
                     />
                     <select
                       value={newWindow}
                       onChange={(e) => setNewWindow(e.target.value)}
-                      className="bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white"
+                      className="bg-white/90 backdrop-blur-xl border border-amber-200/60 rounded-xl px-3 py-2 text-white"
                     >
                       <option value="Morning 8:00 AM – 11:00 AM">Morning 8:00 AM – 11:00 AM</option>
                       <option value="Midday 11:00 AM – 2:00 PM">Midday 11:00 AM – 2:00 PM</option>
@@ -251,7 +251,7 @@ export default function CustomerPortalPage() {
                     <button
                       type="button"
                       onClick={() => setReschedulingId(null)}
-                      className="px-3 py-1.5 text-slate-400 hover:text-white"
+                      className="px-3 py-1.5 text-stone-500 hover:text-white"
                     >
                       Cancel
                     </button>
@@ -267,12 +267,12 @@ export default function CustomerPortalPage() {
               )}
 
               {/* Action Buttons */}
-              <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+              <div className="pt-4 border-t border-amber-200/70 flex flex-wrap items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setSelectedInvoice(b)}
-                    className="py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold flex items-center gap-1.5 border border-slate-700"
+                    className="py-1.5 px-3 rounded-lg bg-amber-50/70 hover:bg-slate-700 text-white font-semibold flex items-center gap-1.5 border border-amber-200/60"
                   >
                     <FileText className="w-3.5 h-3.5 text-amber-400" />
                     <span>View / Print Invoice</span>
@@ -285,7 +285,7 @@ export default function CustomerPortalPage() {
                         setReschedulingId(b.id);
                         setNewDate(b.scheduledDate);
                       }}
-                      className="py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-semibold flex items-center gap-1.5 border border-slate-700"
+                      className="py-1.5 px-3 rounded-lg bg-amber-50/70 hover:bg-slate-700 text-stone-700 hover:text-white font-semibold flex items-center gap-1.5 border border-amber-200/60"
                     >
                       <RefreshCw className="w-3.5 h-3.5 text-blue-400" />
                       <span>Reschedule</span>
@@ -314,9 +314,9 @@ export default function CustomerPortalPage() {
 
       {/* Invoice Modal */}
       {selectedInvoice && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 text-slate-100">
-            <div className="flex justify-between items-start pb-4 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/30 backdrop-blur-md backdrop-blur-sm">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 text-stone-900">
+            <div className="flex justify-between items-start pb-4 border-b border-amber-200/70">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400">
                   Official NorthStar Invoice
@@ -327,7 +327,7 @@ export default function CustomerPortalPage() {
               </div>
               <button
                 onClick={() => setSelectedInvoice(null)}
-                className="text-slate-400 hover:text-white p-1"
+                className="text-stone-500 hover:text-white p-1"
               >
                 ✕
               </button>
@@ -337,34 +337,34 @@ export default function CustomerPortalPage() {
               <div>
                 <div className="text-slate-500">Billed To:</div>
                 <div className="font-bold text-white">{selectedInvoice.customer.fullName}</div>
-                <div className="text-slate-400">{selectedInvoice.customer.email}</div>
-                <div className="text-slate-400">{selectedInvoice.customer.address}</div>
-                <div className="text-slate-400">
+                <div className="text-stone-500">{selectedInvoice.customer.email}</div>
+                <div className="text-stone-500">{selectedInvoice.customer.address}</div>
+                <div className="text-stone-500">
                   {selectedInvoice.customer.city}, {selectedInvoice.customer.state} {selectedInvoice.customer.zipCode}
                 </div>
               </div>
               <div className="text-right">
                 <div className="text-slate-500">Service Date:</div>
                 <div className="font-bold text-white">{selectedInvoice.scheduledDate}</div>
-                <div className="text-slate-400">{selectedInvoice.timeWindow}</div>
+                <div className="text-stone-500">{selectedInvoice.timeWindow}</div>
                 <div className="text-emerald-400 font-bold mt-1">Status: {selectedInvoice.status}</div>
               </div>
             </div>
 
-            <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2 text-xs">
+            <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200/70 space-y-2 text-xs">
               {selectedInvoice.services.map((s, idx) => (
-                <div key={idx} className="flex justify-between text-slate-300">
+                <div key={idx} className="flex justify-between text-stone-700">
                   <span>{s.serviceTitle}</span>
                   <span className="font-mono text-white">${s.subtotal}.00</span>
                 </div>
               ))}
               {selectedInvoice.discountUSD > 0 && (
-                <div className="flex justify-between text-emerald-400 font-semibold pt-1 border-t border-slate-800">
+                <div className="flex justify-between text-emerald-400 font-semibold pt-1 border-t border-amber-200/70">
                   <span>Multi-Service Bundle Discount</span>
                   <span className="font-mono">-${selectedInvoice.discountUSD}.00</span>
                 </div>
               )}
-              <div className="flex justify-between text-sm font-black text-white pt-2 border-t border-slate-800">
+              <div className="flex justify-between text-sm font-black text-white pt-2 border-t border-amber-200/70">
                 <span>Total Due / Paid (USD)</span>
                 <span className="text-emerald-400 font-mono text-base">
                   ${selectedInvoice.totalUSD}.00
@@ -376,9 +376,9 @@ export default function CustomerPortalPage() {
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="py-2.5 px-4 rounded-xl font-bold text-xs text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center gap-1.5"
+                className="py-2.5 px-4 rounded-xl font-bold text-xs text-white bg-amber-50/70 hover:bg-slate-700 border border-amber-200/60 flex items-center gap-1.5"
               >
-                <Printer className="w-4 h-4 text-slate-300" />
+                <Printer className="w-4 h-4 text-stone-700" />
                 <span>Print Invoice</span>
               </button>
               <button

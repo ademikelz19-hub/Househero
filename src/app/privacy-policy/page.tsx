@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-8 text-xs leading-relaxed text-slate-300">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-8 text-xs leading-relaxed text-stone-700">
       <div>
         <span className="text-amber-400 font-bold uppercase tracking-wider text-[10px]">
           Legal Documentation
@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
         <p className="text-slate-500 mt-1">Last Updated: November 18, 2026</p>
       </div>
 
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+      <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-8 space-y-6">
         <section className="space-y-2">
           <h2 className="text-base font-bold text-white">1. Information We Collect</h2>
           <p>

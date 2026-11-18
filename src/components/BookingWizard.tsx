@@ -151,7 +151,7 @@ export default function BookingWizard() {
       {step < 5 && (
         <div className="mb-8">
           <div className="flex items-center justify-between max-w-2xl mx-auto relative">
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-800 -translate-y-1/2 z-0" />
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-amber-50/70 -translate-y-1/2 z-0" />
             {[
               { num: 1, label: 'Services' },
               { num: 2, label: 'Address' },
@@ -165,7 +165,7 @@ export default function BookingWizard() {
                       ? 'bg-amber-400 text-slate-950 ring-4 ring-amber-400/20'
                       : step > s.num
                       ? 'bg-emerald-500 text-slate-950 font-black'
-                      : 'bg-slate-800 text-slate-400 border border-slate-700'
+                      : 'bg-amber-50/70 text-stone-500 border border-amber-200/60'
                   }`}
                 >
                   {step > s.num ? '✓' : s.num}
@@ -193,14 +193,14 @@ export default function BookingWizard() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
               Choose Property Services
             </h2>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               Select one or combine multiple services to automatically unlock bundle savings (10% off 2 services, 15% off 3+ services).
             </p>
           </div>
 
           {/* Currently Selected Services */}
           <div className="space-y-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-slate-300">
+            <div className="text-xs font-bold uppercase tracking-wider text-stone-700">
               Selected in this order ({selectedServices.length}):
             </div>
             {selectedServices.map((item) => {
@@ -209,16 +209,16 @@ export default function BookingWizard() {
               return (
                 <div
                   key={item.serviceId}
-                  className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                  className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                 >
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-bold text-white">{svc?.title || item.serviceId}</span>
-                      <span className="text-[10px] bg-slate-800 text-amber-400 px-2 py-0.5 rounded-full font-semibold">
+                      <span className="text-[10px] bg-amber-50/70 text-amber-400 px-2 py-0.5 rounded-full font-semibold">
                         Starting ${basePrices[item.serviceId] || svc?.startingPrice} USD
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400 mt-0.5">{svc?.shortDesc}</p>
+                    <p className="text-xs text-stone-500 mt-0.5">{svc?.shortDesc}</p>
                   </div>
 
                   <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
@@ -246,7 +246,7 @@ export default function BookingWizard() {
 
           {/* Add Additional Services */}
           <div className="pt-2">
-            <div className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <div className="text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Add Another Service to Unlock Multi-Bundle Savings:
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
@@ -255,7 +255,7 @@ export default function BookingWizard() {
                   key={s.id}
                   type="button"
                   onClick={() => handleAddService(s.id)}
-                  className="p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-slate-700 hover:border-amber-400 text-left transition-all group"
+                  className="p-2.5 rounded-xl bg-amber-50/70/60 hover:bg-amber-50/70 border border-amber-200/60 hover:border-amber-400 text-left transition-all group"
                 >
                   <div className="text-xs font-bold text-white group-hover:text-amber-300 line-clamp-1">
                     + {s.title}
@@ -269,8 +269,8 @@ export default function BookingWizard() {
           </div>
 
           {/* Real-Time Price Totals */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2 text-xs">
-            <div className="flex justify-between text-slate-400">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-2xl p-5 space-y-2 text-xs">
+            <div className="flex justify-between text-stone-500">
               <span>Combined Services Subtotal:</span>
               <span className="font-mono text-white">${calculation.combinedSubtotal}.00 USD</span>
             </div>
@@ -285,7 +285,7 @@ export default function BookingWizard() {
               </div>
             )}
 
-            <div className="flex justify-between items-center text-base font-extrabold text-white pt-2 border-t border-slate-800">
+            <div className="flex justify-between items-center text-base font-extrabold text-white pt-2 border-t border-amber-200/70">
               <span>Estimated Order Total:</span>
               <span className="text-emerald-400 font-mono text-xl">
                 ${calculation.finalTotal}.00 USD
@@ -316,15 +316,15 @@ export default function BookingWizard() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
               Where Should Our Crew Arrive?
             </h2>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               All NorthStar field technicians are dispatched locally with mobile tool vans and protective gear.
             </p>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-8 space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-stone-700 mb-1">
                   Street Address (Home or Commercial Property)
                 </label>
                 <input
@@ -333,12 +333,12 @@ export default function BookingWizard() {
                   placeholder="e.g. 1420 Lincoln Street, Apt 4B"
                   value={customer.address}
                   onChange={(e) => setCustomer({ ...customer, address: e.target.value })}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                  className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-stone-700 mb-1">
                   5-Digit US ZIP Code
                 </label>
                 <input
@@ -348,14 +348,14 @@ export default function BookingWizard() {
                   placeholder="e.g. 80202"
                   value={customer.zipCode}
                   onChange={(e) => handleZipCheck(e.target.value)}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                  className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-stone-700 mb-1">
                   City
                 </label>
                 <input
@@ -364,12 +364,12 @@ export default function BookingWizard() {
                   placeholder="e.g. Denver"
                   value={customer.city}
                   onChange={(e) => setCustomer({ ...customer, city: e.target.value })}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                  className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-stone-700 mb-1">
                   State
                 </label>
                 <input
@@ -378,13 +378,13 @@ export default function BookingWizard() {
                   placeholder="e.g. CO, IL, MN, WI, MO..."
                   value={customer.state}
                   onChange={(e) => setCustomer({ ...customer, state: e.target.value })}
-                  className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                  className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
+              <label className="block text-xs font-semibold text-stone-700 mb-1">
                 Gate Code / Access Instructions (Optional)
               </label>
               <input
@@ -392,7 +392,7 @@ export default function BookingWizard() {
                 placeholder="e.g. Gate code #1234, side gate unlocked, key in lockbox"
                 value={customer.gateCode}
                 onChange={(e) => setCustomer({ ...customer, gateCode: e.target.value })}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
               />
             </div>
 
@@ -410,7 +410,7 @@ export default function BookingWizard() {
             <button
               type="button"
               onClick={() => setStep(1)}
-              className="py-3 px-6 rounded-xl font-semibold text-xs text-slate-400 hover:text-white bg-slate-800 border border-slate-700 flex items-center gap-2"
+              className="py-3 px-6 rounded-xl font-semibold text-xs text-stone-500 hover:text-white bg-amber-50/70 border border-amber-200/60 flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back</span>
@@ -438,14 +438,14 @@ export default function BookingWizard() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
               Select Arrival Window
             </h2>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               Our crew provides a 30-minute advance text alert before pulling into your driveway.
             </p>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-8 space-y-6">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
                 Preferred Service Date:
               </label>
               <input
@@ -454,12 +454,12 @@ export default function BookingWizard() {
                 value={scheduledDate}
                 min="2026-11-18"
                 onChange={(e) => setScheduledDate(e.target.value)}
-                className="w-full sm:w-64 bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"
+                className="w-full sm:w-64 bg-amber-50/70 border border-amber-200/60 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
                 Arrival Time Window:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -476,7 +476,7 @@ export default function BookingWizard() {
                     className={`p-4 rounded-2xl border text-left transition-all ${
                       timeWindow === w.id
                         ? 'bg-amber-400/15 border-amber-400 text-white shadow-lg'
-                        : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                        : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                     }`}
                   >
                     <div className="flex items-center justify-between">
@@ -484,14 +484,14 @@ export default function BookingWizard() {
                       <Clock className="w-4 h-4 text-amber-400" />
                     </div>
                     <div className="text-xs font-bold text-emerald-400 mt-1">{w.time}</div>
-                    <p className="text-[11px] text-slate-400 mt-1">{w.desc}</p>
+                    <p className="text-[11px] text-stone-500 mt-1">{w.desc}</p>
                   </button>
                 ))}
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
                 Special Property Notes or Pet Instructions:
               </label>
               <textarea
@@ -499,7 +499,7 @@ export default function BookingWizard() {
                 placeholder="e.g. Dogs will be inside, water spigot is located behind the patio, please be mindful of the flower bed..."
                 value={customer.notes}
                 onChange={(e) => setCustomer({ ...customer, notes: e.target.value })}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
               />
             </div>
           </div>
@@ -508,7 +508,7 @@ export default function BookingWizard() {
             <button
               type="button"
               onClick={() => setStep(2)}
-              className="py-3 px-6 rounded-xl font-semibold text-xs text-slate-400 hover:text-white bg-slate-800 border border-slate-700 flex items-center gap-2"
+              className="py-3 px-6 rounded-xl font-semibold text-xs text-stone-500 hover:text-white bg-amber-50/70 border border-amber-200/60 flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back</span>
@@ -535,7 +535,7 @@ export default function BookingWizard() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
               Review & Confirm Order
             </h2>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-stone-500 mt-1">
               Select whether you prefer to pay upon job inspection or place a card on file.
             </p>
           </div>
@@ -543,12 +543,12 @@ export default function BookingWizard() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 space-y-5">
               {/* Customer Contact Inputs */}
-              <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4">
+              <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 space-y-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400">
                   Primary Customer Contact
                 </h4>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-stone-700 mb-1">
                     Full Legal Name
                   </label>
                   <input
@@ -557,13 +557,13 @@ export default function BookingWizard() {
                     placeholder="e.g. Johnathan Miller"
                     value={customer.fullName}
                     onChange={(e) => setCustomer({ ...customer, fullName: e.target.value })}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                    className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">
+                    <label className="block text-xs font-semibold text-stone-700 mb-1">
                       Email Address (For PDF receipt & updates)
                     </label>
                     <input
@@ -572,12 +572,12 @@ export default function BookingWizard() {
                       placeholder="e.g. john@example.com"
                       value={customer.email}
                       onChange={(e) => setCustomer({ ...customer, email: e.target.value })}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                      className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-300 mb-1">
+                    <label className="block text-xs font-semibold text-stone-700 mb-1">
                       Mobile Phone (For 30-min crew text alerts)
                     </label>
                     <input
@@ -586,14 +586,14 @@ export default function BookingWizard() {
                       placeholder="e.g. (303) 555-0199"
                       value={customer.phone}
                       onChange={(e) => setCustomer({ ...customer, phone: e.target.value })}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                      className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Payment Method Selector */}
-              <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4">
+              <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 space-y-4">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400">
                   Select Payment Option
                 </h4>
@@ -604,12 +604,12 @@ export default function BookingWizard() {
                     className={`p-4 rounded-2xl border text-left transition-all ${
                       paymentMethod === 'pay-upon-completion'
                         ? 'bg-amber-400/15 border-amber-400 text-white'
-                        : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                        : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                     }`}
                   >
                     <div className="font-bold text-xs text-white">Pay Upon Completion</div>
                     <div className="text-[11px] text-emerald-400 mt-1">$0 charged today</div>
-                    <p className="text-[10px] text-slate-400 mt-1">
+                    <p className="text-[10px] text-stone-500 mt-1">
                       Inspect the completed service before paying cash, check, or digital invoice.
                     </p>
                   </button>
@@ -620,21 +620,21 @@ export default function BookingWizard() {
                     className={`p-4 rounded-2xl border text-left transition-all ${
                       paymentMethod === 'card-hold'
                         ? 'bg-amber-400/15 border-amber-400 text-white'
-                        : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                        : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                     }`}
                   >
                     <div className="font-bold text-xs text-white">Credit Card Pre-Authorization</div>
                     <div className="text-[11px] text-amber-300 mt-1">Hold placed on file</div>
-                    <p className="text-[10px] text-slate-400 mt-1">
+                    <p className="text-[10px] text-stone-500 mt-1">
                       Funds held securely; card charged only after job sign-off.
                     </p>
                   </button>
                 </div>
 
                 {paymentMethod === 'card-hold' && (
-                  <div className="pt-3 border-t border-slate-800 space-y-3">
+                  <div className="pt-3 border-t border-amber-200/70 space-y-3">
                     <div>
-                      <label className="block text-xs font-semibold text-slate-300 mb-1">
+                      <label className="block text-xs font-semibold text-stone-700 mb-1">
                         Card Number (Simulated Secure Hold)
                       </label>
                       <input
@@ -642,12 +642,12 @@ export default function BookingWizard() {
                         placeholder="•••• •••• •••• 4242"
                         value={cardNumber}
                         onChange={(e) => setCardNumber(e.target.value)}
-                        className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                        className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3 py-2 text-xs text-white font-mono placeholder-slate-500 focus:outline-none focus:border-amber-400"
                       />
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-xs font-semibold text-slate-300 mb-1">
+                        <label className="block text-xs font-semibold text-stone-700 mb-1">
                           Expiration (MM/YY)
                         </label>
                         <input
@@ -655,11 +655,11 @@ export default function BookingWizard() {
                           placeholder="12/28"
                           value={cardExp}
                           onChange={(e) => setCardExp(e.target.value)}
-                          className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                          className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3 py-2 text-xs text-white font-mono placeholder-slate-500 focus:outline-none focus:border-amber-400"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-slate-300 mb-1">
+                        <label className="block text-xs font-semibold text-stone-700 mb-1">
                           CVC
                         </label>
                         <input
@@ -667,7 +667,7 @@ export default function BookingWizard() {
                           placeholder="123"
                           value={cardCvc}
                           onChange={(e) => setCardCvc(e.target.value)}
-                          className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                          className="w-full bg-amber-50/70 border border-amber-200/60 rounded-xl px-3 py-2 text-xs text-white font-mono placeholder-slate-500 focus:outline-none focus:border-amber-400"
                         />
                       </div>
                     </div>
@@ -677,8 +677,8 @@ export default function BookingWizard() {
             </div>
 
             {/* Itemized Order Review Card */}
-            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4 h-fit">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 border-b border-slate-800 pb-2">
+            <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 space-y-4 h-fit">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 border-b border-amber-200/70 pb-2">
                 Order Summary (USD)
               </h4>
 
@@ -687,7 +687,7 @@ export default function BookingWizard() {
                   const s = SERVICES.find((sv) => sv.id === item.serviceId);
                   const p = calculateServicePrice(item.serviceId, item.config, basePrices);
                   return (
-                    <div key={item.serviceId} className="flex justify-between items-center text-slate-300">
+                    <div key={item.serviceId} className="flex justify-between items-center text-stone-700">
                       <span className="line-clamp-1">{s?.title}</span>
                       <span className="font-mono font-bold text-white">${p.total}</span>
                     </div>
@@ -695,8 +695,8 @@ export default function BookingWizard() {
                 })}
               </div>
 
-              <div className="pt-2 border-t border-slate-800 space-y-1.5 text-xs">
-                <div className="flex justify-between text-slate-400">
+              <div className="pt-2 border-t border-amber-200/70 space-y-1.5 text-xs">
+                <div className="flex justify-between text-stone-500">
                   <span>Subtotal:</span>
                   <span className="font-mono text-white">${calculation.combinedSubtotal}.00</span>
                 </div>
@@ -706,22 +706,22 @@ export default function BookingWizard() {
                     <span className="font-mono">-${calculation.bundleDiscountAmount}.00</span>
                   </div>
                 )}
-                <div className="flex justify-between text-sm font-extrabold text-white pt-2 border-t border-slate-800">
+                <div className="flex justify-between text-sm font-extrabold text-white pt-2 border-t border-amber-200/70">
                   <span>Total Due (USD):</span>
                   <span className="text-emerald-400 font-mono text-lg">${calculation.finalTotal}.00</span>
                 </div>
               </div>
 
-              <div className="pt-2 space-y-2 text-[11px] text-slate-400">
-                <div className="flex items-center gap-1.5 text-slate-300">
+              <div className="pt-2 space-y-2 text-[11px] text-stone-500">
+                <div className="flex items-center gap-1.5 text-stone-700">
                   <Calendar className="w-3.5 h-3.5 text-amber-400" />
                   <span>Date: {scheduledDate}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-slate-300">
+                <div className="flex items-center gap-1.5 text-stone-700">
                   <Clock className="w-3.5 h-3.5 text-blue-400" />
                   <span>Window: {timeWindow}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-slate-300">
+                <div className="flex items-center gap-1.5 text-stone-700">
                   <MapPin className="w-3.5 h-3.5 text-red-400" />
                   <span className="line-clamp-1">{customer.address || 'Address provided'}</span>
                 </div>
@@ -747,7 +747,7 @@ export default function BookingWizard() {
             <button
               type="button"
               onClick={() => setStep(3)}
-              className="py-3 px-6 rounded-xl font-semibold text-xs text-slate-400 hover:text-white bg-slate-800 border border-slate-700 flex items-center gap-2"
+              className="py-3 px-6 rounded-xl font-semibold text-xs text-stone-500 hover:text-white bg-amber-50/70 border border-amber-200/60 flex items-center gap-2"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back</span>
@@ -769,16 +769,16 @@ export default function BookingWizard() {
             <h2 className="text-3xl font-extrabold text-white">
               Thank You, {createdBooking.customer.fullName}!
             </h2>
-            <p className="text-xs text-slate-400 max-w-md mx-auto">
+            <p className="text-xs text-stone-500 max-w-md mx-auto">
               Your appointment is locked in our dispatch queue. A confirmation email and text alert have been logged.
             </p>
           </div>
 
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl max-w-2xl mx-auto space-y-6 text-slate-100">
+          <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-8 shadow-2xl max-w-2xl mx-auto space-y-6 text-stone-900">
             {/* Header / ID Badge */}
-            <div className="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-slate-800 gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-amber-200/70 gap-4">
               <div>
-                <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                <span className="text-[11px] font-bold text-stone-500 uppercase tracking-wider">
                   Booking Reference Number:
                 </span>
                 <div className="text-2xl font-black text-amber-400 font-mono tracking-wider">
@@ -797,20 +797,20 @@ export default function BookingWizard() {
 
             {/* Appointment Schedule & Location */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60">
+              <div className="bg-amber-50/70/60 p-4 rounded-2xl border border-amber-200/60/60">
                 <div className="font-bold text-amber-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5" /> Date & Time Window
                 </div>
                 <div className="text-sm font-extrabold text-white">{createdBooking.scheduledDate}</div>
-                <div className="text-slate-400 mt-0.5">{createdBooking.timeWindow}</div>
+                <div className="text-stone-500 mt-0.5">{createdBooking.timeWindow}</div>
               </div>
 
-              <div className="bg-slate-800/60 p-4 rounded-2xl border border-slate-700/60">
+              <div className="bg-amber-50/70/60 p-4 rounded-2xl border border-amber-200/60/60">
                 <div className="font-bold text-blue-400 uppercase tracking-wider mb-1 flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5" /> Service Address
                 </div>
                 <div className="text-sm font-extrabold text-white">{createdBooking.customer.address}</div>
-                <div className="text-slate-400 mt-0.5">
+                <div className="text-stone-500 mt-0.5">
                   {createdBooking.customer.city}, {createdBooking.customer.state} {createdBooking.customer.zipCode}
                 </div>
               </div>
@@ -818,23 +818,23 @@ export default function BookingWizard() {
 
             {/* Itemized Services Breakdown */}
             <div className="space-y-2">
-              <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <div className="text-xs font-bold uppercase tracking-wider text-stone-500">
                 Itemized Services (USD):
               </div>
-              <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2 text-xs">
+              <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200/70 space-y-2 text-xs">
                 {createdBooking.services.map((svc: any, idx: number) => (
-                  <div key={idx} className="flex justify-between items-center text-slate-300">
+                  <div key={idx} className="flex justify-between items-center text-stone-700">
                     <span>{svc.serviceTitle}</span>
                     <span className="font-mono font-bold text-white">${svc.subtotal}.00</span>
                   </div>
                 ))}
                 {createdBooking.discountUSD > 0 && (
-                  <div className="flex justify-between items-center text-emerald-400 font-semibold pt-1 border-t border-slate-800/60">
+                  <div className="flex justify-between items-center text-emerald-400 font-semibold pt-1 border-t border-amber-200/70/60">
                     <span>Bundle Savings Applied</span>
                     <span className="font-mono">-${createdBooking.discountUSD}.00</span>
                   </div>
                 )}
-                <div className="flex justify-between items-center text-base font-extrabold text-white pt-2 border-t border-slate-800">
+                <div className="flex justify-between items-center text-base font-extrabold text-white pt-2 border-t border-amber-200/70">
                   <span>Total Amount (USD)</span>
                   <span className="text-emerald-400 font-mono text-lg">
                     ${createdBooking.totalUSD}.00
@@ -854,9 +854,9 @@ export default function BookingWizard() {
               <button
                 type="button"
                 onClick={() => window.print()}
-                className="w-full sm:w-auto py-3.5 px-6 rounded-xl font-semibold text-xs text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto py-3.5 px-6 rounded-xl font-semibold text-xs text-white bg-amber-50/70 hover:bg-slate-700 border border-amber-200/60 flex items-center justify-center gap-2"
               >
-                <Printer className="w-4 h-4 text-slate-300" />
+                <Printer className="w-4 h-4 text-stone-700" />
                 <span>Print USD Receipt</span>
               </button>
             </div>

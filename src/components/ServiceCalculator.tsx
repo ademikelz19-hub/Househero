@@ -155,8 +155,8 @@ export default function ServiceCalculator({
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-100">
-      <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+    <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-8 shadow-2xl text-stone-900">
+      <div className="flex items-center justify-between pb-4 border-b border-amber-200/70 mb-6">
         <div>
           <span className="text-[11px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-full border border-amber-400/20">
             Live Interactive USD Pricing Engine
@@ -164,9 +164,9 @@ export default function ServiceCalculator({
           <h3 className="text-xl font-extrabold text-white mt-1">Configure Service Specs</h3>
         </div>
         <div className="text-right">
-          <div className="text-xs text-slate-400">Guaranteed Upfront Total:</div>
+          <div className="text-xs text-stone-500">Guaranteed Upfront Total:</div>
           <div className="text-2xl sm:text-3xl font-black text-emerald-400">
-            ${calculation.total} <span className="text-xs text-slate-400 font-normal">USD</span>
+            ${calculation.total} <span className="text-xs text-stone-500 font-normal">USD</span>
           </div>
         </div>
       </div>
@@ -177,7 +177,7 @@ export default function ServiceCalculator({
       {serviceId === 'house-deep-cleaning' && (
         <div className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               1. Home Size & Layout
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
@@ -195,7 +195,7 @@ export default function ServiceCalculator({
                   className={`p-3 rounded-xl border text-center transition-all ${
                     houseConfig.homeSize === opt.id
                       ? 'bg-amber-400/10 border-amber-400 text-white shadow-md'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="text-xs font-bold">{opt.label}</div>
@@ -208,7 +208,7 @@ export default function ServiceCalculator({
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               2. Cleaning Tier
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -224,32 +224,32 @@ export default function ServiceCalculator({
                   className={`p-3.5 rounded-xl border text-left transition-all ${
                     houseConfig.tier === tier.id
                       ? 'bg-amber-400/15 border-amber-400 text-white shadow-md'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-bold text-xs text-white">{tier.label}</span>
-                    <span className="text-[10px] bg-slate-800 text-amber-400 px-1.5 py-0.5 rounded font-mono">
+                    <span className="text-[10px] bg-amber-50/70 text-amber-400 px-1.5 py-0.5 rounded font-mono">
                       {tier.mult}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-400 mt-1">{tier.desc}</p>
+                  <p className="text-[11px] text-stone-500 mt-1">{tier.desc}</p>
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               3. Specialized Add-Ons
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={houseConfig.oven}
                   onChange={(e) => setHouseConfig({ ...houseConfig, oven: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Inside Oven Clean</div>
@@ -257,12 +257,12 @@ export default function ServiceCalculator({
                 </div>
               </label>
 
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={houseConfig.fridge}
                   onChange={(e) => setHouseConfig({ ...houseConfig, fridge: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Inside Fridge Clean</div>
@@ -270,12 +270,12 @@ export default function ServiceCalculator({
                 </div>
               </label>
 
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={houseConfig.windows}
                   onChange={(e) => setHouseConfig({ ...houseConfig, windows: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Interior Windows (All)</div>
@@ -286,7 +286,7 @@ export default function ServiceCalculator({
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               4. Recurring Frequency Discount
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -303,7 +303,7 @@ export default function ServiceCalculator({
                   className={`p-2.5 rounded-xl border text-center transition-all ${
                     houseConfig.frequency === f.id
                       ? 'bg-emerald-500/15 border-emerald-500 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="text-xs font-bold">{f.label}</div>
@@ -319,8 +319,8 @@ export default function ServiceCalculator({
       {serviceId === 'carpet-cleaning' && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="bg-slate-800/60 border border-slate-700 p-4 rounded-2xl">
-              <label className="block text-xs font-bold text-slate-300 mb-1">Rooms to Clean ($45/ea)</label>
+            <div className="bg-amber-50/70/60 border border-amber-200/60 p-4 rounded-2xl">
+              <label className="block text-xs font-bold text-stone-700 mb-1">Rooms to Clean ($45/ea)</label>
               <div className="text-[11px] text-slate-500 mb-2">3-room minimum base: ${basePrices['carpet-cleaning'] || 129}</div>
               <div className="flex items-center gap-3">
                 <button
@@ -341,8 +341,8 @@ export default function ServiceCalculator({
               </div>
             </div>
 
-            <div className="bg-slate-800/60 border border-slate-700 p-4 rounded-2xl">
-              <label className="block text-xs font-bold text-slate-300 mb-1">Hallways / Stairs ($35/ea)</label>
+            <div className="bg-amber-50/70/60 border border-amber-200/60 p-4 rounded-2xl">
+              <label className="block text-xs font-bold text-stone-700 mb-1">Hallways / Stairs ($35/ea)</label>
               <div className="text-[11px] text-slate-500 mb-2">Flight of stairs or hallway</div>
               <div className="flex items-center gap-3">
                 <button
@@ -363,8 +363,8 @@ export default function ServiceCalculator({
               </div>
             </div>
 
-            <div className="bg-slate-800/60 border border-slate-700 p-4 rounded-2xl">
-              <label className="block text-xs font-bold text-slate-300 mb-1">Area Rugs ($25/ea)</label>
+            <div className="bg-amber-50/70/60 border border-amber-200/60 p-4 rounded-2xl">
+              <label className="block text-xs font-bold text-stone-700 mb-1">Area Rugs ($25/ea)</label>
               <div className="text-[11px] text-slate-500 mb-2">Delicate wool/synthetic rugs</div>
               <div className="flex items-center gap-3">
                 <button
@@ -387,16 +387,16 @@ export default function ServiceCalculator({
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Advanced Treatment Add-Ons
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <label className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3.5 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={carpetConfig.petTreatment}
                   onChange={(e) => setCarpetConfig({ ...carpetConfig, petTreatment: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Pet Odor & Sub-Surface Enzyme Treatment</div>
@@ -404,12 +404,12 @@ export default function ServiceCalculator({
                 </div>
               </label>
 
-              <label className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3.5 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={carpetConfig.scotchgard}
                   onChange={(e) => setCarpetConfig({ ...carpetConfig, scotchgard: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Scotchgard™ Stain & Spill Fiber Protector</div>
@@ -425,7 +425,7 @@ export default function ServiceCalculator({
       {serviceId === 'gutter-cleaning' && (
         <div className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Building Height & Footprint
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -441,11 +441,11 @@ export default function ServiceCalculator({
                   className={`p-3.5 rounded-xl border text-left transition-all ${
                     gutterConfig.stories === opt.id
                       ? 'bg-amber-400/15 border-amber-400 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="text-xs font-bold text-white">{opt.label}</div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">{opt.footage}</div>
+                  <div className="text-[11px] text-stone-500 mt-0.5">{opt.footage}</div>
                   <div className="text-xs font-bold text-emerald-400 mt-2">${opt.price} USD</div>
                 </button>
               ))}
@@ -453,16 +453,16 @@ export default function ServiceCalculator({
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Additional Gutter Maintenance
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={gutterConfig.downspoutFlush}
                   onChange={(e) => setGutterConfig({ ...gutterConfig, downspoutFlush: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Downspout Flush & Jet</div>
@@ -470,12 +470,12 @@ export default function ServiceCalculator({
                 </div>
               </label>
 
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={gutterConfig.minorSealing}
                   onChange={(e) => setGutterConfig({ ...gutterConfig, minorSealing: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Minor Sealing & Re-Hanging</div>
@@ -483,12 +483,12 @@ export default function ServiceCalculator({
                 </div>
               </label>
 
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={gutterConfig.gutterGuards}
                   onChange={(e) => setGutterConfig({ ...gutterConfig, gutterGuards: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Gutter Guard Quote Option</div>
@@ -503,12 +503,12 @@ export default function ServiceCalculator({
       {/* 4. SNOW REMOVAL */}
       {serviceId === 'snow-removal' && (
         <div className="space-y-6">
-          <div className="flex bg-slate-800 p-1 rounded-xl">
+          <div className="flex bg-amber-50/70 p-1 rounded-xl">
             <button
               type="button"
               onClick={() => setSnowConfig({ ...snowConfig, planType: 'per-push' })}
               className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
-                snowConfig.planType === 'per-push' ? 'bg-amber-400 text-slate-950 shadow-md' : 'text-slate-400 hover:text-white'
+                snowConfig.planType === 'per-push' ? 'bg-amber-400 text-slate-950 shadow-md' : 'text-stone-500 hover:text-white'
               }`}
             >
               On-Demand (Per Push)
@@ -517,7 +517,7 @@ export default function ServiceCalculator({
               type="button"
               onClick={() => setSnowConfig({ ...snowConfig, planType: 'seasonal-pass' })}
               className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
-                snowConfig.planType === 'seasonal-pass' ? 'bg-amber-400 text-slate-950 shadow-md' : 'text-slate-400 hover:text-white'
+                snowConfig.planType === 'seasonal-pass' ? 'bg-amber-400 text-slate-950 shadow-md' : 'text-stone-500 hover:text-white'
               }`}
             >
               Unlimited Seasonal Pass ($499/season)
@@ -531,7 +531,7 @@ export default function ServiceCalculator({
           ) : (
             <>
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
                   Driveway Size
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -547,7 +547,7 @@ export default function ServiceCalculator({
                       className={`p-3.5 rounded-xl border text-left transition-all ${
                         snowConfig.drivewaySize === d.id
                           ? 'bg-amber-400/15 border-amber-400 text-white'
-                          : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                          : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                       }`}
                     >
                       <div className="text-xs font-bold text-white">{d.label}</div>
@@ -558,7 +558,7 @@ export default function ServiceCalculator({
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
                   Snowfall Depth Surcharge
                 </label>
                 <div className="grid grid-cols-3 gap-2">
@@ -574,7 +574,7 @@ export default function ServiceCalculator({
                       className={`p-2.5 rounded-xl border text-center transition-all ${
                         snowConfig.snowDepth === s.id
                           ? 'bg-amber-400/15 border-amber-400 text-white'
-                          : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                          : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                       }`}
                     >
                       <div className="text-xs font-bold">{s.label}</div>
@@ -592,7 +592,7 @@ export default function ServiceCalculator({
       {serviceId === 'pressure-washing' && (
         <div className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Select Surface to Wash
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -609,7 +609,7 @@ export default function ServiceCalculator({
                   className={`p-3 rounded-xl border text-center transition-all ${
                     pressureConfig.surfaceType === s.id
                       ? 'bg-amber-400/15 border-amber-400 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="text-xs font-bold">{s.label}</div>
@@ -621,7 +621,7 @@ export default function ServiceCalculator({
 
           <div>
             <div className="flex justify-between items-center mb-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-300">
+              <label className="text-xs font-bold uppercase tracking-wider text-stone-700">
                 Estimated Square Footage:
               </label>
               <span className="text-sm font-black text-amber-400">
@@ -651,7 +651,7 @@ export default function ServiceCalculator({
       {serviceId === 'junk-removal' && (
         <div className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Truck Load Volume Tier (16-Yard Bed)
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -670,7 +670,7 @@ export default function ServiceCalculator({
                   className={`p-3 rounded-xl border text-center transition-all ${
                     junkConfig.volumeTier === tier.id
                       ? 'bg-amber-400/15 border-amber-400 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="text-xs font-bold">{tier.label}</div>
@@ -681,8 +681,8 @@ export default function ServiceCalculator({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="bg-slate-800/60 border border-slate-700 p-4 rounded-2xl">
-              <label className="block text-xs font-bold text-slate-300 mb-1">
+            <div className="bg-amber-50/70/60 border border-amber-200/60 p-4 rounded-2xl">
+              <label className="block text-xs font-bold text-stone-700 mb-1">
                 Appliances / Mattresses (+$35/ea)
               </label>
               <div className="text-[11px] text-slate-500 mb-2">Requires certified eco-recycling fee</div>
@@ -705,8 +705,8 @@ export default function ServiceCalculator({
               </div>
             </div>
 
-            <div className="bg-slate-800/60 border border-slate-700 p-4 rounded-2xl">
-              <label className="block text-xs font-bold text-slate-300 mb-1">
+            <div className="bg-amber-50/70/60 border border-amber-200/60 p-4 rounded-2xl">
+              <label className="block text-xs font-bold text-stone-700 mb-1">
                 Specialty E-Waste Items (+$25/ea)
               </label>
               <div className="text-[11px] text-slate-500 mb-2">Monitors, old TVs, batteries</div>
@@ -736,7 +736,7 @@ export default function ServiceCalculator({
       {serviceId === 'dryer-vent-cleaning' && (
         <div className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Exterior Vent Exhaust Location
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -752,11 +752,11 @@ export default function ServiceCalculator({
                   className={`p-3.5 rounded-xl border text-left transition-all ${
                     dryerConfig.exitLocation === loc.id
                       ? 'bg-amber-400/15 border-amber-400 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="text-xs font-bold text-white">{loc.label}</div>
-                  <div className="text-[11px] text-slate-400 mt-1">{loc.desc}</div>
+                  <div className="text-[11px] text-stone-500 mt-1">{loc.desc}</div>
                   <div className="text-xs font-bold text-emerald-400 mt-2">${loc.price} USD</div>
                 </button>
               ))}
@@ -764,16 +764,16 @@ export default function ServiceCalculator({
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Safety Hardware Replacements
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <label className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3.5 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={dryerConfig.birdGuard}
                   onChange={(e) => setDryerConfig({ ...dryerConfig, birdGuard: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Heavy-Duty Steel Bird Guard Cage</div>
@@ -781,12 +781,12 @@ export default function ServiceCalculator({
                 </div>
               </label>
 
-              <label className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3.5 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={dryerConfig.transitionHose}
                   onChange={(e) => setDryerConfig({ ...dryerConfig, transitionHose: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Semi-Rigid Metal Transition Hose Replace</div>
@@ -802,7 +802,7 @@ export default function ServiceCalculator({
       {serviceId === 'lawn-garden-cleanup' && (
         <div className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Property Lot Size Tier
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -819,11 +819,11 @@ export default function ServiceCalculator({
                   className={`p-3 rounded-xl border text-center transition-all ${
                     lawnConfig.lotSize === lot.id
                       ? 'bg-amber-400/15 border-amber-400 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="text-xs font-bold">{lot.label}</div>
-                  <div className="text-[10px] text-slate-400">{lot.size}</div>
+                  <div className="text-[10px] text-stone-500">{lot.size}</div>
                   <div className="text-xs font-bold text-emerald-400 mt-1">${lot.price} USD</div>
                 </button>
               ))}
@@ -831,16 +831,16 @@ export default function ServiceCalculator({
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Grounds Maintenance Add-Ons
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={lawnConfig.leafRemoval}
                   onChange={(e) => setLawnConfig({ ...lawnConfig, leafRemoval: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Leaf Bagging & Rake</div>
@@ -848,12 +848,12 @@ export default function ServiceCalculator({
                 </div>
               </label>
 
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={lawnConfig.shrubTrimming}
                   onChange={(e) => setLawnConfig({ ...lawnConfig, shrubTrimming: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Hedge & Shrub Shaping</div>
@@ -861,12 +861,12 @@ export default function ServiceCalculator({
                 </div>
               </label>
 
-              <label className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600">
+              <label className="flex items-center gap-3 p-3 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600">
                 <input
                   type="checkbox"
                   checked={lawnConfig.mulchRefresh}
                   onChange={(e) => setLawnConfig({ ...lawnConfig, mulchRefresh: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Mulch Bed Spade Edging</div>
@@ -881,12 +881,12 @@ export default function ServiceCalculator({
       {/* 9. HVAC MAINTENANCE */}
       {serviceId === 'hvac-maintenance' && (
         <div className="space-y-6">
-          <div className="flex bg-slate-800 p-1 rounded-xl">
+          <div className="flex bg-amber-50/70 p-1 rounded-xl">
             <button
               type="button"
               onClick={() => setHvacConfig({ ...hvacConfig, planType: 'tune-up' })}
               className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
-                hvacConfig.planType === 'tune-up' ? 'bg-amber-400 text-slate-950 shadow-md' : 'text-slate-400 hover:text-white'
+                hvacConfig.planType === 'tune-up' ? 'bg-amber-400 text-slate-950 shadow-md' : 'text-stone-500 hover:text-white'
               }`}
             >
               One-Time 21-Point Tune-Up
@@ -895,7 +895,7 @@ export default function ServiceCalculator({
               type="button"
               onClick={() => setHvacConfig({ ...hvacConfig, planType: 'comfort-shield' })}
               className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${
-                hvacConfig.planType === 'comfort-shield' ? 'bg-amber-400 text-slate-950 shadow-md' : 'text-slate-400 hover:text-white'
+                hvacConfig.planType === 'comfort-shield' ? 'bg-amber-400 text-slate-950 shadow-md' : 'text-stone-500 hover:text-white'
               }`}
             >
               Annual Comfort Shield Plan ($229/yr)
@@ -908,7 +908,7 @@ export default function ServiceCalculator({
             </div>
           ) : (
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
                 HVAC Equipment Configuration
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -924,11 +924,11 @@ export default function ServiceCalculator({
                     className={`p-3.5 rounded-xl border text-left transition-all ${
                       hvacConfig.systemType === sys.id
                         ? 'bg-amber-400/15 border-amber-400 text-white'
-                        : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                        : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                     }`}
                   >
                     <div className="text-xs font-bold text-white">{sys.label}</div>
-                    <div className="text-[11px] text-slate-400 mt-1">{sys.desc}</div>
+                    <div className="text-[11px] text-stone-500 mt-1">{sys.desc}</div>
                     <div className="text-xs font-bold text-emerald-400 mt-2">${sys.price} USD</div>
                   </button>
                 ))}
@@ -942,7 +942,7 @@ export default function ServiceCalculator({
       {serviceId === 'driveway-walkway-de-icing' && (
         <div className="space-y-6">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+            <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
               Surface Area Coverage
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -958,11 +958,11 @@ export default function ServiceCalculator({
                   className={`p-3.5 rounded-xl border text-left transition-all ${
                     deicingConfig.coverageTier === cov.id
                       ? 'bg-amber-400/15 border-amber-400 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <div className="text-xs font-bold text-white">{cov.label}</div>
-                  <div className="text-[11px] text-slate-400 mt-1">{cov.desc}</div>
+                  <div className="text-[11px] text-stone-500 mt-1">{cov.desc}</div>
                   <div className="text-xs font-bold text-emerald-400 mt-2">${cov.price} USD / visit</div>
                 </button>
               ))}
@@ -971,7 +971,7 @@ export default function ServiceCalculator({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
                 Melting Agent Selection
               </label>
               <div className="space-y-2">
@@ -981,11 +981,11 @@ export default function ServiceCalculator({
                   className={`w-full p-3 rounded-xl border text-left text-xs transition-all ${
                     deicingConfig.material === 'rock-salt'
                       ? 'bg-amber-400/15 border-amber-400 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <span className="font-bold text-white">Standard Sodium Rock Salt</span>
-                  <span className="block text-[10px] text-slate-400">Included ($0) • Active to 15°F</span>
+                  <span className="block text-[10px] text-stone-500">Included ($0) • Active to 15°F</span>
                 </button>
 
                 <button
@@ -994,30 +994,30 @@ export default function ServiceCalculator({
                   className={`w-full p-3 rounded-xl border text-left text-xs transition-all ${
                     deicingConfig.material === 'magnesium-chloride'
                       ? 'bg-amber-400/15 border-amber-400 text-white'
-                      : 'bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white'
+                      : 'bg-amber-50/70/60 border-amber-200/60 text-stone-500 hover:text-white'
                   }`}
                 >
                   <span className="font-bold text-emerald-400">Pet-Safe & Concrete-Safe Magnesium (+ $20)</span>
-                  <span className="block text-[10px] text-slate-300">Melt active to -15°F • Non-pitting on concrete</span>
+                  <span className="block text-[10px] text-stone-700">Melt active to -15°F • Non-pitting on concrete</span>
                 </button>
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
                 Automated Freeze Dispatch
               </label>
-              <label className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-slate-600 h-[calc(100%-24px)]">
+              <label className="flex items-start gap-3 p-3.5 rounded-xl bg-amber-50/70/60 border border-amber-200/60 cursor-pointer hover:border-slate-600 h-[calc(100%-24px)]">
                 <input
                   type="checkbox"
                   checked={deicingConfig.autoDispatch}
                   onChange={(e) => setDeicingConfig({ ...deicingConfig, autoDispatch: e.target.checked })}
-                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-slate-900 border-slate-700 mt-0.5"
+                  className="rounded text-amber-400 focus:ring-0 w-4 h-4 bg-white/90 backdrop-blur-xl border-amber-200/60 mt-0.5"
                 />
                 <div>
                   <div className="text-xs font-bold text-white">Sub-32°F Automatic Doppler Dispatch</div>
                   <div className="text-[11px] text-emerald-400 font-semibold">+$15 USD reserve monitoring</div>
-                  <p className="text-[10px] text-slate-400 mt-1">
+                  <p className="text-[10px] text-stone-500 mt-1">
                     Crews automatically salt your driveway before morning freeze events.
                   </p>
                 </div>
@@ -1028,26 +1028,26 @@ export default function ServiceCalculator({
       )}
 
       {/* ITEMIZED USD SUMMARY & CTA */}
-      <div className="mt-8 pt-6 border-t border-slate-800 space-y-4">
-        <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+      <div className="mt-8 pt-6 border-t border-amber-200/70 space-y-4">
+        <div className="text-xs font-bold uppercase tracking-wider text-stone-500">
           Itemized Price Breakdown (USD):
         </div>
-        <div className="space-y-1.5 bg-slate-950/60 p-4 rounded-2xl border border-slate-800 text-xs">
+        <div className="space-y-1.5 bg-amber-50/70/60 p-4 rounded-2xl border border-amber-200/70 text-xs">
           {calculation.breakdown.map((item, idx) => (
-            <div key={idx} className="flex justify-between items-center text-slate-300">
+            <div key={idx} className="flex justify-between items-center text-stone-700">
               <span>{item.item}</span>
               <span className="font-mono font-semibold text-white">${item.price}</span>
             </div>
           ))}
 
           {calculation.discount > 0 && (
-            <div className="flex justify-between items-center text-emerald-400 font-semibold pt-1 border-t border-slate-800/60">
+            <div className="flex justify-between items-center text-emerald-400 font-semibold pt-1 border-t border-amber-200/70/60">
               <span>Frequency Discount Applied</span>
               <span className="font-mono">-${calculation.discount}</span>
             </div>
           )}
 
-          <div className="flex justify-between items-center text-sm font-extrabold text-white pt-2 border-t border-slate-800">
+          <div className="flex justify-between items-center text-sm font-extrabold text-white pt-2 border-t border-amber-200/70">
             <span>Guaranteed Total (USD)</span>
             <span className="text-emerald-400 font-mono text-base sm:text-lg">
               ${calculation.total}.00
@@ -1069,7 +1069,7 @@ export default function ServiceCalculator({
             <Link
               href="/pricing"
               onClick={handleAddToQuoteAndBook}
-              className="py-3.5 px-6 rounded-2xl font-bold text-xs text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 text-center transition-colors flex items-center justify-center gap-2"
+              className="py-3.5 px-6 rounded-2xl font-bold text-xs text-white bg-amber-50/70 hover:bg-slate-700 border border-amber-200/60 text-center transition-colors flex items-center justify-center gap-2"
             >
               <span>Add to Multi-Bundle & Save 10-15%</span>
               <ArrowRight className="w-3.5 h-3.5" />

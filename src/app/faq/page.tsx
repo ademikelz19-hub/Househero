@@ -97,19 +97,19 @@ export default function FAQPage() {
         <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
           Frequently Asked Questions
         </h1>
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-700">
           Everything you need to know about our USD pricing, weather dispatch policies, technician standards, and guarantees.
         </p>
 
         {/* Search */}
         <div className="pt-4 max-w-lg mx-auto relative">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-stone-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search FAQs by keyword (e.g. payment, pets, snow)..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 shadow-inner"
+            className="w-full bg-white/90 backdrop-blur-xl border border-amber-200/60 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 shadow-inner"
           />
         </div>
 
@@ -128,7 +128,7 @@ export default function FAQPage() {
               className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all ${
                 activeCategory === cat.id
                   ? 'bg-amber-400 text-slate-950 shadow-md'
-                  : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                  : 'bg-white/90 backdrop-blur-xl text-stone-500 hover:text-white border border-amber-200/70'
               }`}
             >
               {cat.label}
@@ -144,7 +144,7 @@ export default function FAQPage() {
           return (
             <div
               key={idx}
-              className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden transition-all"
+              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-2xl overflow-hidden transition-all"
             >
               <button
                 type="button"
@@ -159,7 +159,7 @@ export default function FAQPage() {
                 />
               </button>
               {isOpen && (
-                <div className="px-5 pb-5 pt-1 text-xs text-slate-300 leading-relaxed border-t border-slate-800/60">
+                <div className="px-5 pb-5 pt-1 text-xs text-stone-700 leading-relaxed border-t border-amber-200/70/60">
                   {item.answer}
                 </div>
               )}
@@ -169,9 +169,9 @@ export default function FAQPage() {
       </div>
 
       {/* Still Have Questions CTA */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-slate-800 rounded-3xl p-8 text-center space-y-4">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 border border-amber-200/70 rounded-3xl p-8 text-center space-y-4">
         <h3 className="text-xl font-bold text-white">Still have questions about your property?</h3>
-        <p className="text-xs text-slate-400 max-w-md mx-auto">
+        <p className="text-xs text-stone-500 max-w-md mx-auto">
           Our friendly American dispatch supervisors are available 7 days a week by phone or live chat.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
@@ -184,7 +184,7 @@ export default function FAQPage() {
           </a>
           <Link
             href="/contact"
-            className="py-2.5 px-5 rounded-xl font-semibold text-xs text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 inline-flex items-center justify-center gap-2"
+            className="py-2.5 px-5 rounded-xl font-semibold text-xs text-white bg-amber-50/70 hover:bg-slate-700 border border-amber-200/60 inline-flex items-center justify-center gap-2"
           >
             <span>Contact Dispatch Office</span>
             <ArrowRight className="w-3.5 h-3.5" />

@@ -111,7 +111,7 @@ export default function ReviewsPage() {
   return (
     <div className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
       {/* Header & Submit Button */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-amber-200/70">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
             Real Homeowner Experiences
@@ -119,7 +119,7 @@ export default function ReviewsPage() {
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mt-2">
             Verified Customer Reviews
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-stone-500 mt-1">
             Browse authentic feedback from verified customers across all 10 property care services.
           </p>
         </div>
@@ -134,7 +134,7 @@ export default function ReviewsPage() {
       </div>
 
       {/* Aggregate Score Card */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+      <div className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 sm:p-8 shadow-xl grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
         <div className="text-center md:text-left">
           <div className="text-5xl font-black text-white">4.9</div>
           <div className="flex items-center justify-center md:justify-start gap-1 text-amber-400 my-1.5">
@@ -142,7 +142,7 @@ export default function ReviewsPage() {
               <Star key={i} className="w-5 h-5 fill-amber-400" />
             ))}
           </div>
-          <div className="text-xs text-slate-400">Based on 2,840 verified US jobs</div>
+          <div className="text-xs text-stone-500">Based on 2,840 verified US jobs</div>
         </div>
 
         <div className="space-y-1.5 text-xs">
@@ -154,23 +154,23 @@ export default function ReviewsPage() {
             { stars: '1 Star', pct: '0%' }
           ].map((row, idx) => (
             <div key={idx} className="flex items-center gap-3">
-              <span className="w-14 text-slate-400 text-[11px]">{row.stars}</span>
-              <div className="flex-1 h-2 bg-slate-800 rounded-full overflow-hidden">
+              <span className="w-14 text-stone-500 text-[11px]">{row.stars}</span>
+              <div className="flex-1 h-2 bg-amber-50/70 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-amber-400 rounded-full"
                   style={{ width: row.pct.replace('&lt;', '') }}
                 />
               </div>
-              <span className="w-8 text-right font-mono text-slate-400">{row.pct}</span>
+              <span className="w-8 text-right font-mono text-stone-500">{row.pct}</span>
             </div>
           ))}
         </div>
 
-        <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs space-y-2">
+        <div className="bg-amber-50/70 p-4 rounded-2xl border border-amber-200/70 text-xs space-y-2">
           <div className="font-bold text-emerald-400 flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4" /> 100% Verified Identity
           </div>
-          <p className="text-[11px] text-slate-400 leading-relaxed">
+          <p className="text-[11px] text-stone-500 leading-relaxed">
             Every review is matched against a completed NorthStar dispatch record. Zero fabricated or incentivized ratings.
           </p>
         </div>
@@ -178,7 +178,7 @@ export default function ReviewsPage() {
 
       {/* Filter by Service */}
       <div className="space-y-3">
-        <div className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+        <div className="text-xs font-bold uppercase tracking-wider text-stone-500 flex items-center gap-1.5">
           <Filter className="w-3.5 h-3.5 text-amber-400" /> Filter Reviews by Service:
         </div>
         <div className="flex items-center gap-2 overflow-x-auto pb-2">
@@ -187,7 +187,7 @@ export default function ReviewsPage() {
             className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
               selectedService === 'all'
                 ? 'bg-amber-400 text-slate-950'
-                : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                : 'bg-white/90 backdrop-blur-xl text-stone-500 hover:text-white border border-amber-200/70'
             }`}
           >
             All Services ({reviews.length})
@@ -199,7 +199,7 @@ export default function ReviewsPage() {
               className={`py-2 px-3.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
                 selectedService === s.id
                   ? 'bg-amber-400 text-slate-950'
-                  : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                  : 'bg-white/90 backdrop-blur-xl text-stone-500 hover:text-white border border-amber-200/70'
               }`}
             >
               {s.title}
@@ -215,7 +215,7 @@ export default function ReviewsPage() {
           return (
             <div
               key={rev.id}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4 flex flex-col justify-between"
+              className="bg-white/90 backdrop-blur-xl border border-amber-200/70 rounded-3xl p-6 shadow-xl space-y-4 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -227,12 +227,12 @@ export default function ReviewsPage() {
                   <span className="text-[11px] text-slate-500">{rev.date}</span>
                 </div>
 
-                <p className="text-xs text-slate-300 italic leading-relaxed">
+                <p className="text-xs text-stone-700 italic leading-relaxed">
                   "{rev.comment}"
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-amber-200/70 flex items-center justify-between text-xs">
                 <div>
                   <div className="font-bold text-white">{rev.author}</div>
                   <div className="text-[11px] text-slate-500">{rev.location}</div>

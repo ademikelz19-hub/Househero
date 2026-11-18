@@ -2,42 +2,120 @@
 
 @layer base {
   :root {
-    --primary-navy: #0F172A;
-    --navy-light: #1E293B;
-    --accent-amber: #F59E0B;
-    --accent-emerald: #059669;
+    --gold-primary: #F59E0B;
+    --gold-dark: #D97706;
+    --gold-light: #FDE68A;
+    --orange-primary: #F97316;
   }
 
   body {
-    background-color: #F8FAFC;
-    color: #0F172A;
+    background-color: #FFFDF9;
+    color: #1C1917;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-/* Custom subtle scrollbar */
+/* Amber scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #FFFBEB;
 }
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #FCD34D;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #F59E0B;
 }
 
-@keyframes pulseSlow {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.04); opacity: 0.9; }
+/* Liquid float animations — warm amber/orange only, NO blue */
+@keyframes liquidFloat {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(25px, -30px) scale(1.08);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
 }
 
-.animate-pulse-slow {
-  animation: pulseSlow 3s ease-in-out infinite;
+@keyframes liquidFloatReverse {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 25px) scale(1.05);
+  }
+  66% {
+    transform: translate(20px, -25px) scale(0.92);
+  }
+}
+
+/* Scroll-triggered fade in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.animate-liquid-float {
+  animation: liquidFloat 9s ease-in-out infinite;
+}
+
+.animate-liquid-float-slow {
+  animation: liquidFloatReverse 12s ease-in-out infinite;
+}
+
+/* Liquid glass utility classes */
+.glass-card {
+  background: rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  box-shadow: 0 8px 32px 0 rgba(245, 158, 11, 0.07);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+  box-shadow: 0 4px 20px 0 rgba(245, 158, 11, 0.06);
+}
+
+.glass-form {
+  background: rgba(255, 253, 249, 0.90);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.20);
+  box-shadow: 0 10px 36px 0 rgba(245, 158, 11, 0.09);
+}
+
+.glass-warm {
+  background: rgba(255, 251, 235, 0.80);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow: 0 10px 36px 0 rgba(245, 158, 11, 0.12);
 }
