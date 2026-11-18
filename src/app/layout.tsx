@@ -5,9 +5,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'NorthStar Property Care | Licensed Residential & Commercial Maintenance',
-  description: 'NorthStar Property Care provides professional residential & commercial maintenance across the US with upfront USD pricing: deep cleaning, carpet extraction, gutter cleaning, snow removal, pressure washing, junk hauling, HVAC, dryer vent, de-icing & grounds care.',
-  keywords: 'property care, house cleaning, carpet cleaning, gutter cleaning, snow removal, pressure washing, junk removal, HVAC tune up, dryer vent cleaning, lawn care, de-icing',
+  title: 'NorthStar Property Care | America’s Trusted Property Maintenance',
+  description: 'NorthStar Property Care provides full-scale residential and commercial maintenance across the US with upfront USD ($) pricing, background-checked technicians, and a 100% satisfaction guarantee.',
 };
 
 export default function RootLayout({
@@ -16,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark bg-slate-950 text-slate-100 antialiased">
-      <body className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-amber-400 selection:text-slate-950">
+    <html lang="en" className="bg-slate-50 text-slate-900 antialiased scroll-smooth">
+      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-amber-400 selection:text-slate-950 font-sans">
         <AppProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

@@ -23,7 +23,10 @@ import {
   Zap,
   MapPin,
   Calendar,
-  Gift
+  Gift,
+  CheckCircle2,
+  TrendingUp,
+  Award
 } from 'lucide-react';
 import { SERVICES, CATEGORIES, SEASONAL_BUNDLES } from '@/data/services';
 import { useApp } from '@/context/AppContext';
@@ -74,45 +77,51 @@ export default function HomePage() {
   };
 
   return (
-    <div className="space-y-20 pb-20 overflow-hidden">
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(245,158,11,0.15),rgba(255,255,255,0))] pointer-events-none" />
+    <div className="space-y-24 pb-24 overflow-hidden">
+      {/* 1. HERO SECTION: Luminous, High-Converting Landing Page Header */}
+      <section className="relative pt-16 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-slate-50 to-slate-100/60 border-b border-slate-200/70">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_-15%,rgba(245,158,11,0.12),rgba(255,255,255,0))] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-xs font-semibold text-slate-200 shadow-md">
-              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-              <span className="text-emerald-400 font-bold">Licensed, Bonded & Insured ($2M)</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-amber-400 flex items-center gap-1">
-                <Star className="w-3.5 h-3.5 fill-amber-400" /> 4.9★ (2,800+ US Reviews)
+        <div className="max-w-7xl mx-auto relative z-10 space-y-12">
+          <div className="text-center max-w-3xl mx-auto space-y-5">
+            {/* Top Pill */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-xs text-xs font-semibold text-slate-700">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
+              <span className="text-emerald-700 font-bold">Licensed, Bonded & Insured ($2M)</span>
+              <span className="text-slate-300">•</span>
+              <span className="text-amber-600 flex items-center gap-1 font-bold">
+                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-500" /> 4.9★ Rated (2,800+ US Reviews)
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight leading-[1.1]">
-              Comprehensive Care for <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">
-                Your American Home
+            <h1 className="text-4xl sm:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
+              America’s Premier <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700">
+                Property Care & Storm Dispatch
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              From deep interior sanitization and carpet steam extraction to automated winter snow dispatch and high-pressure washing. Transparent upfront USD pricing with zero hidden surcharges.
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              Hospital-grade interior cleaning, carpet steam extraction, automated winter snow removal, high-pressure washing, and HVAC tune-ups with transparent upfront USD ($) pricing.
             </p>
           </div>
 
-          {/* Quick ZIP + Service Selector Widget */}
-          <div className="mt-10 max-w-3xl mx-auto bg-slate-900/90 border border-slate-800 rounded-3xl p-4 sm:p-6 shadow-2xl backdrop-blur-md">
+          {/* Quick ZIP + Service Selector Hero Card */}
+          <div className="max-w-3xl mx-auto bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-7 shadow-xl shadow-slate-200/50">
             <form onSubmit={handleHeroRoute} className="space-y-4">
-              <div className="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
-                <Zap className="w-4 h-4" />
-                <span>Instant Upfront Pricing & Dispatch Check</span>
+              <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                <div className="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
+                  <Zap className="w-4 h-4 text-amber-500" />
+                  <span>Instant Upfront Pricing & Dispatch Check</span>
+                </div>
+                <span className="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  Zero Hidden Fees
+                </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
                 <div className="sm:col-span-4">
-                  <label className="block text-[11px] font-semibold text-slate-300 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Your US ZIP Code
                   </label>
                   <div className="relative">
@@ -127,19 +136,19 @@ export default function HomePage() {
                         setHeroZip(e.target.value);
                         setHeroNotice(null);
                       }}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-xl pl-9 pr-3 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 font-mono"
+                      className="w-full bg-slate-50 border border-slate-300 rounded-xl pl-9 pr-3 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 focus:bg-white font-mono transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="sm:col-span-5">
-                  <label className="block text-[11px] font-semibold text-slate-300 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Select Desired Service
                   </label>
                   <select
                     value={heroService}
                     onChange={(e) => setHeroService(e.target.value)}
-                    className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 font-medium"
+                    className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2.5 text-xs text-slate-900 focus:outline-none focus:border-amber-500 focus:bg-white font-medium transition-colors"
                   >
                     {SERVICES.map((s) => (
                       <option key={s.id} value={s.id}>
@@ -149,94 +158,95 @@ export default function HomePage() {
                   </select>
                 </div>
 
-                <div className="sm:col-span-3 flex items-end">
+                <div className="sm:col-span-3">
                   <button
                     type="submit"
-                    className="w-full py-2.5 px-4 rounded-xl font-black text-xs text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-1.5 h-[42px]"
+                    className="w-full py-2.5 px-4 rounded-xl font-black text-xs text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 shadow-md shadow-amber-500/25 transition-all flex items-center justify-center gap-1.5 h-[42px] hover:-translate-y-0.5"
                   >
-                    <span>Get Quote</span>
+                    <span>Get Instant Quote</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
 
               {heroNotice && (
-                <div className="text-xs text-amber-300 bg-amber-950/40 p-2.5 rounded-xl border border-amber-500/30">
+                <div className="text-xs text-amber-800 bg-amber-50 p-2.5 rounded-xl border border-amber-200">
                   {heroNotice}
                 </div>
               )}
 
-              <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 border-t border-slate-800/80">
-                <span>✓ Zero credit card needed to view itemized quote</span>
-                <span className="text-emerald-400 font-semibold">✓ 100% Satisfaction Guarantee</span>
+              <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-100">
+                <span>✓ Pay upon job completion or card hold</span>
+                <span className="text-emerald-700 font-semibold">✓ 24-Hour Re-Service Guarantee</span>
               </div>
             </form>
           </div>
 
-          {/* Quick Metrics Strip */}
-          <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center">
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-              <div className="text-2xl sm:text-3xl font-black text-white">100%</div>
-              <div className="text-xs text-slate-400 mt-0.5">Satisfaction Guaranteed</div>
+          {/* Social Proof Stats Strip */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center pt-2">
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl sm:text-3xl font-black text-slate-900">100%</div>
+              <div className="text-xs text-slate-500 font-semibold mt-0.5">Satisfaction Guaranteed</div>
             </div>
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-              <div className="text-2xl sm:text-3xl font-black text-amber-400">10 Core</div>
-              <div className="text-xs text-slate-400 mt-0.5">Dedicated Home Services</div>
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl sm:text-3xl font-black text-amber-600">10 Core</div>
+              <div className="text-xs text-slate-500 font-semibold mt-0.5">Specialized Home Services</div>
             </div>
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-              <div className="text-2xl sm:text-3xl font-black text-emerald-400">&lt;45 min</div>
-              <div className="text-xs text-slate-400 mt-0.5">Priority Storm Dispatch</div>
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl sm:text-3xl font-black text-emerald-600">&lt;45 min</div>
+              <div className="text-xs text-slate-500 font-semibold mt-0.5">Average Storm Dispatch</div>
             </div>
-            <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-              <div className="text-2xl sm:text-3xl font-black text-white">$2,000,000</div>
-              <div className="text-xs text-slate-400 mt-0.5">General Liability Insurance</div>
+            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+              <div className="text-2xl sm:text-3xl font-black text-slate-900">$2,000,000</div>
+              <div className="text-xs text-slate-500 font-semibold mt-0.5">General Liability Coverage</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. SEASONAL SPOTLIGHT BANNER: WINTER STORM READINESS */}
+      {/* 2. SEASONAL SPOTLIGHT: WINTER STORM READINESS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-blue-950 via-slate-900 to-indigo-950 border border-blue-800/50 p-6 sm:p-10 shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-slate-900 via-slate-800 to-blue-950 text-white p-7 sm:p-12 shadow-2xl border border-slate-700">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs font-bold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/40 text-blue-300 text-xs font-bold">
                 <Snowflake className="w-3.5 h-3.5 animate-spin" /> Winter Storm & Sub-Zero Readiness Dispatch
               </div>
               <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
                 Winter Fortress Protection Package
               </h2>
               <p className="text-sm text-slate-300 leading-relaxed">
-                Be fully prepared before freezing temperatures and heavy snow hit your roof and driveway. Bundle <strong>Snow Removal</strong>, <strong>Pet-Safe De-Icing</strong>, <strong>Gutter Clearing</strong>, and <strong>21-Point Furnace Safety Tune-Up</strong> to save <strong>$170 USD</strong> instantly.
+                Be prepared before freezing weather and heavy snowfall strike. Bundle <strong>Snow Removal</strong>, <strong>Pet-Safe De-Icing</strong>, <strong>Gutter Clearing</strong>, and <strong>21-Point Furnace Heating Checkup</strong> to save <strong>$170 USD</strong> immediately.
               </p>
+
               <div className="flex flex-wrap gap-4 text-xs font-semibold text-slate-300 pt-1">
-                <span className="flex items-center gap-1 text-emerald-400">
-                  <CheckCircle className="w-4 h-4" /> 2-Inch Automatic Plow Trigger
+                <span className="flex items-center gap-1.5 text-emerald-400">
+                  <CheckCircle className="w-4 h-4" /> Automated 2" Plow Trigger
                 </span>
-                <span className="flex items-center gap-1 text-emerald-400">
+                <span className="flex items-center gap-1.5 text-emerald-400">
                   <CheckCircle className="w-4 h-4" /> Pet-Safe Magnesium Chloride
                 </span>
-                <span className="flex items-center gap-1 text-emerald-400">
-                  <CheckCircle className="w-4 h-4" /> Carbon Monoxide Heat Exchanger Check
+                <span className="flex items-center gap-1.5 text-emerald-400">
+                  <CheckCircle className="w-4 h-4" /> Carbon Monoxide Heat Exchanger Audit
                 </span>
               </div>
             </div>
 
-            <div className="lg:col-span-4 bg-slate-950/80 border border-slate-800 p-6 rounded-2xl text-center space-y-3">
-              <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
-                Winter Bundle Pricing:
+            <div className="lg:col-span-4 bg-slate-950/80 border border-slate-700/80 p-6 rounded-2xl text-center space-y-3">
+              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">
+                Winter Bundle Package:
               </span>
               <div className="flex items-center justify-center gap-2">
                 <span className="text-sm text-slate-500 line-through">$799</span>
-                <span className="text-3xl sm:text-4xl font-black text-emerald-400">$629</span>
+                <span className="text-4xl font-black text-emerald-400">$629</span>
                 <span className="text-xs text-slate-400">USD</span>
               </div>
-              <div className="text-[11px] font-bold text-amber-400 bg-amber-400/10 py-1 rounded-lg">
-                Instant Savings: $170 USD
+              <div className="text-xs font-bold text-amber-400 bg-amber-400/10 py-1 rounded-lg border border-amber-400/20">
+                You Save $170 USD Instantly
               </div>
               <Link
                 href="/book?bundle=winter-fortress"
-                className="w-full py-3 px-4 rounded-xl font-bold text-xs text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-lg shadow-amber-500/20 block transition-all"
+                className="w-full py-3 px-4 rounded-xl font-black text-xs text-slate-950 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 shadow-lg shadow-amber-500/20 block transition-all"
               >
                 Lock In Winter Bundle
               </Link>
@@ -249,14 +259,14 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/30">
               The 10 Core Services
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-2">
               Full-Spectrum Property Care
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-xl">
-              Every service is delivered by our direct, uniformed crew with transparent USD rates and modern equipment.
+            <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
+              Standardized execution by NorthStar’s direct, background-checked crew with transparent USD rates and modern machinery.
             </p>
           </div>
 
@@ -267,10 +277,10 @@ export default function HomePage() {
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`py-1.5 px-3 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
+                className={`py-2 px-3.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                   activeCategory === cat.id
-                    ? 'bg-amber-400 text-slate-950 shadow-md'
-                    : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'bg-white text-slate-600 hover:text-slate-950 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
                 {cat.name}
@@ -287,35 +297,35 @@ export default function HomePage() {
             return (
               <div
                 key={svc.id}
-                className="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl hover:border-slate-700 transition-all flex flex-col justify-between group"
+                className="bg-white border border-slate-200/90 rounded-3xl p-6 shadow-sm hover:shadow-xl hover:border-amber-400 transition-all flex flex-col justify-between group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-12 h-12 rounded-2xl bg-slate-800 group-hover:bg-amber-400 group-hover:text-slate-950 text-amber-400 flex items-center justify-center transition-colors shadow-inner">
+                    <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 group-hover:bg-amber-400 group-hover:text-slate-950 text-slate-800 flex items-center justify-center transition-colors shadow-xs">
                       <Icon className="w-6 h-6" />
                     </div>
                     {svc.badge && (
-                      <span className="text-[10px] font-bold uppercase tracking-wider bg-slate-800 text-emerald-400 px-2.5 py-1 rounded-full border border-slate-700">
+                      <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full border border-emerald-200">
                         {svc.badge}
                       </span>
                     )}
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-amber-700 transition-colors">
                       {svc.title}
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                    <p className="text-xs text-slate-500 mt-1 leading-relaxed">
                       {svc.shortDesc}
                     </p>
                   </div>
 
-                  <div className="pt-2 border-t border-slate-800/80 space-y-1">
-                    <div className="text-[11px] font-semibold text-slate-300">Included highlights:</div>
-                    <ul className="text-[11px] text-slate-400 space-y-0.5">
+                  <div className="pt-2 border-t border-slate-100 space-y-1">
+                    <div className="text-[11px] font-bold text-slate-700">Included highlights:</div>
+                    <ul className="text-[11px] text-slate-500 space-y-0.5">
                       {svc.includedFeatures.slice(0, 2).map((feat, i) => (
                         <li key={i} className="flex items-center gap-1.5">
-                          <CheckCircle className="w-3 h-3 text-emerald-400 flex-shrink-0" />
+                          <CheckCircle className="w-3 h-3 text-emerald-600 flex-shrink-0" />
                           <span className="line-clamp-1">{feat}</span>
                         </li>
                       ))}
@@ -323,25 +333,25 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-slate-800 mt-6 flex items-center justify-between">
+                <div className="pt-5 border-t border-slate-100 mt-6 flex items-center justify-between">
                   <div>
-                    <div className="text-[10px] text-slate-400 uppercase tracking-wider">Starting at</div>
-                    <div className="text-xl font-black text-emerald-400 font-mono">
+                    <div className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Starting at</div>
+                    <div className="text-2xl font-black text-emerald-600 font-mono">
                       ${currentPrice} <span className="text-xs text-slate-400 font-normal">USD</span>
                     </div>
-                    <div className="text-[10px] text-slate-500">{svc.priceUnit}</div>
+                    <div className="text-[10px] text-slate-500 font-medium">{svc.priceUnit}</div>
                   </div>
 
                   <div className="flex items-center gap-2">
                     <Link
                       href={`/services/${svc.slug}`}
-                      className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors text-xs font-semibold"
+                      className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 transition-colors text-xs font-bold"
                     >
                       Details
                     </Link>
                     <Link
                       href={`/book?service=${svc.id}`}
-                      className="py-2.5 px-3.5 rounded-xl font-bold text-xs text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors flex items-center gap-1"
+                      className="py-2.5 px-4 rounded-xl font-bold text-xs text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors flex items-center gap-1 shadow-xs"
                     >
                       <span>Book</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -356,7 +366,7 @@ export default function HomePage() {
 
       {/* 4. LIVE INTERACTIVE MULTI-SERVICE QUOTE PREVIEWER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6">
+        <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl space-y-6 border border-slate-800">
           <div className="max-w-2xl">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
               Interactive Estimator
@@ -364,8 +374,8 @@ export default function HomePage() {
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-2">
               Live Homepage Quote Simulator
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              Test real-time parameter changes for any of our 10 services right here. All pricing updates dynamically in USD ($).
+            <p className="text-xs sm:text-sm text-slate-300 mt-1">
+              Select any of our 10 services to test real-time pricing parameter adjustments.
             </p>
           </div>
 
@@ -379,7 +389,7 @@ export default function HomePage() {
                 className={`py-2 px-3.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${
                   previewServiceId === s.id
                     ? 'bg-amber-400 text-slate-950 shadow-md'
-                    : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800'
+                    : 'bg-slate-800 text-slate-300 hover:text-white'
                 }`}
               >
                 {s.title}
@@ -392,21 +402,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. BEFORE & AFTER SHOWCASE */}
+      {/* 5. BEFORE & AFTER PROOF SHOWCASE */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-            Proven Results
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            Visible Transformations
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-2">
             Interactive Before & After Gallery
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Drag the slider handle sideways to see the real transformation achieved by our equipment.
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Drag the handle sideways to see the real difference our commercial equipment makes.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm">
           <BeforeAfterSlider
             beforeImage="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80"
             afterImage="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1000&q=80"
@@ -415,31 +425,31 @@ export default function HomePage() {
           />
 
           <div className="space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
-              Project Case Study #849
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
+              Case Study #849
             </span>
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-2xl font-bold text-slate-900">
               Residential Siding & Concrete Driveway Restoration
             </h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              This two-story suburban home had 4 years of stubborn algae growth on north-facing vinyl siding and deeply embedded oil spots on the driveway. Our crew performed a low-pressure algaecide soft-wash followed by a 4000 PSI rotary ground wash.
+            <p className="text-xs text-slate-600 leading-relaxed">
+              This suburban property had heavy algae growth on vinyl siding and embedded vehicle oil spots on the driveway. Our team performed a low-pressure algaecide soft-wash followed by a 4000 PSI rotary ground blast.
             </p>
 
             <div className="grid grid-cols-2 gap-3 text-xs pt-2">
-              <div className="bg-slate-900 border border-slate-800 p-3 rounded-xl">
-                <div className="text-slate-400">Total Project USD:</div>
-                <div className="text-lg font-black text-emerald-400 font-mono">$310.00 USD</div>
+              <div className="bg-slate-50 border border-slate-200 p-3 rounded-xl">
+                <div className="text-slate-500">Total Project USD:</div>
+                <div className="text-xl font-black text-emerald-600 font-mono">$310.00 USD</div>
               </div>
-              <div className="bg-slate-900 border border-slate-800 p-3 rounded-xl">
-                <div className="text-slate-400">Turnaround Time:</div>
-                <div className="text-lg font-bold text-white">2.5 Hours</div>
+              <div className="bg-slate-50 border border-slate-200 p-3 rounded-xl">
+                <div className="text-slate-500">Turnaround Time:</div>
+                <div className="text-xl font-bold text-slate-900">2.5 Hours</div>
               </div>
             </div>
 
             <div className="pt-2">
               <Link
                 href="/gallery"
-                className="inline-flex items-center gap-2 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors"
               >
                 <span>View All 10 Service Before & After Comparisons</span>
                 <ArrowRight className="w-4 h-4" />
@@ -452,14 +462,14 @@ export default function HomePage() {
       {/* 6. HOW IT WORKS FLOW */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-            Hassle-Free Booking
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+            Hassle-Free Care
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-2">
             How NorthStar Works
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Four simple steps from instant quote to guaranteed satisfaction.
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            Standardized execution from instant quote to guaranteed satisfaction.
           </p>
         </div>
 
@@ -488,32 +498,32 @@ export default function HomePage() {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-6 relative space-y-3"
+              className="bg-white border border-slate-200/90 rounded-3xl p-6 relative space-y-3 shadow-xs hover:shadow-md transition-shadow"
             >
-              <div className="text-3xl font-black text-amber-400/40 font-mono">
+              <div className="text-3xl font-black text-amber-500 font-mono">
                 {item.step}
               </div>
-              <h3 className="text-base font-bold text-white">{item.title}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed">{item.desc}</p>
+              <h3 className="text-base font-bold text-slate-900">{item.title}</h3>
+              <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 7. VERIFIED CUSTOMER REVIEWS TEASER */}
+      {/* 7. VERIFIED CUSTOMER REVIEWS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
               Verified Feedback
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-2">
               What Homeowners Say
             </h2>
           </div>
           <Link
             href="/reviews"
-            className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1.5"
+            className="text-xs font-bold text-amber-600 hover:underline flex items-center gap-1.5"
           >
             <span>Read All Verified Customer Reviews</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -546,7 +556,7 @@ export default function HomePage() {
           ].map((r, i) => (
             <div
               key={i}
-              className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4 flex flex-col justify-between"
+              className="bg-white border border-slate-200 rounded-3xl p-6 space-y-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-1">
@@ -554,17 +564,17 @@ export default function HomePage() {
                     <Star key={s} className="w-4 h-4 text-amber-400 fill-amber-400" />
                   ))}
                 </div>
-                <p className="text-xs text-slate-300 italic leading-relaxed">
+                <p className="text-xs text-slate-600 italic leading-relaxed">
                   "{r.text}"
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                 <div>
-                  <div className="font-bold text-white">{r.name}</div>
-                  <div className="text-[11px] text-slate-500">{r.loc}</div>
+                  <div className="font-bold text-slate-900">{r.name}</div>
+                  <div className="text-[11px] text-slate-400">{r.loc}</div>
                 </div>
-                <span className="text-[10px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                   {r.svc}
                 </span>
               </div>
@@ -575,15 +585,15 @@ export default function HomePage() {
 
       {/* 8. 100% SATISFACTION GUARANTEE STRIP */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-slate-900 border border-slate-800 p-8 sm:p-12 text-center space-y-4 relative overflow-hidden">
+        <div className="rounded-3xl bg-slate-900 text-white p-8 sm:p-12 text-center space-y-4 relative overflow-hidden shadow-xl border border-slate-800">
           <div className="w-16 h-16 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mx-auto border border-amber-400/20">
             <ShieldCheck className="w-8 h-8" />
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-white">
             The NorthStar 100% Satisfaction & 24-Hour Re-Service Promise
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            If any aspect of your property service fails to meet your expectations, notify our dispatch team within 24 hours. A supervisor will return to re-service the area at zero charge to you. No excuses, no hassle.
+          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            If any aspect of your service does not meet your expectations, notify our dispatch team within 24 hours. A supervisor will return to re-service the area at zero charge to you. No excuses, no hassle.
           </p>
           <div className="pt-2">
             <Link

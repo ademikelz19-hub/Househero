@@ -7,9 +7,7 @@ import {
   Compass,
   Phone,
   Shield,
-  ChevronDown,
-  Menu,
-  X,
+  Star,
   Sparkles,
   Layers,
   Droplet,
@@ -19,375 +17,160 @@ import {
   Flame,
   Leaf,
   ShieldCheck,
-  User,
-  CalendarCheck,
   Calculator,
   Gift,
   Image as ImageIcon,
   MapPin,
-  Star,
   Clock,
-  ArrowRight
+  User,
+  ArrowRight,
+  Menu,
+  X,
+  FileText,
+  HelpCircle,
+  Settings,
+  ChevronRight
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
+import { SERVICES } from '@/data/services';
 
 export default function Navbar() {
   const pathname = usePathname();
   const { bookings, basePrices } = useApp();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menus on route change
+  // Close drawer on page navigation
   useEffect(() => {
-    setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
+    setDrawerOpen(false);
   }, [pathname]);
 
-  const serviceCategories = [
-    {
-      name: 'Interior Care',
-      services: [
-        {
-          name: 'House & Deep Cleaning',
-          slug: 'house-deep-cleaning',
-          price: basePrices['house-deep-cleaning'] || 120,
-          unit: 'base',
-          desc: '64-point touchpoint sanitization & deep scrub',
-          icon: Sparkles
-        },
-        {
-          name: 'Carpet Cleaning',
-          slug: 'carpet-cleaning',
-          price: basePrices['carpet-cleaning'] || 129,
-          unit: '3 rooms',
-          desc: '220°F thermal extraction & pet enzyme wash',
-          icon: Layers
-        },
-        {
-          name: 'Junk Removal',
-          slug: 'junk-removal',
-          price: basePrices['junk-removal'] || 89,
-          unit: 'curbside',
-          desc: 'Appliance recycling & full-service truck haul',
-          icon: Truck
-        }
-      ]
-    },
-    {
-      name: 'Exterior & Yard',
-      services: [
-        {
-          name: 'Pressure Washing',
-          slug: 'pressure-washing',
-          price: basePrices['pressure-washing'] || 140,
-          unit: 'min',
-          desc: 'Concrete blast & low-PSI siding soft-wash',
-          icon: Wrench
-        },
-        {
-          name: 'Gutter Cleaning',
-          slug: 'gutter-cleaning',
-          price: basePrices['gutter-cleaning'] || 135,
-          unit: '150 ft',
-          desc: 'Hand cleanout & pressurized downspout jetting',
-          icon: Droplet
-        },
-        {
-          name: 'Lawn & Garden Cleanup',
-          slug: 'lawn-garden-cleanup',
-          price: basePrices['lawn-garden-cleanup'] || 130,
-          unit: 'base',
-          desc: 'Seasonal leaf removal, trimming & mulch bed prep',
-          icon: Leaf
-        }
-      ]
-    },
-    {
-      name: 'Winter & Storm',
-      services: [
-        {
-          name: 'Snow Removal',
-          slug: 'snow-removal',
-          price: basePrices['snow-removal'] || 65,
-          unit: 'per push',
-          desc: 'Automated 2" trigger plow & walkway clearing',
-          icon: Snowflake
-        },
-        {
-          name: 'Driveway De-Icing',
-          slug: 'driveway-walkway-de-icing',
-          price: basePrices['driveway-walkway-de-icing'] || 55,
-          unit: 'visit',
-          desc: 'Pet-safe magnesium chloride ice melting',
-          icon: ShieldCheck
-        }
-      ]
-    },
-    {
-      name: 'Systems & Safety',
-      services: [
-        {
-          name: 'HVAC Maintenance',
-          slug: 'hvac-maintenance',
-          price: basePrices['hvac-maintenance'] || 115,
-          unit: 'tune-up',
-          desc: '21-point furnace, heat pump & AC safety check',
-          icon: Wrench
-        },
-        {
-          name: 'Dryer Vent Cleaning',
-          slug: 'dryer-vent-cleaning',
-          price: basePrices['dryer-vent-cleaning'] || 119,
-          unit: 'flat exit',
-          desc: 'Rotary lint purge & airflow CFM velocity test',
-          icon: Flame
-        }
-      ]
+  const getServiceIcon = (name: string) => {
+    switch (name) {
+      case 'Sparkles': return Sparkles;
+      case 'Layers': return Layers;
+      case 'Droplet': return Droplet;
+      case 'Snowflake': return Snowflake;
+      case 'Wrench': return Wrench;
+      case 'Truck': return Truck;
+      case 'Flame': return Flame;
+      case 'Leaf': return Leaf;
+      case 'ShieldCheck': return ShieldCheck;
+      default: return Wrench;
     }
-  ];
+  };
 
   return (
-    <header className="sticky top-0 z-50 w-full transition-all duration-200">
-      {/* Top Authority & Emergency Bar */}
-      <div className="bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
-            <span className="flex items-center gap-1 text-emerald-400 font-medium">
-              <Shield className="w-3.5 h-3.5" /> Licensed, Bonded & Insured ($2M Liability)
+    <header className="sticky top-0 z-50 w-full">
+      {/* Top Pre-Header Bar: Trust & Emergency Call */}
+      <div className="bg-slate-900 text-slate-300 text-[11px] py-1.5 px-4 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          <div className="flex items-center gap-3 overflow-hidden text-ellipsis whitespace-nowrap">
+            <span className="flex items-center gap-1 text-emerald-400 font-semibold">
+              <Shield className="w-3 h-3 text-emerald-400" /> $2M Insured & Bonded
             </span>
-            <span className="hidden md:inline-block text-slate-600">•</span>
-            <span className="flex items-center gap-1 text-amber-400 font-medium">
-              <Star className="w-3.5 h-3.5 fill-amber-400" /> 4.9★ Rated (2,800+ Verified US Reviews)
+            <span className="text-slate-600 hidden sm:inline">•</span>
+            <span className="flex items-center gap-1 text-amber-400 font-semibold">
+              <Star className="w-3 h-3 fill-amber-400" /> 4.9★ Rated (2,800+ Verified)
             </span>
-            <span className="hidden lg:inline-block text-slate-600">•</span>
-            <span className="hidden lg:flex items-center gap-1 text-slate-300">
-              <Clock className="w-3.5 h-3.5 text-blue-400" /> Same-Day & 24/7 Storm Dispatch Available
-            </span>
+            <span className="text-slate-600 hidden md:inline">•</span>
+            <span className="text-slate-400 hidden md:inline">100% Satisfaction Guarantee</span>
           </div>
 
-          <div className="flex items-center gap-4 text-xs font-semibold">
+          <div className="flex items-center gap-3 font-semibold text-slate-200">
             <a
               href="tel:18005822273"
-              className="flex items-center gap-1.5 text-amber-300 hover:text-white transition-colors"
+              className="flex items-center gap-1 text-amber-400 hover:text-amber-300 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-              <span>24/7 Hotline: (800) 582-CARE</span>
+              <Phone className="w-3 h-3 animate-pulse" />
+              <span>(800) 582-CARE</span>
             </a>
             <span className="text-slate-700">|</span>
-            <Link
-              href="/portal"
-              className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors"
-            >
-              <User className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Customer Portal</span>
-              {bookings.length > 0 && (
-                <span className="bg-emerald-500 text-slate-950 text-[10px] font-bold px-1.5 py-0.2 rounded-full">
-                  {bookings.length}
-                </span>
-              )}
-            </Link>
+            <span className="text-emerald-400 font-mono text-[10px] uppercase tracking-wider bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
+              USD ($)
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
+      {/* Main Sleek Frosted Glass Header */}
       <nav
-        className={`w-full transition-all ${
-          scrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-xl py-3 border-b border-slate-800' : 'bg-slate-900 py-4 border-b border-slate-800/80'
+        className={`w-full transition-all duration-200 ${
+          scrolled
+            ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-200/80'
+            : 'bg-white/90 backdrop-blur-sm py-3.5 border-b border-slate-100 shadow-sm'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-              <Compass className="w-6 h-6 text-slate-950" />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-slate-900 via-slate-800 to-slate-900 text-amber-400 flex items-center justify-center shadow-md group-hover:scale-105 transition-all border border-slate-800">
+              <Compass className="w-5 h-5 text-amber-400" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl font-black tracking-tight text-white">NORTHSTAR</span>
-                <span className="text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/30">
-                  Care
+              <div className="flex items-center gap-1.5 leading-none">
+                <span className="text-xl font-black tracking-tight text-slate-900 group-hover:text-amber-600 transition-colors">
+                  NORTHSTAR
+                </span>
+                <span className="text-[10px] font-extrabold uppercase tracking-wider bg-amber-500/10 text-amber-700 px-1.5 py-0.5 rounded border border-amber-500/30">
+                  CARE
                 </span>
               </div>
-              <p className="text-[10px] tracking-wider text-slate-400 uppercase font-medium">
-                Property Care & Storm Services
+              <p className="text-[10px] tracking-wider text-slate-500 uppercase font-semibold mt-0.5">
+                Property Care & Storm Dispatch
               </p>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden xl:flex items-center gap-6 text-sm font-medium text-slate-300">
-            {/* Services Dropdown Trigger */}
-            <div
-              className="relative"
-              onMouseEnter={() => setServicesDropdownOpen(true)}
-              onMouseLeave={() => setServicesDropdownOpen(false)}
+          {/* Center Navigation Shortcuts (Clean, minimal) */}
+          <div className="hidden md:flex items-center gap-6 text-xs font-bold text-slate-600">
+            <Link
+              href="/services"
+              className={`hover:text-slate-950 transition-colors ${
+                pathname.startsWith('/services') ? 'text-amber-600' : ''
+              }`}
             >
-              <button
-                className={`flex items-center gap-1.5 py-2 px-3 rounded-lg transition-colors ${
-                  pathname.startsWith('/services') || servicesDropdownOpen
-                    ? 'text-white bg-slate-800/80'
-                    : 'hover:text-white hover:bg-slate-800/50'
-                }`}
-              >
-                <span>Services</span>
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    servicesDropdownOpen ? 'rotate-180 text-amber-400' : ''
-                  }`}
-                />
-              </button>
-
-              {/* Mega-Menu Dropdown Panel */}
-              {servicesDropdownOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-[920px] bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl p-6 z-50 grid grid-cols-4 gap-6 animate-in fade-in slide-in-from-top-2 duration-150">
-                  {serviceCategories.map((cat) => (
-                    <div key={cat.name} className="space-y-3">
-                      <div className="text-xs font-bold uppercase tracking-wider text-amber-400 border-b border-slate-800 pb-2">
-                        {cat.name}
-                      </div>
-                      <div className="space-y-2">
-                        {cat.services.map((svc) => {
-                          const IconComp = svc.icon;
-                          return (
-                            <Link
-                              key={svc.slug}
-                              href={`/services/${svc.slug}`}
-                              className="group block p-2 rounded-xl hover:bg-slate-800/80 transition-all border border-transparent hover:border-slate-700/60"
-                            >
-                              <div className="flex items-center gap-2 mb-1">
-                                <div className="p-1 rounded-md bg-slate-800 text-amber-400 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
-                                  <IconComp className="w-3.5 h-3.5" />
-                                </div>
-                                <span className="font-semibold text-xs text-white group-hover:text-amber-300 transition-colors leading-tight">
-                                  {svc.name}
-                                </span>
-                              </div>
-                              <p className="text-[11px] text-slate-400 line-clamp-1 pl-6">
-                                {svc.desc}
-                              </p>
-                              <div className="pl-6 mt-1 flex items-center justify-between text-[11px]">
-                                <span className="text-emerald-400 font-bold">
-                                  From ${svc.price}
-                                </span>
-                                <span className="text-slate-500 text-[10px]">
-                                  {svc.unit}
-                                </span>
-                              </div>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  ))}
-
-                  <div className="col-span-4 bg-slate-950/70 rounded-xl p-3 border border-slate-800 flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2 text-slate-300">
-                      <Sparkles className="w-4 h-4 text-amber-400" />
-                      <span>
-                        Bundle 2 services for <strong>10% off</strong>, or 3+ services for <strong>15% off</strong>!
-                      </span>
-                    </div>
-                    <Link
-                      href="/pricing"
-                      className="text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1 group"
-                    >
-                      Master Pricing Calculator
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-
+              Services Directory
+            </Link>
             <Link
               href="/pricing"
-              className={`flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg transition-colors ${
-                pathname === '/pricing' ? 'text-white bg-slate-800' : 'hover:text-white hover:bg-slate-800/50'
+              className={`flex items-center gap-1 hover:text-slate-950 transition-colors ${
+                pathname === '/pricing' ? 'text-amber-600' : ''
               }`}
             >
-              <Calculator className="w-4 h-4 text-emerald-400" />
+              <Calculator className="w-3.5 h-3.5 text-emerald-600" />
               <span>Pricing Calculator</span>
             </Link>
-
             <Link
               href="/bundles"
-              className={`flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg transition-colors ${
-                pathname === '/bundles' ? 'text-white bg-slate-800' : 'hover:text-white hover:bg-slate-800/50'
+              className={`flex items-center gap-1 hover:text-slate-950 transition-colors ${
+                pathname === '/bundles' ? 'text-amber-600' : ''
               }`}
             >
-              <Gift className="w-4 h-4 text-amber-400" />
+              <Gift className="w-3.5 h-3.5 text-amber-500" />
               <span>Seasonal Bundles</span>
-            </Link>
-
-            <Link
-              href="/gallery"
-              className={`flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg transition-colors ${
-                pathname === '/gallery' ? 'text-white bg-slate-800' : 'hover:text-white hover:bg-slate-800/50'
-              }`}
-            >
-              <ImageIcon className="w-4 h-4 text-blue-400" />
-              <span>Gallery</span>
-            </Link>
-
-            <Link
-              href="/service-areas"
-              className={`flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg transition-colors ${
-                pathname === '/service-areas' ? 'text-white bg-slate-800' : 'hover:text-white hover:bg-slate-800/50'
-              }`}
-            >
-              <MapPin className="w-4 h-4 text-red-400" />
-              <span>Service Areas</span>
-            </Link>
-
-            <Link
-              href="/reviews"
-              className={`flex items-center gap-1.5 py-1.5 px-2.5 rounded-lg transition-colors ${
-                pathname === '/reviews' ? 'text-white bg-slate-800' : 'hover:text-white hover:bg-slate-800/50'
-              }`}
-            >
-              <Star className="w-4 h-4 text-yellow-400" />
-              <span>Reviews</span>
-            </Link>
-
-            <Link
-              href="/about"
-              className={`py-1.5 px-2.5 rounded-lg transition-colors ${
-                pathname === '/about' ? 'text-white bg-slate-800' : 'hover:text-white hover:bg-slate-800/50'
-              }`}
-            >
-              About
-            </Link>
-
-            <Link
-              href="/contact"
-              className={`py-1.5 px-2.5 rounded-lg transition-colors ${
-                pathname === '/contact' ? 'text-white bg-slate-800' : 'hover:text-white hover:bg-slate-800/50'
-              }`}
-            >
-              Contact
             </Link>
           </div>
 
-          {/* Quick CTA Actions */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Right Action Cluster: Portal, Book CTA, and Sleek Hamburger Menu */}
+          <div className="flex items-center gap-3">
             <Link
               href="/portal"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-200 bg-slate-800 hover:bg-slate-700/80 border border-slate-700 transition-all hover:text-white"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-200/80"
+              title="Customer Self-Service Portal"
             >
-              <CalendarCheck className="w-4 h-4 text-emerald-400" />
+              <User className="w-3.5 h-3.5 text-emerald-600" />
               <span>Portal</span>
               {bookings.length > 0 && (
-                <span className="bg-emerald-500 text-slate-950 text-[10px] font-bold px-1.5 py-0.2 rounded-full">
+                <span className="bg-emerald-600 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">
                   {bookings.length}
                 </span>
               )}
@@ -395,134 +178,299 @@ export default function Navbar() {
 
             <Link
               href="/book"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-xl text-xs font-black text-slate-950 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 shadow-md shadow-amber-500/20 hover:shadow-lg transition-all hover:-translate-y-0.5"
             >
-              <Sparkles className="w-4 h-4" />
-              <span>Book Service Now</span>
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Book Service</span>
             </Link>
-          </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex xl:hidden items-center gap-2">
-            <Link
-              href="/book"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300"
-            >
-              <span>Book</span>
-            </Link>
+            {/* Sleek Hamburger Menu Button */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none"
-              aria-label="Toggle menu"
+              type="button"
+              onClick={() => setDrawerOpen(!drawerOpen)}
+              className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-md transition-all border border-slate-800 focus:outline-none"
+              aria-label="Open full site menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <Menu className="w-4 h-4 text-amber-400" />
+              <span className="hidden sm:inline">Menu</span>
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Slide-Down Drawer */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden bg-slate-900 border-b border-slate-800 px-4 pt-4 pb-6 space-y-4 max-h-[85vh] overflow-y-auto">
-            <div className="grid grid-cols-2 gap-2 pb-3 border-b border-slate-800">
+      {/* FULL-SCALE SLEEK HAMBURGER DRAWER (ALL PAGES) */}
+      {drawerOpen && (
+        <div className="fixed inset-0 z-50 flex justify-end bg-slate-950/60 backdrop-blur-md animate-in fade-in duration-200">
+          <div
+            className="w-full max-w-2xl bg-white h-full shadow-2xl flex flex-col justify-between overflow-y-auto border-l border-slate-200 animate-in slide-in-from-right duration-250"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Drawer Header */}
+            <div className="p-6 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-black">
+                  <Compass className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-base font-black tracking-tight text-white">
+                    NorthStar Navigation
+                  </div>
+                  <div className="text-[10px] text-emerald-400 font-semibold flex items-center gap-1">
+                    <ShieldCheck className="w-3 h-3" /> All 10 Services • 100% Interactive
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setDrawerOpen(false)}
+                className="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center hover:bg-slate-700 transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Drawer Body: Categorized Links for All Pages */}
+            <div className="p-6 sm:p-8 space-y-8 flex-1">
+              {/* Category 1: The 10 Core Services */}
+              <div>
+                <div className="flex items-center justify-between pb-2 border-b border-slate-200 mb-3">
+                  <span className="text-xs font-black uppercase tracking-wider text-slate-900">
+                    The 10 Core Property Care Services
+                  </span>
+                  <Link
+                    href="/services"
+                    onClick={() => setDrawerOpen(false)}
+                    className="text-[11px] font-bold text-amber-600 hover:underline flex items-center gap-0.5"
+                  >
+                    Directory <ChevronRight className="w-3 h-3" />
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {SERVICES.map((s) => {
+                    const Icon = getServiceIcon(s.iconName);
+                    const price = basePrices[s.id] || s.startingPrice;
+                    return (
+                      <Link
+                        key={s.id}
+                        href={`/services/${s.slug}`}
+                        onClick={() => setDrawerOpen(false)}
+                        className="group flex items-center justify-between p-2.5 rounded-xl border border-slate-100 hover:border-amber-300 bg-slate-50 hover:bg-amber-50/50 transition-all"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-7 h-7 rounded-lg bg-white text-slate-700 group-hover:bg-amber-400 group-hover:text-slate-950 flex items-center justify-center shadow-xs transition-colors">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-slate-900 group-hover:text-amber-800 line-clamp-1 leading-tight">
+                              {s.title}
+                            </div>
+                            <div className="text-[10px] text-slate-500">{s.avgDuration}</div>
+                          </div>
+                        </div>
+
+                        <span className="text-xs font-black text-emerald-600 font-mono">
+                          ${price}
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Category 2: Calculators, Bundles & Checkout */}
+              <div>
+                <span className="text-xs font-black uppercase tracking-wider text-slate-900 block pb-2 border-b border-slate-200 mb-3">
+                  Pricing, Bundles & Booking
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <Link
+                    href="/pricing"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-300 transition-colors group"
+                  >
+                    <div className="flex items-center gap-2 font-bold text-xs text-slate-900 group-hover:text-emerald-800">
+                      <Calculator className="w-4 h-4 text-emerald-600" />
+                      <span>Pricing Calculator</span>
+                    </div>
+                    <p className="text-[10px] text-slate-500 mt-1">Multi-service bundle estimator</p>
+                  </Link>
+
+                  <Link
+                    href="/bundles"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50 hover:border-amber-300 transition-colors group"
+                  >
+                    <div className="flex items-center gap-2 font-bold text-xs text-slate-900 group-hover:text-amber-800">
+                      <Gift className="w-4 h-4 text-amber-500" />
+                      <span>Seasonal Bundles</span>
+                    </div>
+                    <p className="text-[10px] text-slate-500 mt-1">Save up to $481 USD</p>
+                  </Link>
+
+                  <Link
+                    href="/book"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-3 rounded-xl border border-amber-300 bg-amber-50/70 hover:bg-amber-100 transition-colors group"
+                  >
+                    <div className="flex items-center gap-2 font-bold text-xs text-amber-900">
+                      <Sparkles className="w-4 h-4 text-amber-600" />
+                      <span>Online Checkout</span>
+                    </div>
+                    <p className="text-[10px] text-amber-700/80 mt-1">5-Step instant booking wizard</p>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Category 3: Customer Portal, Gallery & Service Areas */}
+              <div>
+                <span className="text-xs font-black uppercase tracking-wider text-slate-900 block pb-2 border-b border-slate-200 mb-3">
+                  Client Hub & Portfolios
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                  <Link
+                    href="/portal"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors flex items-center justify-between"
+                  >
+                    <div>
+                      <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                        <User className="w-3.5 h-3.5 text-blue-600" />
+                        <span>Customer Portal</span>
+                      </div>
+                      <div className="text-[10px] text-slate-500 mt-0.5">Manage bookings & invoices</div>
+                    </div>
+                    {bookings.length > 0 && (
+                      <span className="bg-emerald-600 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">
+                        {bookings.length}
+                      </span>
+                    )}
+                  </Link>
+
+                  <Link
+                    href="/gallery"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors"
+                  >
+                    <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                      <ImageIcon className="w-3.5 h-3.5 text-amber-600" />
+                      <span>Before / After Gallery</span>
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Interactive drag comparisons</div>
+                  </Link>
+
+                  <Link
+                    href="/service-areas"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors"
+                  >
+                    <div className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                      <MapPin className="w-3.5 h-3.5 text-red-600" />
+                      <span>Service Areas</span>
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">ZIP search & response hubs</div>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Category 4: Trust, Safety & Support */}
+              <div>
+                <span className="text-xs font-black uppercase tracking-wider text-slate-900 block pb-2 border-b border-slate-200 mb-3">
+                  Company, Trust & Help
+                </span>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-semibold text-slate-700">
+                  <Link
+                    href="/reviews"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
+                  >
+                    <Star className="w-3.5 h-3.5 text-amber-500" />
+                    <span>Reviews (4.9★)</span>
+                  </Link>
+
+                  <Link
+                    href="/about"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
+                  >
+                    <Shield className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>About Us</span>
+                  </Link>
+
+                  <Link
+                    href="/satisfaction-guarantee"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>24h Guarantee</span>
+                  </Link>
+
+                  <Link
+                    href="/faq"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
+                  >
+                    <HelpCircle className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Help & FAQs</span>
+                  </Link>
+
+                  <Link
+                    href="/contact"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-amber-600" />
+                    <span>Emergency Contact</span>
+                  </Link>
+
+                  <Link
+                    href="/admin"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors flex items-center gap-1.5 text-amber-800"
+                  >
+                    <Settings className="w-3.5 h-3.5" />
+                    <span>Admin Console</span>
+                  </Link>
+
+                  <Link
+                    href="/privacy-policy"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors"
+                  >
+                    Privacy Policy
+                  </Link>
+
+                  <Link
+                    href="/terms-of-service"
+                    onClick={() => setDrawerOpen(false)}
+                    className="p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 hover:text-slate-950 transition-colors"
+                  >
+                    Terms of Service
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Drawer Footer CTA */}
+            <div className="p-6 bg-slate-900 border-t border-slate-800 flex items-center justify-between text-xs text-slate-300">
+              <div>
+                <div className="text-white font-bold">Need Immediate Storm Dispatch?</div>
+                <div className="text-slate-400">Call (800) 582-CARE • 24/7 Crew Standby</div>
+              </div>
               <Link
                 href="/book"
-                className="w-full text-center py-2.5 rounded-xl text-xs font-bold text-slate-950 bg-amber-400"
+                onClick={() => setDrawerOpen(false)}
+                className="py-2.5 px-4 rounded-xl font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 shadow-md transition-colors"
               >
-                Book Service Now
-              </Link>
-              <Link
-                href="/portal"
-                className="w-full text-center py-2.5 rounded-xl text-xs font-semibold text-white bg-slate-800 border border-slate-700"
-              >
-                Customer Portal ({bookings.length})
-              </Link>
-            </div>
-
-            <div className="space-y-1">
-              <div className="text-xs font-bold uppercase tracking-wider text-amber-400 px-2 py-1">
-                All 10 Services
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pl-2">
-                {serviceCategories.flatMap((c) => c.services).map((svc) => (
-                  <Link
-                    key={svc.slug}
-                    href={`/services/${svc.slug}`}
-                    className="flex items-center justify-between p-2 rounded-lg text-xs text-slate-300 hover:text-white hover:bg-slate-800"
-                  >
-                    <span>{svc.name}</span>
-                    <span className="text-emerald-400 font-bold">${svc.price}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-2 border-t border-slate-800 space-y-1 text-sm font-medium">
-              <Link
-                href="/pricing"
-                className="flex items-center gap-2 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
-              >
-                <Calculator className="w-4 h-4 text-emerald-400" />
-                <span>Master Pricing Calculator</span>
-              </Link>
-              <Link
-                href="/bundles"
-                className="flex items-center gap-2 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
-              >
-                <Gift className="w-4 h-4 text-amber-400" />
-                <span>Seasonal Bundles</span>
-              </Link>
-              <Link
-                href="/gallery"
-                className="flex items-center gap-2 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
-              >
-                <ImageIcon className="w-4 h-4 text-blue-400" />
-                <span>Before & After Gallery</span>
-              </Link>
-              <Link
-                href="/service-areas"
-                className="flex items-center gap-2 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
-              >
-                <MapPin className="w-4 h-4 text-red-400" />
-                <span>Service Areas & Coverage</span>
-              </Link>
-              <Link
-                href="/reviews"
-                className="flex items-center gap-2 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
-              >
-                <Star className="w-4 h-4 text-yellow-400" />
-                <span>Customer Reviews</span>
-              </Link>
-              <Link
-                href="/about"
-                className="flex items-center gap-2 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
-              >
-                <Shield className="w-4 h-4 text-emerald-400" />
-                <span>About & Safety Standards</span>
-              </Link>
-              <Link
-                href="/faq"
-                className="flex items-center gap-2 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
-              >
-                <Compass className="w-4 h-4 text-indigo-400" />
-                <span>Help Center & FAQ</span>
-              </Link>
-              <Link
-                href="/contact"
-                className="flex items-center gap-2 p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800"
-              >
-                <Phone className="w-4 h-4 text-amber-400" />
-                <span>Emergency Contact & Dispatch</span>
-              </Link>
-              <Link
-                href="/admin"
-                className="flex items-center gap-2 p-2 rounded-lg text-amber-300/80 hover:text-amber-300 hover:bg-slate-800 text-xs"
-              >
-                <span>⚙ Operations & Price Manager (Admin)</span>
+                Book Now
               </Link>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   );
 }
