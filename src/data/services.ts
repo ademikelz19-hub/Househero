@@ -412,8 +412,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Brandon P.', rating: 5, date: '1 week ago', location: 'Portland, OR', comment: 'Our half-acre yard was drowning in maple leaves and overgrown boxwoods. House Hero spent 4 hours and left it looking like an English garden. Superb.' },
       { author: 'Emily N.', rating: 5, date: '1 month ago', location: 'Boise, ID', comment: 'Honest upfront estimate, showed up on time with a crew of three, and even blew off our back deck and front walkway.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1558904541-efa8c4a52d31?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1592417817098-8f3d6eb2251a?auto=format&fit=crop&w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1590682680695-43b964a3ae17?auto=format&fit=crop&w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=800&q=80',
     caseStudyCost: 280,
     caseStudyTitle: 'Quarter-Acre Fall Leaf Cleanup + Shrub Shaping & Mulch'
   },

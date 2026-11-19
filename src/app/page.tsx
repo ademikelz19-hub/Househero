@@ -1,11 +1,6 @@
 import Link from 'next/link';
 import {
   Home,
-  Droplets,
-  Wrench,
-  Shield,
-  ShieldCheck,
-  Award,
   CheckCircle2,
   Calendar,
   Clock,
@@ -15,42 +10,25 @@ import {
   ArrowRight,
   Star,
   CheckCheck,
-  Sparkles
+  Sparkles,
+  Shield,
+  Zap,
+  Award
 } from 'lucide-react';
-import { SERVICES } from '@/data/services';
+import BentoGridShowcase from '@/components/BentoGridShowcase';
+import SpotlightCard from '@/components/SpotlightCard';
 
 export default function HomePage() {
-  // 3 featured core services
-  const featuredServices = [
-    SERVICES.find(s => s.id === 'house-deep-cleaning') || SERVICES[0],
-    SERVICES.find(s => s.id === 'gutter-cleaning') || SERVICES[2],
-    SERVICES.find(s => s.id === 'hvac-maintenance') || SERVICES[7],
-  ];
-
-  // Helper for real trade icons
-  const getTradeIcon = (id: string) => {
-    switch (id) {
-      case 'house-deep-cleaning':
-        return <Home className="w-6 h-6 text-amber-600" />;
-      case 'gutter-cleaning':
-        return <Droplets className="w-6 h-6 text-amber-600" />;
-      case 'hvac-maintenance':
-        return <Wrench className="w-6 h-6 text-amber-600" />;
-      default:
-        return <Wrench className="w-6 h-6 text-amber-600" />;
-    }
-  };
-
   // 3 verified real reviews
   const featuredReviews = [
     {
       author: 'David & Amanda Sterling',
       location: 'Denver, CO',
-      service: 'Gutter Cleaning',
+      service: 'Gutter Cleaning & Downspout Flush',
       rating: 5,
       date: 'Verified Homeowner',
       comment:
-        'House Hero arrived promptly and cleaned all our 2-story gutters with downspout flushing. Clear upfront USD billing with zero surprise fees. Outstanding craftsmanship.'
+        'House Hero arrived promptly and cleaned all our 2-story gutters with downspout flushing. Clear upfront USD billing with zero surprise fees. Outstanding craftsmanship and clear photo audit.'
     },
     {
       author: 'Marcus Holloway',
@@ -59,12 +37,12 @@ export default function HomePage() {
       rating: 5,
       date: 'Verified Homeowner',
       comment:
-        'Our furnace was making an erratic noise. The tech diagnosed a failing capacitor on the spot and had it running whisper quiet in 40 minutes. Polite, clean, and knowledgeable.'
+        'Our furnace was making an erratic noise before a freeze. The tech diagnosed a failing capacitor on the spot and had it running whisper quiet in 40 minutes. Polite, clean, and knowledgeable.'
     },
     {
       author: 'Sophia Chen',
       location: 'Seattle, WA',
-      service: 'House & Deep Cleaning',
+      service: 'House & Deep Sanitization',
       rating: 5,
       date: 'Verified Homeowner',
       comment:
@@ -74,14 +52,14 @@ export default function HomePage() {
 
   return (
     <div className="relative space-y-16 sm:space-y-24 pb-16">
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-8 sm:pt-14 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8">
+      {/* 1. HERO SECTION WITH SUN-DRENCHED LUXURY RESIDENCE & LIQUID GLASS */}
+      <section className="relative pt-6 sm:pt-12 pb-10 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Content */}
+            {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-6 text-left animate-slide-up">
               {/* Trust Tag */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/70 border border-amber-200/80 text-amber-900 text-xs font-semibold shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 border border-amber-200/80 text-amber-900 text-xs font-semibold shadow-xs">
                 <Sparkles className="w-4 h-4 text-amber-600" />
                 <span>Multi-Service Booking Available · Zero On-Site Payment</span>
               </div>
@@ -93,7 +71,7 @@ export default function HomePage() {
 
               {/* Subheadline */}
               <p className="text-base sm:text-lg text-stone-600 leading-relaxed max-w-xl">
-                Reliable property maintenance with honest upfront pricing in USD. Handled exclusively by vetted, W-2 certified technicians backed by $2,000,000 insurance.
+                Reliable property maintenance with honest upfront pricing in USD. Handled exclusively by vetted, background-checked technicians backed by $2,000,000 liability insurance.
               </p>
 
               {/* Action Buttons */}
@@ -147,62 +125,83 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Liquid Glass Showcase with Nexora Animate Float */}
+            {/* Right Liquid Glass Showcase with Verified Luxury Estate Image */}
             <div className="lg:col-span-5">
-              <div className="glass-warm animate-float p-6 sm:p-8 rounded-3xl space-y-6 shadow-depth-lg border border-amber-200/80">
-                <div className="flex items-center justify-between pb-4 border-b border-amber-200/60">
-                  <div className="flex items-center gap-3">
-                    <span className="flex items-center justify-center w-11 h-11 rounded-2xl bg-amber-500 text-white shadow-sm">
-                      <Home className="w-6 h-6" />
+              <div className="glass-warm animate-float rounded-3xl overflow-hidden shadow-depth-xl border border-amber-200/80 relative">
+                {/* Visual Imagery Header */}
+                <div className="relative h-48 sm:h-52 w-full overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=85"
+                    alt="Luxury residential property maintained by House Hero"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
+                  
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                    <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-stone-900 font-extrabold text-[11px] shadow-sm">
+                      Residential Standards
                     </span>
-                    <div>
-                      <div className="font-extrabold text-stone-900 text-lg">House Hero</div>
-                      <div className="text-xs text-stone-500 font-medium">Residential &amp; Commercial Standards</div>
+                    <span className="text-xs font-bold text-emerald-800 bg-emerald-100/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-emerald-300">
+                      Active Dispatch
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-3 left-3 text-white">
+                    <span className="text-xs text-amber-300 font-bold block uppercase tracking-wider">
+                      House Hero Care Fleet
+                    </span>
+                    <span className="font-extrabold text-sm sm:text-base">
+                      110+ Mobile Service Vans Nationwide
+                    </span>
+                  </div>
+                </div>
+
+                {/* Metrics & Assurance */}
+                <div className="p-5 sm:p-6 space-y-4">
+                  {/* 3 Metric Cards */}
+                  <div className="grid grid-cols-3 gap-2.5 text-center">
+                    <div className="bg-white/90 p-3 rounded-2xl border border-stone-100 shadow-xs">
+                      <div className="text-lg sm:text-xl font-black text-stone-900">4.9★</div>
+                      <div className="text-[10px] text-stone-500 mt-0.5">Google Rating</div>
+                    </div>
+                    <div className="bg-white/90 p-3 rounded-2xl border border-stone-100 shadow-xs">
+                      <div className="text-lg sm:text-xl font-black text-amber-600">$2M</div>
+                      <div className="text-[10px] text-stone-500 mt-0.5">Liability Insured</div>
+                    </div>
+                    <div className="bg-white/90 p-3 rounded-2xl border border-stone-100 shadow-xs">
+                      <div className="text-lg sm:text-xl font-black text-stone-900">100%</div>
+                      <div className="text-[10px] text-stone-500 mt-0.5">Satisfaction</div>
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-emerald-700 bg-emerald-100/80 px-2.5 py-1 rounded-full border border-emerald-200">
-                    Active Dispatch
-                  </span>
-                </div>
 
-                {/* 3 Metric Cards */}
-                <div className="grid grid-cols-3 gap-3 text-center">
-                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs card-hover">
-                    <div className="text-xl sm:text-2xl font-black text-stone-900">4.9★</div>
-                    <div className="text-[11px] text-stone-500 mt-0.5">Google Rating</div>
-                  </div>
-                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs card-hover">
-                    <div className="text-xl sm:text-2xl font-black text-amber-600">$2M</div>
-                    <div className="text-[11px] text-stone-500 mt-0.5">Liability Insured</div>
-                  </div>
-                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs card-hover">
-                    <div className="text-xl sm:text-2xl font-black text-stone-900">100%</div>
-                    <div className="text-[11px] text-stone-500 mt-0.5">Satisfaction</div>
-                  </div>
+                  {/* Bullet Assurances */}
+                  <ul className="space-y-2 text-xs text-stone-700 pt-2 border-t border-amber-200/60">
+                    <li className="flex items-center gap-2">
+                      <CheckCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>Exact upfront USD rates — zero arrival surprises</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>Strict 7-year background checks on all crew members</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>24-Hour complimentary re-service guarantee</span>
+                    </li>
+                  </ul>
                 </div>
-
-                {/* Assurance Points */}
-                <ul className="space-y-2.5 text-xs text-stone-700 pt-2 border-t border-amber-200/60">
-                  <li className="flex items-center gap-2">
-                    <CheckCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>Exact upfront USD rates — no arrival bait-and-switch</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>Strict 7-year background checks on all crew members</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <span>24-Hour complimentary re-service guarantee</span>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. HOW IT WORKS (3 SIMPLE STEPS WITH CARD HOVER) */}
+      {/* 2. THE BENTO GRID SHOWCASE (DIFFERENT SIZES, SLIDER, SPOTLIGHT GLOW, LIVE BUILDER) */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6">
+        <BentoGridShowcase />
+      </section>
+
+      {/* 3. HOW IT WORKS (3 SIMPLE FRICTIONLESS STEPS) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center space-y-3 mb-12 animate-slide-up">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
@@ -212,12 +211,15 @@ export default function HomePage() {
             Simple. Transparent. Done Right.
           </h2>
           <p className="text-sm text-stone-600 max-w-lg mx-auto">
-            From picking multiple services to sending your booking direct to dispatch.
+            From picking multiple services to direct mobile transmission without paying on site.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-card card-hover p-6 sm:p-7 rounded-2xl space-y-4 relative border border-stone-200/70">
+          <SpotlightCard
+            enableTilt={true}
+            className="glass-card p-6 sm:p-7 rounded-3xl space-y-4 relative border border-stone-200/70 shadow-depth-sm hover:shadow-depth-md"
+          >
             <div className="flex items-center justify-between">
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-bold text-sm">
                 01
@@ -226,24 +228,30 @@ export default function HomePage() {
             </div>
             <h3 className="text-lg font-bold text-stone-900">Pick Multiple Services</h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Select 1, 2, or all 10 services needed for your home. View transparent, upfront USD pricing instantly.
+              Select 1, 2, or all 10 services needed for your home. View transparent, upfront USD pricing computed in real-time.
             </p>
-          </div>
+          </SpotlightCard>
 
-          <div className="glass-card card-hover p-6 sm:p-7 rounded-2xl space-y-4 relative border border-stone-200/70">
+          <SpotlightCard
+            enableTilt={true}
+            className="glass-card p-6 sm:p-7 rounded-3xl space-y-4 relative border border-stone-200/70 shadow-depth-sm hover:shadow-depth-md"
+          >
             <div className="flex items-center justify-between">
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-bold text-sm">
                 02
               </span>
               <MessageCircle className="w-5 h-5 text-stone-400" />
             </div>
-            <h3 className="text-lg font-bold text-stone-900">Auto-Generated Message</h3>
+            <h3 className="text-lg font-bold text-stone-900">Auto-Generated Brief</h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Your booking details are packaged into an automated brief. Send it via Gmail, WhatsApp, or Telegram with zero on-site payment.
+              Your inquiry is automatically structured into a dispatch message. Send it via Gmail, WhatsApp, or Telegram with zero on-site payment.
             </p>
-          </div>
+          </SpotlightCard>
 
-          <div className="glass-card card-hover p-6 sm:p-7 rounded-2xl space-y-4 relative border border-stone-200/70">
+          <SpotlightCard
+            enableTilt={true}
+            className="glass-card p-6 sm:p-7 rounded-3xl space-y-4 relative border border-stone-200/70 shadow-depth-sm hover:shadow-depth-md"
+          >
             <div className="flex items-center justify-between">
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-bold text-sm">
                 03
@@ -252,101 +260,13 @@ export default function HomePage() {
             </div>
             <h3 className="text-lg font-bold text-stone-900">Inspected &amp; Guaranteed</h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Uniformed, vetted technicians arrive on time. Inspect the completed work with our crew backed by our 24-hr guarantee.
+              Uniformed, vetted technicians arrive on time in equipped vans. Inspect completed work with our crew backed by our 24-hr guarantee.
             </p>
-          </div>
+          </SpotlightCard>
         </div>
       </section>
 
-      {/* 3. FEATURED CORE SERVICES (NEXORA CARD HOVER & SHIMMER) */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-              Core Offerings
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight mt-2">
-              Featured Property Services
-            </h2>
-            <p className="text-sm text-stone-600 mt-1">
-              Explore our most requested residential care solutions.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/book"
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-amber-600 hover:text-amber-700 transition-colors"
-            >
-              <span>Book Multi-Service</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <span className="text-stone-300">•</span>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-600 hover:text-stone-900 transition-colors"
-            >
-              <span>All 10 Services</span>
-            </Link>
-          </div>
-        </div>
-
-        {/* 3 Featured Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredServices.map((service) => (
-            <div
-              key={service.id}
-              className="glass-card card-hover relative overflow-hidden rounded-2xl p-6 sm:p-7 flex flex-col justify-between border border-stone-200/80 shadow-depth-sm hover:shadow-depth-xl transition-all duration-300"
-            >
-              {/* Nexora shimmer overlay */}
-              <div className="absolute inset-0 rounded-2xl animate-shimmer pointer-events-none opacity-40" />
-
-              <div className="relative space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-200/60">
-                    {getTradeIcon(service.id)}
-                  </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 bg-stone-100 px-2.5 py-1 rounded-md">
-                    {service.category}
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-bold text-stone-900">{service.title}</h3>
-                  <p className="text-xs sm:text-sm text-stone-600 mt-1.5 leading-relaxed">
-                    {service.shortDesc}
-                  </p>
-                </div>
-
-                <div className="pt-2">
-                  <div className="text-xs text-stone-500 uppercase tracking-wide">Starting from</div>
-                  <div className="text-2xl font-black text-stone-900 mt-0.5">
-                    ${service.startingPrice}{' '}
-                    <span className="text-xs font-normal text-stone-500">USD ({service.priceUnit})</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative pt-6 mt-6 border-t border-stone-200/60 flex items-center gap-3">
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="flex-1 text-center py-2.5 rounded-xl border border-stone-200 text-stone-700 hover:bg-stone-50 text-xs font-semibold transition-colors"
-                >
-                  View Details
-                </Link>
-                <Link
-                  href="/book"
-                  className="flex-1 text-center py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition-colors shadow-xs"
-                >
-                  Book Service
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. VERIFIED REVIEWS */}
+      {/* 4. VERIFIED HOMEOWNER REVIEWS */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center space-y-3 mb-10 animate-slide-up">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
@@ -362,9 +282,10 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredReviews.map((rev, idx) => (
-            <div
+            <SpotlightCard
               key={idx}
-              className="glass-warm card-hover p-6 rounded-2xl flex flex-col justify-between space-y-4 border border-amber-200/60 shadow-depth-sm hover:shadow-depth-md transition-all duration-300"
+              enableTilt={true}
+              className="glass-warm p-6 rounded-3xl flex flex-col justify-between space-y-4 border border-amber-200/60 shadow-depth-sm hover:shadow-depth-md"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-1">
@@ -386,14 +307,14 @@ export default function HomePage() {
                   {rev.service}
                 </span>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </section>
 
       {/* 5. CONVERSION ACTION STRIP */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
+        <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
           <div className="relative z-10 max-w-2xl space-y-4">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight">
               Ready for Dependable Property Care?

@@ -16,16 +16,18 @@ import {
   Flame,
   Leaf,
   ShieldCheck,
-  Shield,
-  Gift
+  Gift,
+  Sparkles,
+  CheckCheck
 } from 'lucide-react';
 import { SERVICES, CATEGORIES, SEASONAL_BUNDLES } from '@/data/services';
+import SpotlightCard from '@/components/SpotlightCard';
 
 export default function ServicesDirectoryPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
 
-  // Helper for Trade Icons (No AI symbols)
+  // Helper for Trade Icons
   const getServiceIcon = (name: string) => {
     switch (name) {
       case 'Home':
@@ -65,21 +67,24 @@ export default function ServicesDirectoryPage() {
   }, [searchTerm, activeCategory]);
 
   return (
-    <div className="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-16">
-      {/* Header */}
-      <div className="text-center max-w-2xl mx-auto space-y-3">
-        <span className="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-          Complete Portfolio
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
-          All 10 Core Property Care Services
+    <div className="py-8 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-16">
+      {/* Header with Search and Category Filter */}
+      <div className="text-center max-w-3xl mx-auto space-y-4 animate-slide-up">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 border border-amber-200/80 text-amber-900 text-xs font-semibold shadow-xs">
+          <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+          <span>Transparent USD Upfront Rates · Vetted W-2 Staff</span>
+        </div>
+
+        <h1 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-[1.1]">
+          All 10 Core Property Care <span className="text-gradient">Services.</span>
         </h1>
-        <p className="text-sm sm:text-base text-stone-600">
-          Professional residential maintenance with guaranteed upfront USD rates, insured standards, and certified technicians.
+
+        <p className="text-sm sm:text-base text-stone-600 max-w-xl mx-auto">
+          Professional residential maintenance with guaranteed upfront USD rates, insured standards, and certified technicians. Pick any combination for a single dispatch visit.
         </p>
 
         {/* Search Bar */}
-        <div className="pt-4 max-w-md mx-auto relative">
+        <div className="pt-2 max-w-md mx-auto relative">
           <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
@@ -91,14 +96,14 @@ export default function ServicesDirectoryPage() {
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-3">
+        <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`py-1.5 px-3.5 rounded-xl text-xs font-semibold transition-all ${
+              className={`py-1.5 px-3.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-amber-500 text-white shadow-xs'
+                  ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
                   : 'bg-white/80 text-stone-600 hover:text-stone-900 border border-stone-200/80 hover:bg-stone-50'
               }`}
             >
@@ -108,71 +113,84 @@ export default function ServicesDirectoryPage() {
         </div>
       </div>
 
-      {/* Services Grid (Liquid Glass) */}
+      {/* Services Grid with Spotlight Glow, 3D Tilt, & Verified Photographic Previews */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((svc) => {
           const Icon = getServiceIcon(svc.iconName);
           return (
-            <div
+            <SpotlightCard
               key={svc.id}
-              className="glass-card card-hover relative overflow-hidden rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:shadow-xl transition-all duration-200"
+              enableTilt={true}
+              className="glass-card rounded-3xl border border-stone-200/80 shadow-depth-sm hover:shadow-depth-xl group flex flex-col justify-between overflow-hidden"
             >
-              <div className="absolute inset-0 rounded-2xl animate-shimmer pointer-events-none" />
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-200/60 text-amber-600">
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-stone-500 bg-stone-100 px-2.5 py-1 rounded-md">
-                    {svc.category}
-                  </span>
-                </div>
+              <div>
+                {/* Photo Header */}
+                <div className="relative h-44 w-full overflow-hidden">
+                  <img
+                    src={svc.afterImage}
+                    alt={svc.title}
+                    className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
 
-                <div>
-                  <h3 className="text-xl font-bold text-stone-900">{svc.title}</h3>
-                  <p className="text-xs sm:text-sm text-stone-600 mt-1.5 leading-relaxed">
-                    {svc.shortDesc}
-                  </p>
-                </div>
-
-                {/* Key Inclusions Preview */}
-                <div className="pt-2 border-t border-stone-100 space-y-1.5">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-stone-400">
-                    Included Highlights:
-                  </span>
-                  <ul className="text-xs text-stone-600 space-y-1">
-                    {svc.includedFeatures.slice(0, 3).map((f, i) => (
-                      <li key={i} className="flex items-center gap-1.5 line-clamp-1">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span className="truncate">{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Price Display */}
-                <div className="pt-2 border-t border-stone-100 flex items-baseline justify-between">
-                  <div>
-                    <div className="text-[10px] text-stone-400 uppercase">Starting at</div>
-                    <div className="text-2xl font-black text-stone-900 font-mono">
-                      ${svc.startingPrice}{' '}
-                      <span className="text-xs font-normal text-stone-500">USD</span>
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-amber-200 bg-stone-900/80 backdrop-blur-md px-2.5 py-1 rounded-md">
+                      {svc.category}
+                    </span>
+                    <div className="w-8 h-8 rounded-lg bg-amber-500/90 backdrop-blur-md text-white flex items-center justify-center shadow-xs">
+                      <Icon className="w-4 h-4" />
                     </div>
                   </div>
-                  <div className="text-[11px] text-stone-500 flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-amber-600" />
-                    <span>{svc.avgDuration}</span>
+
+                  <div className="absolute bottom-3 left-3 text-white">
+                    <h3 className="text-lg font-black tracking-tight">{svc.title}</h3>
+                  </div>
+                </div>
+
+                <div className="p-5 sm:p-6 space-y-4">
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed line-clamp-2">
+                    {svc.shortDesc}
+                  </p>
+
+                  {/* Highlights */}
+                  <div className="space-y-1.5 pt-2 border-t border-stone-100">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400">
+                      Standard Inclusions:
+                    </span>
+                    <ul className="text-xs text-stone-600 space-y-1">
+                      {svc.includedFeatures.slice(0, 3).map((f, i) => (
+                        <li key={i} className="flex items-center gap-1.5 truncate">
+                          <CheckCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span className="truncate">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Price */}
+                  <div className="pt-2 border-t border-stone-100 flex items-baseline justify-between">
+                    <div>
+                      <div className="text-[10px] text-stone-400 uppercase font-semibold">Starting at</div>
+                      <div className="text-2xl font-black text-stone-900 font-mono">
+                        ${svc.startingPrice}{' '}
+                        <span className="text-xs font-normal text-stone-500">USD</span>
+                      </div>
+                    </div>
+                    <div className="text-[11px] text-stone-500 flex items-center gap-1 font-medium">
+                      <Clock className="w-3.5 h-3.5 text-amber-600" />
+                      <span>{svc.avgDuration}</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-5 mt-5 border-t border-stone-100 flex items-center gap-2.5">
+              <div className="p-5 sm:p-6 pt-0 flex items-center gap-2.5">
                 <Link
                   href={`/services/${svc.slug}`}
-                  className="flex-1 text-center py-2.5 rounded-xl border border-stone-200 text-stone-700 hover:bg-stone-50 text-xs font-semibold transition-colors"
+                  className="flex-1 text-center py-2.5 rounded-xl border border-stone-200 text-stone-700 hover:bg-stone-50 text-xs font-bold transition-colors"
                 >
-                  Details
+                  View Details
                 </Link>
                 <Link
                   href="/book"
@@ -181,17 +199,17 @@ export default function ServicesDirectoryPage() {
                   Book Service
                 </Link>
               </div>
-            </div>
+            </SpotlightCard>
           );
         })}
       </div>
 
-      {/* Seasonal Bundles Section (Consolidated from /bundles) */}
+      {/* Multi-Service Bundles Section */}
       <section className="pt-8 border-t border-stone-200 space-y-8">
         <div className="text-center max-w-xl mx-auto space-y-2">
           <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
             <Gift className="w-3.5 h-3.5" />
-            <span>Multi-Service Bundles</span>
+            <span>Seasonal Property Bundles</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900">
             Save with Property Maintenance Packages
@@ -203,13 +221,17 @@ export default function ServicesDirectoryPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SEASONAL_BUNDLES.map((b) => (
-            <div key={b.id} className="glass-warm card-hover p-6 sm:p-7 rounded-2xl flex flex-col justify-between space-y-5">
+            <SpotlightCard
+              key={b.id}
+              enableTilt={true}
+              className="glass-warm p-6 sm:p-7 rounded-3xl border border-amber-200/60 shadow-depth-sm hover:shadow-depth-md flex flex-col justify-between space-y-5"
+            >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-200/60 px-2.5 py-0.5 rounded-md">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-900 bg-amber-200/70 px-2.5 py-0.5 rounded-md">
                     {b.tag}
                   </span>
-                  <span className="text-xs font-extrabold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md">
+                  <span className="text-xs font-extrabold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-md">
                     Save ${b.savings} USD
                   </span>
                 </div>
@@ -224,7 +246,10 @@ export default function ServicesDirectoryPage() {
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {b.servicesIncluded.map((s, i) => (
-                      <span key={i} className="text-xs font-medium bg-white/80 px-2.5 py-1 rounded-md text-stone-700 border border-stone-200/60">
+                      <span
+                        key={i}
+                        className="text-xs font-semibold bg-white/90 px-2.5 py-1 rounded-md text-stone-700 border border-stone-200/60"
+                      >
                         {s}
                       </span>
                     ))}
@@ -236,7 +261,9 @@ export default function ServicesDirectoryPage() {
               <div className="pt-4 border-t border-amber-200/60 flex items-center justify-between">
                 <div>
                   <div className="text-[11px] text-stone-500 line-through">${b.originalPrice} USD</div>
-                  <div className="text-2xl font-black text-stone-900 font-mono">${b.bundlePrice} <span className="text-xs font-normal text-stone-500">USD</span></div>
+                  <div className="text-2xl font-black text-stone-900 font-mono">
+                    ${b.bundlePrice} <span className="text-xs font-normal text-stone-500">USD</span>
+                  </div>
                 </div>
                 <Link
                   href="/book"
@@ -245,7 +272,7 @@ export default function ServicesDirectoryPage() {
                   Book Bundle
                 </Link>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </section>
