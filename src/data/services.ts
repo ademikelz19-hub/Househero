@@ -90,8 +90,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Sarah M.', rating: 5, date: '2 days ago', location: 'Denver, CO', comment: 'House Hero did our move-out cleaning and our landlord refunded 100% of our deposit within 24 hours. The oven and tile grout looked brand new!' },
       { author: 'David K.', rating: 5, date: '1 week ago', location: 'Minneapolis, MN', comment: 'We have recurring bi-weekly cleaning now. Reliable crew, prompt 8 AM arrival, and always leaves the house smelling fresh without harsh bleach fumes.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/house-cleaning.jpg',
+    afterImage: '/images/house-cleaning.jpg',
     caseStudyCost: 282,
     caseStudyTitle: '3-Bedroom Deep Clean + Oven & Refrigerator Sanitization'
   },
@@ -136,8 +136,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Marcus T.', rating: 5, date: '3 days ago', location: 'Chicago, IL', comment: 'Two golden retrievers had destroyed our living room rug. House Hero extracted stains I thought were permanent. No chemical smell at all.' },
       { author: 'Elena R.', rating: 5, date: '2 weeks ago', location: 'Cleveland, OH', comment: 'Fair USD pricing, no bait-and-switch when they arrived. Exactly the $169 quoted online for our 3 rooms and hallway.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/carpet-cleaning.jpg',
+    afterImage: '/images/carpet-cleaning.jpg',
     caseStudyCost: 204,
     caseStudyTitle: '4-Room Carpet Restoration + Pet Urine Enzyme Neutralizer'
   },
@@ -182,8 +182,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Bradley C.', rating: 5, date: '5 days ago', location: 'Seattle, WA', comment: 'Our two-story gutters were overflowing during heavy rain. House Hero cleared out massive oak clogs and re-sealed a leaking corner seam in 90 minutes.' },
       { author: 'Jennifer W.', rating: 5, date: '1 month ago', location: 'Boston, MA', comment: 'The digital photo report sent right to my phone showed every clean downspout before and after. Outstanding service!' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/gutter-cleaning.jpg',
+    afterImage: '/images/gutter-cleaning.jpg',
     caseStudyCost: 220,
     caseStudyTitle: '2-Story 200ft Gutter Cleanout + 4 Downspout Jetting'
   },
@@ -228,8 +228,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Robert G.', rating: 5, date: '1 day ago', location: 'Milwaukee, WI', comment: 'Woke up at 6:30 AM after a 9-inch blizzard and my entire 4-car driveway was already plowed and salted. Worth every single dollar.' },
       { author: 'Karen B.', rating: 5, date: '2 weeks ago', location: 'Buffalo, NY', comment: 'Having the Unlimited Pass gave our family total peace of mind all winter. They never missed a single snowfall.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/snow-removal.jpg',
+    afterImage: '/images/snow-removal.jpg',
     caseStudyCost: 90,
     caseStudyTitle: 'Large 4-Car Driveway Clearing during 8-inch Winter Storm'
   },
@@ -274,8 +274,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Anthony D.', rating: 5, date: '4 days ago', location: 'Charlotte, NC', comment: 'Our 2,800 sq ft home had 5 years of green moss on the north side. In 3 hours the siding looked like the day it was built. Incredible transformation.' },
       { author: 'Rachel H.', rating: 5, date: '3 weeks ago', location: 'Austin, TX', comment: 'Cleaned our 2-car driveway, sidewalk, and back patio. Neighbors literally stopped to ask who did the work.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/before-patio.jpg',
+    afterImage: '/images/pressure-washing.jpg',
     caseStudyCost: 310,
     caseStudyTitle: 'Vinyl Siding Soft-Wash + 800 sq ft Concrete Driveway'
   },
@@ -320,8 +320,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Kenneth S.', rating: 5, date: '1 week ago', location: 'Columbus, OH', comment: 'Emptied out 20 years of clutter from my parents basement in less than two hours. The crew was polite, efficient, and swept up afterward.' },
       { author: 'Meghan P.', rating: 5, date: '2 weeks ago', location: 'Indianapolis, IN', comment: 'Loved that they donated our old dining set to Habitat for Humanity and emailed us the donation receipt. Transparent USD pricing.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/junk-removal.jpg',
+    afterImage: '/images/junk-removal.jpg',
     caseStudyCost: 379,
     caseStudyTitle: '1/2 Truck Load Garage Cleanout + Refrigerator Haul'
   },
@@ -366,8 +366,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Jason L.', rating: 5, date: '3 days ago', location: 'Salt Lake City, UT', comment: 'Our dryer went from taking 70 minutes per towel load down to 28 minutes flat. The technician showed us a basketball-sized ball of lint removed from the pipe!' },
       { author: 'Patricia C.', rating: 5, date: '3 weeks ago', location: 'Omaha, NE', comment: 'Second story roof vent. Fast, clean, professional. Gave me total peace of mind for fire safety.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/dryer-vent.jpg',
+    afterImage: '/images/dryer-vent.jpg',
     caseStudyCost: 154,
     caseStudyTitle: 'Second-Story Wall Exit Vent Scour + Bird Guard Cage'
   },
@@ -412,8 +412,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Brandon P.', rating: 5, date: '1 week ago', location: 'Portland, OR', comment: 'Our half-acre yard was drowning in maple leaves and overgrown boxwoods. House Hero spent 4 hours and left it looking like an English garden. Superb.' },
       { author: 'Emily N.', rating: 5, date: '1 month ago', location: 'Boise, ID', comment: 'Honest upfront estimate, showed up on time with a crew of three, and even blew off our back deck and front walkway.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1590682680695-43b964a3ae17?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/lawn-care.jpg',
+    afterImage: '/images/lawn-care.jpg',
     caseStudyCost: 280,
     caseStudyTitle: 'Quarter-Acre Fall Leaf Cleanup + Shrub Shaping & Mulch'
   },
@@ -458,8 +458,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Thomas B.', rating: 5, date: '2 days ago', location: 'Kansas City, MO', comment: 'During their tune-up, the tech found a bulging run capacitor about to blow right before a 100-degree heatwave. Replaced it on the spot. Saved us hundreds.' },
       { author: 'Christine V.', rating: 5, date: '2 weeks ago', location: 'St. Louis, MO', comment: 'Signed up for the Comfort Shield plan. Knowing our furnace is tested for carbon monoxide safety gives our family complete security.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/hvac-maintenance.jpg',
+    afterImage: '/images/hvac-maintenance.jpg',
     caseStudyCost: 229,
     caseStudyTitle: 'Annual Comfort Shield Dual Heating & Cooling Overhaul'
   },
@@ -504,8 +504,8 @@ export const SERVICES: ServiceData[] = [
       { author: 'Nathaniel F.', rating: 5, date: '4 days ago', location: 'Pittsburgh, PA', comment: 'Our steep driveway is a sheet of ice every January. House Hero came out before the ice storm and our driveway stayed completely bare all weekend.' },
       { author: 'Melissa E.', rating: 5, date: '3 weeks ago', location: 'Detroit, MI', comment: 'We have two senior dogs. Their pet-safe de-icer didn’t irritate their paws at all, and it cleared our sidewalk completely.' }
     ],
-    beforeImage: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+    beforeImage: '/images/de-icing.jpg',
+    afterImage: '/images/de-icing.jpg',
     caseStudyCost: 75,
     caseStudyTitle: 'Pre-Storm Brine Spray + Magnesium Chloride Pet-Safe Salt'
   }

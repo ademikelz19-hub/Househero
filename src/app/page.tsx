@@ -131,8 +131,8 @@ export default function HomePage() {
                 {/* Visual Imagery Header */}
                 <div className="relative h-48 sm:h-52 w-full overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=85"
-                    alt="Luxury residential property maintained by House Hero"
+                    src="/images/house-cleaning.jpg"
+                    alt="House Hero uniformed technician on residential service"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />

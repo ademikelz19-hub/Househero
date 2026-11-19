@@ -273,16 +273,18 @@ Sent via House Hero Automated Dispatch System`;
                   {/* Subtle Nexora Shimmer Highlight */}
                   <div className="absolute inset-0 rounded-2xl animate-shimmer pointer-events-none opacity-40" />
 
-                  <div className="relative flex items-start gap-4">
-                    {/* Trade Icon */}
-                    <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected
-                          ? 'bg-amber-500 text-white shadow-sm'
-                          : 'bg-amber-50 text-amber-600 border border-amber-200/70'
-                      }`}
-                    >
-                      <Icon className="w-5 h-5" />
+                  <div className="relative flex items-start gap-3.5">
+                    {/* Real Worker Action Photo Thumbnail + Trade Icon Badge */}
+                    <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-amber-200/70 shadow-xs">
+                      <img
+                        src={svc.afterImage}
+                        alt={svc.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-stone-950/20" />
+                      <div className="absolute bottom-1 right-1 w-6 h-6 rounded-md bg-amber-500 text-white flex items-center justify-center shadow-xs">
+                        <Icon className="w-3.5 h-3.5" />
+                      </div>
                     </div>
 
                     {/* Service Info */}
