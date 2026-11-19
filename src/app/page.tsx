@@ -14,19 +14,20 @@ import {
   Send,
   ArrowRight,
   Star,
-  CheckCheck
+  CheckCheck,
+  Sparkles
 } from 'lucide-react';
 import { SERVICES } from '@/data/services';
 
 export default function HomePage() {
-  // Only 3 featured core services as requested by user
+  // 3 featured core services
   const featuredServices = [
     SERVICES.find(s => s.id === 'house-deep-cleaning') || SERVICES[0],
     SERVICES.find(s => s.id === 'gutter-cleaning') || SERVICES[2],
     SERVICES.find(s => s.id === 'hvac-maintenance') || SERVICES[7],
   ];
 
-  // Helper for real trade icons (Zero AI symbols)
+  // Helper for real trade icons
   const getTradeIcon = (id: string) => {
     switch (id) {
       case 'house-deep-cleaning':
@@ -40,7 +41,7 @@ export default function HomePage() {
     }
   };
 
-  // Only 3 verified real reviews as requested
+  // 3 verified real reviews
   const featuredReviews = [
     {
       author: 'David & Amanda Sterling',
@@ -78,16 +79,16 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6 text-left">
+            <div className="lg:col-span-7 space-y-6 text-left animate-slide-up">
               {/* Trust Tag */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/70 border border-amber-200/80 text-amber-900 text-xs font-semibold">
-                <CheckCircle2 className="w-4 h-4 text-amber-600" />
-                <span>Trusted by 2,400+ American Homeowners</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/70 border border-amber-200/80 text-amber-900 text-xs font-semibold shadow-xs">
+                <Sparkles className="w-4 h-4 text-amber-600" />
+                <span>Multi-Service Booking Available · Zero On-Site Payment</span>
               </div>
 
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 tracking-tight leading-[1.1]">
-                Your Home, Cared For by <span className="text-amber-600">Proven Craftsmen.</span>
+                Your Home, Cared For by <span className="text-gradient">Proven Craftsmen.</span>
               </h1>
 
               {/* Subheadline */}
@@ -98,16 +99,23 @@ export default function HomePage() {
               {/* Action Buttons */}
               <div className="pt-2 flex flex-wrap items-center gap-3">
                 <Link
+                  href="/book"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm shadow-md transition-all duration-200 hover:shadow-lg pulse-ring"
+                >
+                  <span>Book Multiple Services</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm shadow-md transition-all duration-200 hover:shadow-lg"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 font-semibold text-sm transition-colors shadow-xs"
                 >
                   <span>Request a Free Quote</span>
-                  <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 <a
                   href="tel:18005556782"
-                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-stone-50 border border-stone-200 text-stone-800 font-semibold text-sm transition-colors shadow-xs"
+                  className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-stone-100/80 hover:bg-stone-200 text-stone-800 font-semibold text-sm transition-colors"
                 >
                   <Phone className="w-4 h-4 text-amber-600" />
                   <span>(800) 555-6782</span>
@@ -116,7 +124,7 @@ export default function HomePage() {
 
               {/* Direct Messaging Channels */}
               <div className="pt-1 flex flex-wrap items-center gap-4 text-xs text-stone-600 font-medium">
-                <span className="text-stone-400">Direct Chat:</span>
+                <span className="text-stone-400">Direct Dispatch:</span>
                 <a
                   href="https://wa.me/18005556782"
                   target="_blank"
@@ -124,7 +132,7 @@ export default function HomePage() {
                   className="inline-flex items-center gap-1.5 text-emerald-700 hover:text-emerald-800 transition-colors font-semibold"
                 >
                   <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>WhatsApp Dispatch</span>
+                  <span>WhatsApp Desk</span>
                 </a>
                 <span className="text-stone-300">•</span>
                 <a
@@ -139,9 +147,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Liquid Glass Showcase */}
+            {/* Right Liquid Glass Showcase with Nexora Animate Float */}
             <div className="lg:col-span-5">
-              <div className="glass-warm p-6 sm:p-8 rounded-3xl space-y-6">
+              <div className="glass-warm animate-float p-6 sm:p-8 rounded-3xl space-y-6 shadow-depth-lg border border-amber-200/80">
                 <div className="flex items-center justify-between pb-4 border-b border-amber-200/60">
                   <div className="flex items-center gap-3">
                     <span className="flex items-center justify-center w-11 h-11 rounded-2xl bg-amber-500 text-white shadow-sm">
@@ -149,7 +157,7 @@ export default function HomePage() {
                     </span>
                     <div>
                       <div className="font-extrabold text-stone-900 text-lg">House Hero</div>
-                      <div className="text-xs text-stone-500 font-medium">Residential & Commercial Standards</div>
+                      <div className="text-xs text-stone-500 font-medium">Residential &amp; Commercial Standards</div>
                     </div>
                   </div>
                   <span className="text-xs font-bold text-emerald-700 bg-emerald-100/80 px-2.5 py-1 rounded-full border border-emerald-200">
@@ -159,15 +167,15 @@ export default function HomePage() {
 
                 {/* 3 Metric Cards */}
                 <div className="grid grid-cols-3 gap-3 text-center">
-                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs">
+                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs card-hover">
                     <div className="text-xl sm:text-2xl font-black text-stone-900">4.9★</div>
                     <div className="text-[11px] text-stone-500 mt-0.5">Google Rating</div>
                   </div>
-                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs">
+                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs card-hover">
                     <div className="text-xl sm:text-2xl font-black text-amber-600">$2M</div>
                     <div className="text-[11px] text-stone-500 mt-0.5">Liability Insured</div>
                   </div>
-                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs">
+                  <div className="bg-white/80 p-3.5 rounded-2xl border border-stone-100 shadow-xs card-hover">
                     <div className="text-xl sm:text-2xl font-black text-stone-900">100%</div>
                     <div className="text-[11px] text-stone-500 mt-0.5">Satisfaction</div>
                   </div>
@@ -194,33 +202,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. CREDIBILITY & TRUST BAR */}
+      {/* 2. HOW IT WORKS (3 SIMPLE STEPS WITH CARD HOVER) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="glass-card py-4 px-6 rounded-2xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center justify-between text-stone-700 text-xs sm:text-sm font-medium">
-            <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <Shield className="w-5 h-5 text-amber-600 shrink-0" />
-              <span>$2M General Liability</span>
-            </div>
-            <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-              <span>100% Vetted W-2 Staff</span>
-            </div>
-            <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <Award className="w-5 h-5 text-amber-600 shrink-0" />
-              <span>BBB A+ Accredited</span>
-            </div>
-            <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-              <span>24-Hour Re-Clean Promise</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. HOW IT WORKS (3 SIMPLE STEPS) */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center space-y-3 mb-12">
+        <div className="text-center space-y-3 mb-12 animate-slide-up">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
             Frictionless Process
           </span>
@@ -228,53 +212,53 @@ export default function HomePage() {
             Simple. Transparent. Done Right.
           </h2>
           <p className="text-sm text-stone-600 max-w-lg mx-auto">
-            From initial booking to completed inspection, experience hassle-free home care.
+            From picking multiple services to sending your booking direct to dispatch.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-card p-6 sm:p-7 rounded-2xl space-y-4 relative">
+          <div className="glass-card card-hover p-6 sm:p-7 rounded-2xl space-y-4 relative border border-stone-200/70">
             <div className="flex items-center justify-between">
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-bold text-sm">
                 01
               </span>
               <Calendar className="w-5 h-5 text-stone-400" />
             </div>
-            <h3 className="text-lg font-bold text-stone-900">Request or Call</h3>
+            <h3 className="text-lg font-bold text-stone-900">Pick Multiple Services</h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Submit your inquiry online or call our dispatch desk. Receive an honest, upfront USD estimate with no obligation.
+              Select 1, 2, or all 10 services needed for your home. View transparent, upfront USD pricing instantly.
             </p>
           </div>
 
-          <div className="glass-card p-6 sm:p-7 rounded-2xl space-y-4 relative">
+          <div className="glass-card card-hover p-6 sm:p-7 rounded-2xl space-y-4 relative border border-stone-200/70">
             <div className="flex items-center justify-between">
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-bold text-sm">
                 02
               </span>
-              <Clock className="w-5 h-5 text-stone-400" />
+              <MessageCircle className="w-5 h-5 text-stone-400" />
             </div>
-            <h3 className="text-lg font-bold text-stone-900">Prompt On-Time Arrival</h3>
+            <h3 className="text-lg font-bold text-stone-900">Auto-Generated Message</h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Uniformed, background-checked technicians arrive in fully equipped mobile service vans. We text you before arrival.
+              Your booking details are packaged into an automated brief. Send it via Gmail, WhatsApp, or Telegram with zero on-site payment.
             </p>
           </div>
 
-          <div className="glass-card p-6 sm:p-7 rounded-2xl space-y-4 relative">
+          <div className="glass-card card-hover p-6 sm:p-7 rounded-2xl space-y-4 relative border border-stone-200/70">
             <div className="flex items-center justify-between">
               <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-bold text-sm">
                 03
               </span>
               <CheckCircle2 className="w-5 h-5 text-stone-400" />
             </div>
-            <h3 className="text-lg font-bold text-stone-900">Inspected & Guaranteed</h3>
+            <h3 className="text-lg font-bold text-stone-900">Inspected &amp; Guaranteed</h3>
             <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-              Inspect the completed work with our team. If any detail fails to meet your expectation, we re-service at zero charge.
+              Uniformed, vetted technicians arrive on time. Inspect the completed work with our crew backed by our 24-hr guarantee.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 4. FEATURED CORE SERVICES (ONLY 3) */}
+      {/* 3. FEATURED CORE SERVICES (NEXORA CARD HOVER & SHIMMER) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
           <div>
@@ -289,13 +273,22 @@ export default function HomePage() {
             </p>
           </div>
 
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-1.5 text-sm font-bold text-amber-600 hover:text-amber-700 transition-colors"
-          >
-            <span>View All 10 Services</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/book"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-amber-600 hover:text-amber-700 transition-colors"
+            >
+              <span>Book Multi-Service</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <span className="text-stone-300">•</span>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-600 hover:text-stone-900 transition-colors"
+            >
+              <span>All 10 Services</span>
+            </Link>
+          </div>
         </div>
 
         {/* 3 Featured Cards */}
@@ -303,9 +296,12 @@ export default function HomePage() {
           {featuredServices.map((service) => (
             <div
               key={service.id}
-              className="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:shadow-xl transition-all duration-200"
+              className="glass-card card-hover relative overflow-hidden rounded-2xl p-6 sm:p-7 flex flex-col justify-between border border-stone-200/80 shadow-depth-sm hover:shadow-depth-xl transition-all duration-300"
             >
-              <div className="space-y-4">
+              {/* Nexora shimmer overlay */}
+              <div className="absolute inset-0 rounded-2xl animate-shimmer pointer-events-none opacity-40" />
+
+              <div className="relative space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-200/60">
                     {getTradeIcon(service.id)}
@@ -331,7 +327,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-stone-200/60 flex items-center gap-3">
+              <div className="relative pt-6 mt-6 border-t border-stone-200/60 flex items-center gap-3">
                 <Link
                   href={`/services/${service.slug}`}
                   className="flex-1 text-center py-2.5 rounded-xl border border-stone-200 text-stone-700 hover:bg-stone-50 text-xs font-semibold transition-colors"
@@ -339,10 +335,10 @@ export default function HomePage() {
                   View Details
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/book"
                   className="flex-1 text-center py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition-colors shadow-xs"
                 >
-                  Get Quote
+                  Book Service
                 </Link>
               </div>
             </div>
@@ -350,9 +346,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. VERIFIED REVIEWS (ONLY 3) */}
+      {/* 4. VERIFIED REVIEWS */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center space-y-3 mb-10">
+        <div className="text-center space-y-3 mb-10 animate-slide-up">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
             Real Feedback
           </span>
@@ -366,7 +362,10 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredReviews.map((rev, idx) => (
-            <div key={idx} className="glass-warm p-6 rounded-2xl flex flex-col justify-between space-y-4">
+            <div
+              key={idx}
+              className="glass-warm card-hover p-6 rounded-2xl flex flex-col justify-between space-y-4 border border-amber-200/60 shadow-depth-sm hover:shadow-depth-md transition-all duration-300"
+            >
               <div className="space-y-3">
                 <div className="flex items-center gap-1">
                   {[...Array(rev.rating)].map((_, i) => (
@@ -374,7 +373,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p className="text-xs sm:text-sm text-stone-700 italic leading-relaxed">
-                  "{rev.comment}"
+                  &ldquo;{rev.comment}&rdquo;
                 </p>
               </div>
 
@@ -392,7 +391,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. CONVERSION ACTION STRIP (NO FORM ON HOMEPAGE) */}
+      {/* 5. CONVERSION ACTION STRIP */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
           <div className="relative z-10 max-w-2xl space-y-4">
@@ -400,23 +399,23 @@ export default function HomePage() {
               Ready for Dependable Property Care?
             </h2>
             <p className="text-sm sm:text-base text-amber-100 leading-relaxed">
-              Reach out directly. We provide transparent USD estimates and schedule rapid dispatch tailored to your calendar.
+              Book multiple services in minutes without paying on site. We auto-generate your booking request for direct transmission via Gmail, WhatsApp, or Telegram.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <Link
-                href="/contact"
-                className="px-6 py-3.5 rounded-xl bg-white text-stone-900 font-extrabold text-sm hover:bg-amber-50 transition-colors shadow-md"
+                href="/book"
+                className="px-6 py-3.5 rounded-xl bg-white text-stone-900 font-extrabold text-sm hover:bg-amber-50 transition-colors shadow-md flex items-center gap-2"
               >
-                Go to Quote &amp; Contact Page
+                <span>Book Services Online</span>
+                <ArrowRight className="w-4 h-4 text-amber-600" />
               </Link>
-              <a
-                href="tel:18005556782"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-stone-900/30 hover:bg-stone-900/40 text-white font-semibold text-sm border border-white/20 transition-colors"
+              <Link
+                href="/contact"
+                className="px-5 py-3.5 rounded-xl bg-stone-900/30 hover:bg-stone-900/40 text-white font-semibold text-sm border border-white/20 transition-colors"
               >
-                <Phone className="w-4 h-4 text-amber-200" />
-                <span>Call (800) 555-6782</span>
-              </a>
+                <span>Request a Quote</span>
+              </Link>
               <a
                 href="https://wa.me/18005556782"
                 target="_blank"
@@ -424,7 +423,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Us</span>
+                <span>WhatsApp Desk</span>
               </a>
               <a
                 href="https://t.me/househerocare"

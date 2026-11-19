@@ -21,7 +21,7 @@ const FAQS: FAQItem[] = [
   {
     category: 'billing',
     question: 'Are your prices guaranteed in USD with no surprise fees?',
-    answer: 'Yes. Every quote generated on NorthStar Property Care is 100% upfront in US Dollars ($). The price you see in your itemized breakdown includes technician labor, commercial equipment, fuel, and supplies. If on-site property conditions vary substantially, our crew verifies any change before touching a tool.'
+    answer: 'Yes. Every quote generated on House Hero is 100% upfront in US Dollars ($). The price you see in your itemized breakdown includes technician labor, commercial equipment, fuel, and supplies. If on-site property conditions vary substantially, our crew verifies any change before touching a tool.'
   },
   {
     category: 'billing',
@@ -71,7 +71,7 @@ const FAQS: FAQItem[] = [
   {
     category: 'guarantee',
     question: 'Are your technicians insured and bonded?',
-    answer: 'Every NorthStar technician is a direct employee covered by our $2,000,000 general liability policy and statutory workers’ compensation.'
+    answer: 'Every House Hero technician is a direct employee covered by our $2,000,000 general liability policy and statutory workers’ compensation.'
   }
 ];
 

@@ -11,6 +11,7 @@ const SERVICES = [
 ];
 
 const QUICK_LINKS = [
+  { label: 'Book Multi-Service', href: '/book' },
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },

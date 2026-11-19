@@ -115,8 +115,9 @@ export default function ServicesDirectoryPage() {
           return (
             <div
               key={svc.id}
-              className="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:shadow-xl transition-all duration-200"
+              className="glass-card card-hover relative overflow-hidden rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:shadow-xl transition-all duration-200"
             >
+              <div className="absolute inset-0 rounded-2xl animate-shimmer pointer-events-none" />
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-200/60 text-amber-600">
@@ -174,10 +175,10 @@ export default function ServicesDirectoryPage() {
                   Details
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/book"
                   className="flex-1 text-center py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold transition-colors shadow-xs"
                 >
-                  Get Quote
+                  Book Service
                 </Link>
               </div>
             </div>
@@ -202,7 +203,7 @@ export default function ServicesDirectoryPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SEASONAL_BUNDLES.map((b) => (
-            <div key={b.id} className="glass-warm p-6 sm:p-7 rounded-2xl flex flex-col justify-between space-y-5">
+            <div key={b.id} className="glass-warm card-hover p-6 sm:p-7 rounded-2xl flex flex-col justify-between space-y-5">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-200/60 px-2.5 py-0.5 rounded-md">
@@ -238,7 +239,7 @@ export default function ServicesDirectoryPage() {
                   <div className="text-2xl font-black text-stone-900 font-mono">${b.bundlePrice} <span className="text-xs font-normal text-stone-500">USD</span></div>
                 </div>
                 <Link
-                  href="/contact"
+                  href="/book"
                   className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs shadow-xs transition-colors"
                 >
                   Book Bundle

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Shield, Lock, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'Privacy Policy | NorthStar Property Care',
-  description: 'NorthStar Property Care customer privacy and data security policies.',
+  title: 'Privacy Policy | House Hero',
+  description: 'House Hero customer privacy and data security policies.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
           <div id="security" className="space-y-2 pt-4 border-t border-stone-100">
             <h2 className="text-base font-bold text-stone-900">3. Storage &amp; Encryption</h2>
             <p className="leading-relaxed">
-              All digital communications and booking receipts are encrypted via standard TLS 1.3 encryption. For questions regarding your service records, email <strong>dispatch@northstarpropertycare.us</strong>.
+              All digital communications and booking receipts are encrypted via standard TLS 1.3 encryption. For questions regarding your service records, email <strong>dispatch@House Heropropertycare.us</strong>.
             </p>
           </div>
         </div>

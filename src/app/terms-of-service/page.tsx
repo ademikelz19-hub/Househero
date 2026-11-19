@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Shield, FileText, ArrowRight } from 'lucide-react';
 
 export const metadata = {
-  title: 'Terms of Service | NorthStar Property Care',
-  description: 'NorthStar Property Care customer service agreement, satisfaction guarantee, and billing terms.',
+  title: 'Terms of Service | House Hero',
+  description: 'House Hero customer service agreement, satisfaction guarantee, and billing terms.',
 };
 
 export default function TermsOfServicePage() {
@@ -41,7 +41,7 @@ export default function TermsOfServicePage() {
               <div className="rounded-[2rem] overflow-hidden shadow-2xl shadow-amber-500/10 border border-white/80 aspect-4/3 sm:aspect-5/4">
                 <img
                   src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=85"
-                  alt="NorthStar customer agreement"
+                  alt="House Hero customer agreement"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -55,7 +55,7 @@ export default function TermsOfServicePage() {
           <div id="billing" className="space-y-2">
             <h2 className="text-base font-bold text-stone-900">1. Upfront USD Pricing &amp; Payment</h2>
             <p className="leading-relaxed">
-              All prices quoted by NorthStar Property Care are denominated in US Dollars ($ USD). Standard residential appointments may be paid upon completion following client walkthrough inspection via debit, check, cash, or credit invoice.
+              All prices quoted by House Hero are denominated in US Dollars ($ USD). Standard residential appointments may be paid upon completion following client walkthrough inspection via debit, check, cash, or credit invoice.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export default function TermsOfServicePage() {
           <div id="liability" className="space-y-2 pt-4 border-t border-stone-100">
             <h2 className="text-base font-bold text-stone-900">3. General Liability &amp; Workers' Compensation</h2>
             <p className="leading-relaxed">
-              NorthStar maintains an active $2,000,000 general liability policy and statutory workers’ compensation for all field technicians. Certified proof of insurance certificates can be verified through our central dispatch.
+              House Hero maintains an active $2,000,000 general liability policy and statutory workers’ compensation for all field technicians. Certified proof of insurance certificates can be verified through our central dispatch.
             </p>
           </div>
         </div>

@@ -77,10 +77,10 @@ export default async function ServiceDetailPage({
 
                 <div className="pt-3 border-t border-stone-100 flex flex-col sm:flex-row gap-3">
                   <Link
-                    href={`/contact?service=${service.id}`}
-                    className="flex-1 py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs shadow-md shadow-amber-500/20 transition-all text-center flex items-center justify-center gap-1.5"
+                    href="/book"
+                    className="flex-1 py-3 px-5 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs shadow-md shadow-amber-500/20 transition-all text-center flex items-center justify-center gap-1.5 pulse-ring"
                   >
-                    <span>Instant Book This Service</span>
+                    <span>Instant Book (Multi-Service)</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
 

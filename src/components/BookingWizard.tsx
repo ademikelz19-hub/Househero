@@ -317,7 +317,7 @@ export default function BookingWizard() {
               Where Should Our Crew Arrive?
             </h2>
             <p className="text-xs text-stone-500 mt-1">
-              All NorthStar field technicians are dispatched locally with mobile tool vans and protective gear.
+              All House Hero field technicians are dispatched locally with mobile tool vans and protective gear.
             </p>
           </div>
 
@@ -400,7 +400,7 @@ export default function BookingWizard() {
               <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-xs text-emerald-300 flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <span>
-                  ✓ Coverage Verified for ZIP <strong>{customer.zipCode}</strong>: Mobile NorthStar service units available for dispatch on your selected date.
+                  ✓ Coverage Verified for ZIP <strong>{customer.zipCode}</strong>: Mobile House Hero service units available for dispatch on your selected date.
                 </span>
               </div>
             )}

@@ -71,7 +71,7 @@ export default function ReviewModal({
             </div>
             <h3 className="text-xl font-bold text-stone-900">Review Submitted!</h3>
             <p className="text-xs text-stone-500">
-              Thank you for sharing your experience. Your verified review is now live on NorthStar Property Care.
+              Thank you for sharing your experience. Your verified review is now live on House Hero.
             </p>
           </div>
         ) : (

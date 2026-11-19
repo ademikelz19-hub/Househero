@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Book Now', href: '/book' },
 ];
 
 export default function Navbar() {
@@ -49,28 +50,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Pre-header trust bar */}
-      <div className="bg-amber-50 border-b border-amber-100 hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex items-center justify-between text-xs text-stone-600">
-          <span className="flex items-center gap-3 font-medium">
-            <span>$2M Insured</span>
-            <span className="text-amber-400">•</span>
-            <span>4.9★ Rated</span>
-            <span className="text-amber-400">•</span>
-            <span>Background-Checked Technicians</span>
-            <span className="text-amber-400">•</span>
-            <span>100% Satisfaction Guarantee</span>
-          </span>
-          <a
-            href="tel:18005556782"
-            className="flex items-center gap-1.5 text-stone-700 hover:text-amber-600 transition-colors font-semibold"
-          >
-            <Phone className="w-3 h-3" />
-            (800) 555-6782
-          </a>
-        </div>
-      </div>
-
       {/* Main navbar */}
       <header
         className={`glass-nav sticky top-0 z-50 transition-shadow duration-200 ${scrolled ? 'shadow-md' : ''}`}
@@ -95,7 +74,7 @@ export default function Navbar() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`animated-underline px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
                       active
                         ? 'text-amber-600 bg-amber-50'
                         : 'text-stone-700 hover:text-stone-900 hover:bg-stone-50'
