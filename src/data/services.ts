@@ -144,10 +144,10 @@ export const SERVICES: ServiceData[] = [
   {
     id: 'gutter-cleaning',
     slug: 'gutter-cleaning',
-    title: 'Gutter Cleaning',
+    title: 'Roof & Gutter Cleaning',
     category: 'exterior',
-    shortDesc: 'Hand removal of debris, high-pressure downspout flushing, and roof-line seal inspections.',
-    fullDesc: 'Protect your foundation, roof eaves, and basement from costly water damage. Our gutter specialists hand-clear all organic sediment, flush downspouts to ground level, and test drainage slope with video verification.',
+    shortDesc: 'Roof debris clearing, hand gutter cleanout, high-pressure downspout flushing, and eave inspections.',
+    fullDesc: 'Protect your roof shingles, roof eaves, foundation, and basement from costly water damage. Our certified roof and gutter technicians safely clear moss and debris, flush downspouts to ground level, and verify drainage with complete digital photo audits.',
     startingPrice: 135,
     priceUnit: 'up to 150 ft',
     avgDuration: '1.0 – 2.5 hrs',

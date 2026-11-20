@@ -130,7 +130,7 @@ Sent via House Hero Automated Dispatch System`;
 
   const whatsappUrl = useMemo(() => {
     const text = encodeURIComponent(composedMessage);
-    return `https://wa.me/18005556782?text=${text}`;
+    return `https://wa.me/2349134204578?text=${text}`;
   }, [composedMessage]);
 
   const telegramUrl = useMemo(() => {

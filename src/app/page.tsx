@@ -104,7 +104,7 @@ export default function HomePage() {
               <div className="pt-1 flex flex-wrap items-center gap-4 text-xs text-stone-600 font-medium">
                 <span className="text-stone-400">Direct Dispatch:</span>
                 <a
-                  href="https://wa.me/18005556782"
+                  href="https://wa.me/2349134204578"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-emerald-700 hover:text-emerald-800 transition-colors font-semibold"
@@ -338,7 +338,7 @@ export default function HomePage() {
                 <span>Request a Quote</span>
               </Link>
               <a
-                href="https://wa.me/18005556782"
+                href="https://wa.me/2349134204578"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors"

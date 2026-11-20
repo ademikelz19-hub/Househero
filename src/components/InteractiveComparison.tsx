@@ -24,7 +24,20 @@ export default function InteractiveComparison({
 }: InteractiveComparisonProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [containerWidth, setContainerWidth] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
+    };
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
 
   const handleMove = useCallback((clientX: number) => {
     if (!containerRef.current) return;
@@ -108,8 +121,8 @@ export default function InteractiveComparison({
           <img
             src={beforeImage}
             alt={beforeLabel}
-            className="absolute inset-0 h-full w-full object-cover max-w-none"
-            style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%' }}
+            className="absolute inset-0 h-full max-w-none object-cover"
+            style={{ width: containerWidth > 0 ? `${containerWidth}px` : '100%' }}
           />
           <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-stone-900/80 backdrop-blur-md text-white text-[11px] font-bold shadow-sm pointer-events-none">
             {beforeLabel}

@@ -42,7 +42,7 @@ export default function InteractiveQuickBooker() {
     return `📋 QUICK BOOKING REQUEST — HOUSE HERO\n\nZIP: ${zip}\n\nSelected Services (${selectedServices.length}):\n${list}\n\nEst. Total: $${total} USD\nZero on-site payment required. Please reply with available arrival windows!`;
   }, [selectedServices, total, zip]);
 
-  const whatsappUrl = `https://wa.me/18005556782?text=${encodeURIComponent(bookingText)}`;
+  const whatsappUrl = `https://wa.me/2349134204578?text=${encodeURIComponent(bookingText)}`;
   const telegramUrl = `https://t.me/househerocare?text=${encodeURIComponent(bookingText)}`;
   const gmailUrl = `mailto:househero.dispatch@gmail.com?subject=${encodeURIComponent(
     `Quick Booking Request (${selectedServices.length} Services)`
